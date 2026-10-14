@@ -1,0 +1,3858 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffe46b;
+}
+
+.barra-superior {
+    height: 70px;
+    background-color: #ff5c5c;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 25px;
+}
+
+.logo {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu {
+    display: flex;
+    gap: 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.buscador {
+    display: flex;
+    align-items: center;
+}
+
+.buscador input {
+    width: 180px;
+    padding: 10px 14px;
+
+    border: none;
+    border-radius: 20px 0 0 20px;
+
+    outline: none;
+}
+
+.buscador button {
+    padding: 10px 14px;
+
+    border: none;
+    border-radius: 0 20px 20px 0;
+
+    cursor: pointer;
+}
+
+.inicio {
+background-image: url("imagenes/fondodeinicio.png");
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.presentacion {
+    max-width: 600px;
+    padding: 30px;
+}
+
+.presentacion h1 {
+    margin: 0;
+
+    font-size: 60px;
+    color: #0879d9;
+}
+
+.presentacion p {
+    font-size: 28px;
+    color: #6b4b26;
+
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
+.boton-aprender {
+    display: inline-block;
+
+    padding: 18px 35px;
+
+    background-color: #ff2f6d;
+    color: white;
+
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+
+    border-radius: 12px;
+
+    transition: transform 0.2s;
+}
+
+.boton-aprender:hover {
+    transform: scale(1.08);
+}
+
+.seccion {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+}
+
+.seccion-2 {
+    background-image: url("imagenes/fondoamarillo1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seccion-3 {
+    background-image: url("imagenes/fondorosa3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seccion-4 {
+    background-image: url("imagenes/fondoverde2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seccion-5 {
+    background-image: url("imagenes/fondorosa3.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seccion-6 {
+    background-image: url("imagenes/fondoamarillo1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* TAMAÑO SEGURO DE LAS IMÁGENES DE PARA PAPÁS */
+
+.seccion-5 .papas-imagen-enlace {
+    display: block;
+    width: 180px;
+    height: 180px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.seccion-5 .papas-imagen-enlace > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+/* RESTAURAR PARA PAPÁS */
+
+.seccion-5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    padding: 70px 25px;
+    min-height: 100vh;
+}
+
+.seccion-5 .papas-titulo {
+    font-size: 38px;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.seccion-5 .papas-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    width: 100%;
+    max-width: 1100px;
+    align-items: start;
+}
+
+.seccion-5 .papas-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    text-align: center;
+    color: white;
+}
+
+.seccion-5 .papas-imagen-enlace {
+    display: block;
+    width: 180px;
+    height: 180px;
+    max-width: 100%;
+    flex-shrink: 0;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.seccion-5 .papas-imagen-enlace > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.seccion-5 .papas-tarjeta h3 {
+    color: white;
+    font-size: 22px;
+    margin: 0 0 12px;
+}
+
+.seccion-5 .papas-tarjeta p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 25px;
+    max-width: 260px;
+}
+
+.seccion-5 .papas-boton {
+    display: inline-block;
+    margin-top: auto;
+    padding: 14px 22px;
+    background-color: #ff316c;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+    .seccion-5 .papas-imagen-enlace:hover,
+    .seccion-5 .papas-boton:hover {
+        transform: scale(1.07);
+    }
+}
+
+@media (max-width: 700px) {
+    .seccion-5 .papas-contenedor {
+        grid-template-columns: 1fr;
+        gap: 55px;
+        max-width: 350px;
+    }
+}
+
+/* BOTÓN DEL MEMORAMA */
+
+.boton-memorama {
+    display: inline-block;
+    padding: 18px 35px;
+    margin-top: 25px;
+
+    background-color: #ff316c;
+    color: white;
+
+    font-size: 22px;
+    font-weight: bold;
+    text-decoration: none;
+
+    border-radius: 40px;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+/* Movimiento al acercar el mouse */
+
+.boton-memorama:hover {
+    transform: scale(1.07);
+    background-color: #e91e63;
+}
+
+/* ANIMACIÓN EXCLUSIVA DEL PRIMER BOTÓN */
+
+@media (hover: hover) {
+
+    .bienvenida-movimiento:hover {
+        animation: saltito-bienvenida 0.65s ease-in-out;
+    }
+
+}
+
+@keyframes saltito-bienvenida {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-12px) rotate(-5deg);
+    }
+
+    60% {
+        transform: translateY(-6px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .bienvenida-movimiento {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
+
+/* ANIMACIÓN DE LOS TRES BOTONES DE PARA PAPÁS */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .seccion-5 .papas-tarjeta:hover .papas-imagen-enlace {
+        animation: saltito-papas 0.6s ease-in-out;
+    }
+
+}
+
+/* Movimiento infantil */
+
+@keyframes saltito-papas {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-15px) rotate(-6deg);
+    }
+
+    60% {
+        transform: translateY(-5px) rotate(6deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+}
+
+/* Respetar movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .seccion-5 .papas-imagen-enlace {
+        animation: none !important;
+    }
+
+}
+body.pagina-bienvenida {
+    margin: 0;
+    min-height: 100vh;
+    background-color: #6388ff;
+    background-image: url("imagenes/fondoazul1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ==================================
+   RECURSOS
+================================== */
+
+/* TÍTULO */
+
+.seccion-4 .recursos-titulo {
+    font-size: 38px;
+    color: white;
+    text-align: center;
+    margin: 0 0 35px;
+}
+
+/* CONTENEDOR DE LAS TRES COLUMNAS */
+
+.seccion-4 .recursos-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 35px;
+
+    width: 100%;
+    max-width: 1100px;
+
+    align-items: start;
+}
+
+/* CADA TARJETA */
+
+.seccion-4 .recurso-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+
+    text-align: center;
+    color: white;
+}
+
+/* ENLACE CIRCULAR DE LA IMAGEN */
+
+
+/* CÍRCULOS BLANCOS DE RECURSOS */
+
+.seccion-4 .recurso-imagen-enlace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 180px;
+    height: 180px;
+
+    margin-bottom: 20px;
+
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+
+    transition: transform 0.3s ease;
+}
+
+/* IMAGEN INTERIOR */
+
+
+.seccion-4 .recurso-imagen-enlace img {
+    display: block;
+
+    width: 85%;
+    height: 85%;
+
+    object-fit: contain;
+    border-radius: 50%;
+}
+/* TÍTULOS */
+
+.seccion-4 .recurso-tarjeta h3 {
+    color: white;
+    font-size: 22px;
+    margin: 0 0 12px;
+}
+
+/* DESCRIPCIONES */
+
+.seccion-4 .recurso-tarjeta p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+
+    max-width: 260px;
+    margin: 0 0 25px;
+}
+
+/* BOTONES ROSAS */
+
+.seccion-4 .recurso-boton {
+    display: inline-block;
+
+    margin-top: auto;
+    padding: 14px 22px;
+
+    background-color: #ff316c;
+    color: white;
+
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+
+    border-radius: 30px;
+
+    transition: transform 0.3s ease;
+}
+
+/* ANIMACIONES */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .seccion-4 .recurso-tarjeta:hover
+    .recurso-imagen-enlace {
+        transform: translateY(-10px) scale(1.07);
+    }
+
+    .seccion-4 .recurso-boton:hover {
+        transform: scale(1.07);
+    }
+
+}
+
+/* ADAPTACIÓN PARA CELULARES */
+
+@media (max-width: 700px) {
+
+    .seccion-4 .recursos-contenedor {
+        grid-template-columns: 1fr;
+        gap: 50px;
+        max-width: 350px;
+    }
+
+    .seccion-4 .recursos-titulo {
+        font-size: 30px;
+    }
+
+}
+
+/* ACCESIBILIDAD */
+
+.seccion-4 a:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .seccion-4 .recurso-imagen-enlace,
+    .seccion-4 .recurso-boton {
+        transition: none;
+    }
+
+}
+
+/* SALTITO DE LOS TRES ICONOS */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .seccion-4 .recurso-tarjeta:hover .recurso-imagen-enlace {
+        animation: saltito-recursos 0.6s ease-in-out;
+    }
+
+}
+
+/* MOVIMIENTO INFANTIL */
+
+@keyframes saltito-recursos {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-15px) rotate(-6deg);
+    }
+
+    60% {
+        transform: translateY(-5px) rotate(6deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+}
+
+/* RESPETAR MOVIMIENTO REDUCIDO */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .seccion-4 .recurso-imagen-enlace {
+        animation: none !important;
+        transition: none;
+    }
+
+}
+html {
+    scroll-behavior: smooth;
+}
+
+/* CORREGIR TAMAÑO DE LOS ICONOS DE ACTIVIDADES */
+
+.seccion-3 .actividad-imagen-enlace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 180px;
+    height: 180px;
+
+    background-color: white;
+    border-radius: 50%;
+    overflow: hidden;
+
+    margin-bottom: 20px;
+}
+
+.seccion-3 .actividad-imagen-enlace img {
+    display: block;
+    width: 90%;
+    height: 90%;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* RESTAURAR LAS TRES COLUMNAS */
+
+.seccion-3 .actividades-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+
+    width: 100%;
+    max-width: 1100px;
+    align-items: start;
+}
+
+.seccion-3 .actividad-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+}
+
+/* ADAPTACIÓN A CELULARES */
+
+@media (max-width: 700px) {
+    .seccion-3 .actividades-contenedor {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+}
+
+/* =====================================
+   ACTIVIDADES - DISEÑO DE TRES COLUMNAS
+===================================== */
+
+/* DISTRIBUCIÓN GENERAL */
+
+.seccion-3#actividades {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    padding: 65px 25px;
+    gap: 0;
+}
+
+/* TÍTULO */
+
+#actividades .actividades-titulo {
+    color: white;
+    font-size: 38px;
+    text-align: center;
+
+    margin: 0 0 40px;
+}
+
+/* TRES COLUMNAS */
+
+#actividades .actividades-contenedor {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    width: 100%;
+    max-width: 1100px;
+
+    gap: 35px;
+    align-items: stretch;
+}
+
+/* CADA TARJETA */
+
+#actividades .actividad-tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-width: 0;
+
+    text-align: center;
+    color: white;
+}
+
+/* CÍRCULO BLANCO */
+
+#actividades .actividad-imagen-enlace {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 180px;
+    height: 180px;
+    max-width: 100%;
+    flex-shrink: 0;
+
+    background-color: white;
+    border-radius: 50%;
+
+    overflow: hidden;
+    margin-bottom: 20px;
+
+    transition: transform 0.3s ease;
+}
+
+/* TAMAÑO DE LOS ICONOS */
+
+#actividades .actividad-imagen-enlace img {
+    display: block;
+
+    width: 85%;
+    height: 85%;
+    max-width: 100%;
+
+    object-fit: contain;
+    border-radius: 0;
+}
+
+/* TÍTULOS */
+
+#actividades .actividad-tarjeta h3 {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+
+    margin: 0 0 12px;
+}
+
+/* DESCRIPCIONES */
+
+#actividades .actividad-tarjeta p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+
+    max-width: 260px;
+    margin: 0 0 25px;
+}
+
+/* BOTONES ROSAS */
+
+#actividades .actividad-boton {
+    display: inline-block;
+
+    margin-top: auto;
+    padding: 14px 30px;
+
+    background-color: #ff316c;
+    color: white;
+
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    transition: transform 0.3s ease;
+}
+
+/* ANIMACIONES */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #actividades .actividad-tarjeta:hover
+    .actividad-imagen-enlace {
+        animation: saltito-juegos 0.6s ease-in-out;
+    }
+
+    #actividades .actividad-boton:hover {
+        background-color: #e91e63;
+        transform: scale(1.08);
+    }
+
+}
+
+/* SALTITO DE LOS ICONOS */
+
+@keyframes saltito-juegos {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    30% {
+        transform: translateY(-15px) rotate(-6deg);
+    }
+
+    60% {
+        transform: translateY(-5px) rotate(6deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+}
+
+/* VERSIÓN CELULAR */
+
+@media (max-width: 700px) {
+
+    #actividades .actividades-contenedor {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        gap: 50px;
+    }
+
+    #actividades .actividades-titulo {
+        font-size: 30px;
+    }
+
+}
+
+/* ACCESIBILIDAD */
+
+#actividades a:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 5px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    #actividades .actividad-imagen-enlace {
+        animation: none !important;
+        transition: none;
+    }
+
+}
+
+/* =====================================
+   SUBE Y BAJA - PRUEBA DE POSICIÓN
+===================================== */
+
+/* Permite colocar elementos sobre el paisaje */
+
+.inicio {
+    position: relative;
+}
+
+/* Ilustración del sube y baja */
+
+.inicio .subeybaja-preview {
+    position: absolute;
+
+    bottom: 5%;
+    left: 5%;
+
+    width: clamp(180px, 25vw, 350px);
+    height: auto;
+
+    z-index: 1;
+
+    pointer-events: auto;
+}
+
+/* Mantener el título y el botón delante */
+
+.inicio .presentacion {
+    position: relative;
+    z-index: 2;
+}
+/* =====================================
+   SUBE Y BAJA - PREVIEW
+===================================== */
+
+.inicio {
+    position: relative;
+}
+
+.inicio .subeybaja-preview {
+    position: absolute;
+
+    bottom: 5%;
+    left: 5%;
+
+    width: clamp(180px, 25vw, 350px);
+    height: auto;
+
+    z-index: 1;
+}
+
+/* El texto y botón quedan por encima */
+.inicio .presentacion {
+    position: relative;
+    z-index: 2;
+}
+
+/* ANIMACIÓN DEL SUBE Y BAJA */
+
+.inicio .subeybaja-preview {
+    pointer-events: auto;
+    transform-origin: 50% 70%;
+    transition: transform 0.3s ease;
+}
+
+/* Movimiento cuando acercas el mouse */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .inicio .subeybaja-preview:hover {
+        animation: balanceo-sube 0.8s ease-in-out infinite alternate;
+    }
+
+}
+
+/* Balanceo */
+
+@keyframes balanceo-sube {
+
+    0% {
+        transform: rotate(-8deg);
+    }
+
+    100% {
+        transform: rotate(8deg);
+    }
+
+}
+
+/* Respetar movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .inicio .subeybaja-preview {
+        animation: none !important;
+        transition: none;
+    }
+
+}
+
+/* ==================================
+   CUATRO NUBES ANIMADAS
+================================== */
+
+/* Configuración general */
+
+.inicio {
+    position: relative;
+}
+
+/* Todas las nubes */
+
+.inicio .nube {
+    position: absolute;
+    height: auto;
+
+    z-index: 1;
+
+    /* Las nubes no interfieren con los botones */
+    pointer-events: none;
+}
+
+/* NUBE 1: izquierda superior */
+
+.inicio .nube-1 {
+    top: 5%;
+    left: 3%;
+
+    width: clamp(90px, 12vw, 170px);
+
+    animation: nube-flotar-1 9s ease-in-out infinite alternate;
+}
+
+/* NUBE 2: derecha superior */
+
+.inicio .nube-2 {
+    top: 8%;
+    right: 5%;
+
+    width: clamp(100px, 14vw, 190px);
+
+    animation: nube-flotar-2 12s ease-in-out infinite alternate;
+}
+
+/* NUBE 3: izquierda, un poco más abajo */
+
+
+/* NUBE 3: arriba, a la izquierda del título */
+
+.inicio .nube-3 {
+    top: 6%;
+    left: 28%;
+
+    width: clamp(75px, 10vw, 140px);
+
+    animation: nube-flotar-3 15s ease-in-out infinite alternate;
+}
+
+
+/* NUBE 4: arriba, a la derecha del título */
+
+.inicio .nube-4 {
+    top: 5%;
+    right: 29%;
+
+    width: clamp(80px, 11vw, 155px);
+
+    animation: nube-flotar-4 11s ease-in-out infinite alternate;
+}
+
+/* MOVIMIENTOS INDEPENDIENTES */
+
+@keyframes nube-flotar-1 {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(45px, -8px);
+    }
+
+}
+
+@keyframes nube-flotar-2 {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-55px, 10px);
+    }
+
+}
+
+@keyframes nube-flotar-3 {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(35px, 12px);
+    }
+
+}
+
+@keyframes nube-flotar-4 {
+
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(-40px, -12px);
+    }
+
+}
+
+/* Título y botón por delante de las nubes */
+
+.inicio .presentacion {
+    position: relative;
+    z-index: 2;
+}
+
+/* Accesibilidad: reducir animaciones */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .inicio .nube {
+        animation: none !important;
+    }
+
+}
+
+/* ==================================
+   CABALLITO DE RESORTE ANIMADO
+================================== */
+
+/* Posición del caballito */
+
+.inicio .caballito-animado {
+    position: absolute;
+
+    bottom: 9%;
+    right: 7%;
+
+    width: clamp(110px, 13vw, 175px);
+    height: auto;
+
+    z-index: 1;
+
+    /* No interfiere con los botones */
+    pointer-events: none;
+
+    /* Punto desde donde se balancea */
+    transform-origin: center bottom;
+
+    /* Movimiento automático */
+    animation: caballo-balanceo 1.8s ease-in-out infinite alternate;
+}
+
+/* Animación */
+
+@keyframes caballo-balanceo {
+
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(5deg);
+    }
+
+}
+
+/* Adaptación básica para celulares */
+
+@media (max-width: 700px) {
+
+    .inicio .caballito-animado {
+        width: 95px;
+        right: 2%;
+        bottom: 4%;
+    }
+
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .inicio .caballito-animado {
+        animation: none !important;
+    }
+
+}
+/* ==================================
+   PINO DECORATIVO ANIMADO
+================================== */
+
+.inicio .pino-animado {
+    position: absolute;
+
+   right: 7%;
+bottom: 47%; 
+
+    width: clamp(70px, 8vw, 110px);
+    height: auto;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    transform-origin: center bottom;
+
+    animation: pino-viento 3.2s ease-in-out infinite;
+}
+
+/* Movimiento suave como si soplara el aire */
+@keyframes pino-viento {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-2deg);
+    }
+
+    50% {
+        transform: rotate(1.5deg);
+    }
+
+    75% {
+        transform: rotate(-1deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+/* Ajuste para celular */
+@media (max-width: 700px) {
+    .inicio .pino-animado {
+        width: 65px;
+        right: 12%;
+        bottom: 20%;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .inicio .pino-animado {
+        animation: none !important;
+    }
+}
+
+/* ==================================
+   PERRITO DURMIENDO
+================================== */
+
+.inicio .perrito-dormido {
+    position: absolute;
+
+    /* Ubicación sobre el pasto izquierdo */
+    left: 37%;
+    bottom: 4%;
+
+    /* Tamaño */
+    width: clamp(95px, 11vw, 145px);
+    height: auto;
+
+    z-index: 1;
+    pointer-events: none;
+
+    /* Movimiento de respiración */
+    transform-origin: center bottom;
+    animation: respirar-perrito 3s ease-in-out infinite;
+}
+
+/* ==================================
+   PERRITO INTERACTIVO
+================================== */
+
+.inicio .perrito-interactivo {
+    position: absolute;
+
+    left: 30%;
+    bottom: 2%;
+
+    width: clamp(95px, 11vw, 145px);
+    height: auto;
+
+    z-index: 1;
+
+    cursor: pointer;
+}
+
+/* Las dos imágenes ocupan el mismo sitio */
+
+.inicio .perrito-img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+/* Dormido visible inicialmente */
+
+.inicio .perrito-dormido-img {
+    opacity: 1;
+}
+
+/* Despierto oculto */
+
+.inicio .perrito-despierto-img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* CUANDO ACERCAS EL CURSOR */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .inicio .perrito-interactivo:hover
+    .perrito-dormido-img {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    .inicio .perrito-interactivo:hover
+.perrito-despierto-img {
+    opacity: 1;
+    transform: scale(0.85);
+    transform-origin: center bottom;
+}
+
+}
+.tablero-contenedor {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .10);
+    min-width: 0;
+}
+
+.panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .10);
+}
+
+/* ==================================
+   CONTACTO - SUBE Y BAJA
+================================== */
+
+/* Conservamos el fondo amarillo original */
+
+#contacto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 550px;
+    padding: 70px 30px;
+}
+
+/* Distribución de los tres elementos */
+
+#contacto .contacto-contenedor {
+    display: grid;
+
+    grid-template-columns: 160px minmax(0, 500px) 160px;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 45px;
+
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+}
+
+/* ==================================
+   BOTONES DE REDES SOCIALES
+================================== */
+
+/* ==================================
+   CONTACTO
+================================== */
+
+#contacto {
+    min-height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 80px 25px;
+}
+
+/* TARJETA PRINCIPAL */
+
+#contacto .contacto-tarjeta {
+    width: min(1050px, 100%);
+
+    padding: 45px 55px;
+
+    background: rgba(255, 255, 255, 0.93);
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow:
+        0 15px 35px rgba(120, 85, 0, 0.15);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Pequeño movimiento de toda la tarjeta */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #contacto .contacto-tarjeta:hover {
+        transform: translateY(-7px);
+
+        box-shadow:
+            0 22px 45px rgba(120, 85, 0, 0.20);
+    }
+
+}
+
+/* ETIQUETA */
+
+.contacto-etiqueta {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #ff4081;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+/* TÍTULO */
+
+#contacto h2 {
+    margin: 0 0 15px;
+
+    color: #0878ce;
+
+    font-size: clamp(34px, 5vw, 48px);
+}
+
+/* TEXTO */
+
+#contacto .contacto-texto p {
+    max-width: 610px;
+
+    margin: 0 auto;
+
+    color: #3d566d;
+
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* ==================================
+   REDES
+================================== */
+
+#contacto .contacto-redes {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+
+    max-width: 600px;
+
+    margin: 35px auto 25px;
+}
+
+/* BOTÓN DE CADA RED */
+
+#contacto .red-social {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 17px 22px;
+
+    background: #ffffff;
+
+    border: 2px solid #f1e6bb;
+    border-radius: 22px;
+
+    text-decoration: none;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* ICONOS */
+
+#contacto .red-social img {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+}
+
+/* TEXTO DE REDES */
+
+#contacto .red-social div {
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+}
+
+#contacto .red-social span {
+    color: #738292;
+    font-size: 13px;
+}
+
+#contacto .red-social strong {
+    color: #174e78;
+
+    font-size: 20px;
+}
+
+/* HOVER */
+
+@media (hover: hover) and (pointer: fine) {
+
+    #contacto .red-social:hover {
+        transform: translateY(-7px);
+
+        border-color: #ffafca;
+
+        box-shadow:
+            0 12px 23px rgba(0, 0, 0, 0.12);
+    }
+
+    #contacto .red-social:hover img {
+        transform: rotate(-5deg) scale(1.08);
+    }
+
+}
+
+/* TEXTO FINAL */
+
+#contacto .contacto-final {
+    margin: 0;
+
+    color: #ff4081;
+
+    font-size: 19px;
+    font-weight: 800;
+}
+
+/* ==================================
+   CELULAR
+================================== */
+
+@media (max-width: 650px) {
+
+    #contacto {
+        padding: 55px 15px;
+    }
+
+    #contacto .contacto-tarjeta {
+        padding: 35px 20px;
+    }
+
+    #contacto .contacto-redes {
+        grid-template-columns: 1fr;
+    }
+
+    #contacto .red-social {
+        max-width: 340px;
+        width: 100%;
+
+        margin: 0 auto;
+    }
+
+    #contacto .contacto-texto p {
+        font-size: 16px;
+    }
+
+}
+
+/* ==================================
+   ADAPTACIÓN PARA CELULARES
+================================== */
+
+@media (max-width: 700px) {
+
+    #contacto {
+        min-height: auto;
+        padding: 65px 20px;
+    }
+
+    #contacto .contacto-contenedor {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        gap: 30px 15px;
+    }
+
+    /* El texto aparece primero y ocupa todo el ancho */
+
+    #contacto .contacto-informacion {
+        grid-column: 1 / -1;
+        grid-row: 1;
+    }
+
+    #contacto .contacto-informacion h2 {
+        font-size: 32px;
+    }
+
+    #contacto .contacto-informacion p {
+        font-size: 16px;
+    }
+
+    /* Botones juntos debajo del texto */
+
+    #contacto .contacto-red img {
+        width: 95px;
+        height: 95px;
+    }
+
+    #contacto .contacto-red {
+        font-size: 16px;
+    }
+
+}
+
+/* Accesibilidad */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #contacto .contacto-red img,
+    #contacto .contacto-red span {
+        transition: none;
+    }
+
+}
+
+/* =========================================
+   SECCIÓN: QUÉ ES SUBE Y BAJA
+========================================= */
+
+/* Permitir que el contenido crezca sin cortarse */
+
+.seccion.seccion-2 {
+    height: auto;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 70px 35px;
+}
+
+/* LAS TRES COLUMNAS */
+
+.seccion-2 .presentacion-proyecto {
+    display: grid;
+
+    grid-template-columns: 1fr 1.25fr 1fr;
+
+    gap: 25px;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 1250px;
+
+    margin: 0 auto;
+}
+
+/* TARJETAS */
+
+.seccion-2 .bloque-proyecto {
+    min-width: 0;
+
+    padding: 28px 22px;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border-radius: 25px;
+
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+will-change: transform;
+}
+
+/* ANIMACIÓN DE LAS TARJETAS */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .seccion-2 .bloque-proyecto.aparecer:hover {
+        transform: translateY(-10px);
+
+        box-shadow:
+            0 18px 35px rgba(0, 0, 0, 0.16);
+    }
+
+    .seccion-2 .destacada.aparecer:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
+
+}
+
+/* TÍTULOS DE LAS TRES COLUMNAS */
+
+.seccion-2 .bloque-proyecto h2 {
+    margin: 0 0 24px;
+
+    color: #0878ce;
+
+    font-size: clamp(25px, 3vw, 34px);
+    text-align: center;
+}
+
+/* =========================================
+   SECCIÓN: EQUIPO / PROPÓSITO / APORTE
+========================================= */
+
+.seccion.seccion-2 {
+    height: auto;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 70px 35px;
+}
+
+.seccion-2 .presentacion-proyecto {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 24px;
+
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+
+    align-items: stretch;
+}
+
+/* TARJETAS GENERALES */
+
+.seccion-2 .bloque-proyecto {
+    position: relative;
+
+    padding: 28px 22px 26px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 28px;
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.10);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.seccion-2 .bloque-proyecto:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.16);
+}
+
+/* FRANJA SUPERIOR DECORATIVA */
+
+.seccion-2 .bloque-proyecto::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 10px;
+
+    background: linear-gradient(90deg, #ff4e8a, #2aa7ff);
+}
+
+/* ETIQUETA SUPERIOR */
+
+.seccion-2 .etiqueta-bloque {
+    display: inline-block;
+
+    margin-bottom: 10px;
+    padding: 7px 14px;
+
+    background: #ffe6f0;
+    color: #ff4e8a;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+/* TÍTULOS */
+
+.seccion-2 .bloque-proyecto h2 {
+    margin: 0 0 18px;
+
+    color: #0878ce;
+    text-align: center;
+    font-size: clamp(28px, 3vw, 42px);
+}
+
+.seccion-2 .bloque-proposito h3 {
+    margin: 0 0 16px;
+
+    text-align: center;
+    color: #e83f7d;
+    font-size: 22px;
+}
+
+/* TEXTO GENERAL */
+
+.seccion-2 .texto-largo {
+    margin: 0;
+
+    color: #3a536b;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+/* TARJETA DESTACADA CENTRAL */
+
+.seccion-2 .destacada {
+    transform: scale(1.02);
+    border: 2px solid rgba(66, 173, 255, 0.15);
+}
+
+.seccion-2 .destacada:hover {
+    transform: translateY(-10px) scale(1.03);
+}
+
+/* =========================================
+   EQUIPO
+========================================= */
+
+.seccion-2 .integrantes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.seccion-2 .integrante {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 12px;
+
+    background: #f9fbff;
+    border: 2px solid #eef4fb;
+    border-radius: 18px;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.seccion-2 .integrante:hover {
+    transform: translateX(6px);
+    border-color: #cdeaff;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.seccion-2 .integrante img {
+    width: 82px;
+    height: 82px;
+
+    object-fit: contain;
+
+    border-radius: 50%;
+    background: #f4efff;
+    border: 3px solid #e8d8fb;
+
+    flex-shrink: 0;
+}
+
+.seccion-2 .integrante-texto h3 {
+    margin: 0 0 4px;
+
+    color: #0878ce;
+    font-size: 17px;
+    line-height: 1.3;
+}
+
+.seccion-2 .integrante-texto p {
+    margin: 0;
+
+    color: #617286;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+/* =========================================
+   APORTE
+========================================= */
+
+.seccion-2 .frase-aporte {
+    margin-top: 22px;
+    padding: 16px 18px;
+
+    background: #fff2f7;
+    color: #e64080;
+
+    border-radius: 18px;
+
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+    .seccion-2 .presentacion-proyecto {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .seccion-2 .bloque-aporte {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .seccion.seccion-2 {
+        padding: 55px 15px;
+    }
+
+    .seccion-2 .presentacion-proyecto {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .seccion-2 .bloque-aporte {
+        grid-column: auto;
+    }
+
+    .seccion-2 .destacada {
+        transform: none;
+    }
+
+    .seccion-2 .destacada:hover {
+        transform: translateY(-8px);
+    }
+
+    .seccion-2 .bloque-proyecto {
+        padding: 24px 18px;
+    }
+
+    .seccion-2 .texto-largo {
+        font-size: 15px;
+    }
+
+    .seccion-2 .integrante img {
+        width: 74px;
+        height: 74px;
+    }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 700px) {
+
+    .seccion.seccion-2 {
+        padding: 55px 15px;
+    }
+
+    .seccion-2 .presentacion-proyecto {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .seccion-2 .bloque-proyecto {
+        padding: 25px 20px;
+    }
+
+    .seccion-2 .bloque-aporte {
+        grid-column: auto;
+    }
+
+    .seccion-2 .integrante img {
+        width: 72px;
+        height: 72px;
+    }
+
+    .seccion-2 .bloque-proposito p,
+    .seccion-2 .bloque-aporte p {
+        font-size: 15px;
+    }
+
+}
+/* =========================================
+   ANIMACIÓN DE ENTRADA - SECCIÓN PROYECTO
+========================================= */
+
+/* Estado inicial */
+/* =========================================
+   ENTRADA AL HACER SCROLL
+========================================= */
+
+/* Antes de entrar a pantalla */
+
+.seccion-2 .bloque-proyecto {
+    opacity: 0;
+}
+
+/* EQUIPO */
+
+.seccion-2 .bloque-equipo.visible {
+    animation: entrarEquipo 0.8s ease forwards;
+}
+
+/* PROPÓSITO */
+
+.seccion-2 .bloque-proposito.visible {
+    animation: entrarProposito 0.8s ease 0.15s forwards;
+}
+
+/* APORTE */
+
+.seccion-2 .bloque-aporte.visible {
+    animation: entrarAporte 0.8s ease 0.30s forwards;
+}
+
+
+/* ANIMACIONES */
+
+@keyframes entrarEquipo {
+
+    from {
+        opacity: 0;
+        transform: translateX(-70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+@keyframes entrarProposito {
+
+    from {
+        opacity: 0;
+        transform: translateY(70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes entrarAporte {
+
+    from {
+        opacity: 0;
+        transform: translateX(70px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+}
+
+
+/* HOVER DESPUÉS DE QUE APARECEN */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .seccion-2 .bloque-proyecto.visible:hover {
+        transform: translateY(-10px);
+
+        box-shadow:
+            0 18px 35px rgba(0, 0, 0, 0.16);
+    }
+
+}
+/* =========================================
+   ANIMACIONES DE ENTRADA DE LAS SECCIONES
+========================================= */
+
+
+/* -----------------------------------------
+   SECCIÓN COMPLETA
+----------------------------------------- */
+
+.seccion-con-entrada {
+    opacity: 0;
+
+    translate: 0 45px;
+
+    transition:
+        opacity 0.85s ease,
+        translate 0.85s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.seccion-con-entrada.seccion-visible {
+    opacity: 1;
+
+    translate: 0 0;
+}
+
+
+/* =========================================
+   ELEMENTOS / TARJETAS
+========================================= */
+
+.elemento-entrada {
+    opacity: 0;
+
+    translate: 0 55px;
+
+    scale: 0.94;
+
+    transition:
+        opacity 0.7s ease,
+        translate 0.7s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        ),
+        scale 0.7s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+
+    transition-delay:
+        var(--retraso, 0s);
+}
+
+
+.elemento-entrada.elemento-visible {
+    opacity: 1;
+
+    translate: 0 0;
+
+    scale: 1;
+}
+
+
+/* =========================================
+   ACTIVIDADES
+   Movimiento alternado
+========================================= */
+
+.seccion-3
+.elemento-entrada:nth-of-type(odd) {
+
+    translate: -55px 35px;
+}
+
+
+.seccion-3
+.elemento-entrada:nth-of-type(even) {
+
+    translate: 55px 35px;
+}
+
+
+.seccion-3
+.elemento-entrada.elemento-visible {
+
+    translate: 0 0;
+}
+
+
+/* =========================================
+   RECURSOS
+   Entrada desde abajo
+========================================= */
+
+.seccion-4
+.elemento-entrada {
+
+    translate: 0 65px;
+
+    scale: 0.90;
+}
+
+
+.seccion-4
+.elemento-entrada.elemento-visible {
+
+    translate: 0 0;
+
+    scale: 1;
+}
+
+
+/* =========================================
+   PARA PAPÁS
+   Entrada suave
+========================================= */
+
+.seccion-5
+.elemento-entrada:nth-of-type(odd) {
+
+    translate: -45px 30px;
+}
+
+
+.seccion-5
+.elemento-entrada:nth-of-type(even) {
+
+    translate: 45px 30px;
+}
+
+
+.seccion-5
+.elemento-entrada.elemento-visible {
+
+    translate: 0 0;
+}
+
+
+/* =========================================
+   CONTACTO
+========================================= */
+
+.entrada-contacto {
+
+    translate: 0 70px;
+
+    scale: 0.92;
+}
+
+
+.entrada-contacto.elemento-visible {
+
+    translate: 0 0;
+
+    scale: 1;
+}
+
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+.seccion-3 h2,
+.seccion-4 h2,
+.seccion-5 h2,
+.seccion-6 h2 {
+
+    transition:
+        letter-spacing 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+/* =========================================
+   NO MODIFICAMOS LOS HOVER EXISTENTES
+========================================= */
+
+/*
+   IMPORTANTE:
+
+   Las animaciones anteriores usan:
+   translate
+   scale
+
+   y NO "transform".
+
+   Por eso tus efectos actuales de:
+
+   :hover {
+       transform: ...
+   }
+
+   seguirán funcionando.
+*/
+
+
+/* =========================================
+   ACCESIBILIDAD
+========================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .seccion-con-entrada,
+    .elemento-entrada {
+
+        opacity: 1;
+
+        translate: none;
+
+        scale: 1;
+
+        transition: none;
+
+    }
+
+}
+/* =========================================
+   VIDA EXTRA - SUBE Y BAJA
+   Movimiento suave sin afectar los hover
+========================================= */
+
+
+/* =========================================
+   TÍTULOS DE CADA SECCIÓN
+========================================= */
+
+.seccion-3 h2,
+.seccion-4 h2,
+.seccion-5 h2,
+.seccion-6 h2 {
+
+    opacity: 0;
+
+    translate: 0 -20px;
+
+    transition:
+        opacity 0.7s ease,
+        translate 0.7s cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+/* Cuando la sección aparece */
+
+.seccion-visible h2 {
+
+    opacity: 1;
+
+    translate: 0 0;
+}
+
+
+/* =========================================
+   ILUSTRACIONES DE ACTIVIDADES
+========================================= */
+
+.seccion-3 a img {
+
+    animation:
+        flotarActividad 3.4s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+/* Cada una lleva ritmo diferente */
+
+.seccion-3 a:nth-of-type(2) img {
+
+    animation-delay: 0.4s;
+
+}
+
+
+.seccion-3 a:nth-of-type(3) img {
+
+    animation-delay: 0.8s;
+
+}
+
+
+@keyframes flotarActividad {
+
+    from {
+
+        translate: 0 0;
+
+        rotate: -1deg;
+
+    }
+
+    to {
+
+        translate: 0 -7px;
+
+        rotate: 1deg;
+
+    }
+
+}
+
+
+/* =========================================
+   RECURSOS
+   Movimiento más tranquilo
+========================================= */
+
+.seccion-4 a img {
+
+    animation:
+        flotarRecurso 4s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes flotarRecurso {
+
+    from {
+
+        translate: 0 0;
+
+    }
+
+    to {
+
+        translate: 0 -6px;
+
+    }
+
+}
+
+
+/* =========================================
+   PARA PAPÁS
+========================================= */
+
+.seccion-5 a img {
+
+    animation:
+        respirarPapas 4.5s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes respirarPapas {
+
+    from {
+
+        translate: 0 0;
+
+        rotate: -0.7deg;
+
+    }
+
+    to {
+
+        translate: 0 -5px;
+
+        rotate: 0.7deg;
+
+    }
+
+}
+
+
+/* =========================================
+   INSTAGRAM Y TIKTOK
+========================================= */
+
+#contacto .red-social img {
+
+    animation:
+        respirarRedes 2.8s
+        ease-in-out
+        infinite
+        alternate;
+
+}
+
+
+@keyframes respirarRedes {
+
+    from {
+
+        scale: 1;
+
+    }
+
+    to {
+
+        scale: 1.07;
+
+    }
+
+}
+
+
+/* =========================================
+   CONTACTO
+   Pequeño brillo suave
+========================================= */
+
+#contacto .contacto-tarjeta {
+
+    transition:
+        box-shadow 0.4s ease,
+        transform 0.4s ease;
+
+}
+
+
+#contacto .contacto-tarjeta:hover {
+
+    box-shadow:
+        0 22px 45px
+        rgba(0, 0, 0, 0.16);
+
+}
+
+
+/* =========================================
+   RESPETAR ACCESIBILIDAD
+========================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .seccion-3 a img,
+    .seccion-4 a img,
+    .seccion-5 a img,
+    #contacto .red-social img {
+
+        animation: none;
+
+    }
+
+}
+/* =========================================
+   BOTÓN MÚSICA
+========================================= */
+
+.boton-musica {
+
+    position: fixed;
+
+    right: 22px;
+    bottom: 22px;
+
+    width: 52px;
+    height: 52px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #ff3f78;
+
+    color: white;
+
+    font-size: 22px;
+
+    cursor: pointer;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 6px 18px
+        rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.boton-musica:hover {
+
+    transform:
+        scale(1.10);
+
+    box-shadow:
+        0 9px 24px
+        rgba(0, 0, 0, 0.22);
+
+}
+
+
+.boton-musica:active {
+
+    transform:
+        scale(0.92);
+
+}
+/* =========================================
+   TIPOGRAFÍAS - SUBE Y BAJA
+========================================= */
+
+
+/* =========================================
+   TEXTO GENERAL
+========================================= */
+
+body {
+    font-family: "Nunito", Arial, sans-serif;
+    font-weight: 500;
+}
+
+
+/* =========================================
+   TÍTULOS PRINCIPALES
+========================================= */
+
+h1,
+h2,
+h3 {
+    font-family: "Fredoka", sans-serif;
+}
+
+
+/* TÍTULOS GRANDES DE LAS SECCIONES */
+
+.seccion h2 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   PORTADA
+========================================= */
+
+.inicio h1 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+
+.inicio p {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   MENÚ
+========================================= */
+
+.menu a {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+
+/* =========================================
+   BOTÓN ¡APRENDAMOS!
+========================================= */
+
+.boton-aprender {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   BOTONES EN GENERAL
+========================================= */
+
+button,
+.actividad-boton,
+.recurso-boton,
+.papas-boton {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   ACTIVIDADES
+========================================= */
+
+.seccion-3 h2 {
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RECURSOS
+========================================= */
+
+.seccion-4 h2 {
+    font-weight: 700;
+}
+
+
+/* =========================================
+   PARA PAPÁS
+========================================= */
+
+.seccion-5 h2 {
+    font-weight: 700;
+}
+
+
+/* =========================================
+   EQUIPO / PROPÓSITO / APORTE
+========================================= */
+
+.bloque-proyecto h2 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+}
+
+
+.bloque-proyecto h3 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+
+.etiqueta-bloque {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+
+.bloque-proyecto p,
+.texto-largo {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+
+.frase-aporte {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   TARJETAS DEL EQUIPO
+========================================= */
+
+.integrantes {
+    font-family: "Nunito", sans-serif;
+}
+
+
+.integrantes strong {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+
+/* =========================================
+   CONTACTO
+========================================= */
+
+#contacto h2 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+}
+
+
+#contacto p {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+}
+
+
+.contacto-etiqueta {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+}
+
+
+.red-social span {
+    font-family: "Nunito", sans-serif;
+    font-weight: 500;
+}
+
+
+.red-social strong {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+}
+
+
+.contacto-final {
+    font-family: "Fredoka", sans-serif !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+.buscador input {
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+}
+/* =========================================
+   MEJORA DE CONTRASTE - ACTIVIDADES
+========================================= */
+
+.seccion-3 h2 {
+    color: #ffffff;
+    font-weight: 700;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Tarjeta completa */
+.actividad-tarjeta {
+    text-align: center;
+}
+
+
+/* Título de cada actividad */
+.actividad-tarjeta h3 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1E5FAF;
+    margin-top: 14px;
+    margin-bottom: 10px;
+}
+
+
+/* Descripción */
+.actividad-tarjeta p {
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.45;
+    color: #493D73;
+    max-width: 250px;
+    margin: 0 auto 18px auto;
+}
+
+
+/* Botones */
+.actividad-boton {
+    background-color: #FF3F78;
+    color: #ffffff;
+    font-family: "Fredoka", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 18px rgba(255, 63, 120, 0.28);
+}
+
+.actividad-boton:hover {
+    background-color: #E92E68;
+}
+/* =========================================
+   MEJOR VISIBILIDAD PARA TEXTOS BLANCOS
+========================================= */
+
+.seccion-3 h3,
+.seccion-4 h3,
+.seccion-5 h3,
+.seccion-6 h3 {
+    color: #ffffff;
+    text-shadow:
+        0 2px 6px rgba(0, 0, 0, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.30);
+}
+
+.seccion-3 p,
+.seccion-4 p,
+.seccion-5 p,
+.seccion-6 p {
+    color: #ffffff;
+    text-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.25);
+}
+/* =========================================
+   TEXTO PRINCIPAL DE PORTADA
+========================================= */
+
+.inicio p {
+    font-family: "Fredoka", sans-serif;
+
+    font-size: clamp(20px, 2.3vw, 30px);
+    font-weight: 600;
+
+    color: #31538A;
+
+    line-height: 1.25;
+
+    width: fit-content;
+    max-width: 90%;
+
+    margin: 18px auto 28px auto;
+
+    padding: 10px 24px;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 6px 18px rgba(42, 69, 115, 0.13);
+
+    backdrop-filter: blur(5px);
+
+    text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.inicio h1 {
+    font-family: "Fredoka", sans-serif;
+
+    font-weight: 700;
+
+    color: #0879D8;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 4px 0 rgba(0, 87, 170, 0.18),
+        0 7px 15px rgba(0, 81, 156, 0.12);
+}
+/* =========================================
+   HEADER NUEVO - SUBE Y BAJA
+========================================= */
+
+header {
+    background: #FF5C63;
+
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 26px;
+
+    position: relative;
+    z-index: 1000;
+
+    box-shadow:
+        0 5px 18px rgba(70, 46, 86, 0.12);
+
+    border-bottom:
+        5px solid #8EDDF2;
+}
+
+
+/* =========================================
+   LOGO / NOMBRE
+========================================= */
+
+header .logo {
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    letter-spacing: 0.4px;
+
+    text-shadow:
+        0 2px 5px rgba(110, 36, 55, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+
+header .logo:hover {
+    transform:
+        scale(1.06)
+        rotate(-1deg);
+
+    text-shadow:
+        0 4px 9px rgba(110, 36, 55, 0.22);
+}
+
+
+/* =========================================
+   MENÚ
+========================================= */
+
+.menu {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.menu a {
+    font-family: "Fredoka", sans-serif;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    padding: 9px 15px;
+
+    border-radius: 18px;
+
+    letter-spacing: 0.2px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* HOVER MENÚ */
+
+.menu a:hover {
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(132, 41, 63, 0.13);
+}
+
+
+/* AL PRESIONAR */
+
+.menu a:active {
+    transform:
+        translateY(0)
+        scale(0.96);
+}
+
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+.buscador {
+    background: #ffffff;
+
+    border-radius: 25px;
+
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 7px 0 16px;
+
+    box-shadow:
+        0 5px 14px
+        rgba(82, 46, 72, 0.13);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.buscador:focus-within {
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px
+        rgba(67, 67, 106, 0.18);
+}
+
+
+/* INPUT */
+
+.buscador input {
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-family: "Nunito", sans-serif;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #493D73;
+
+    width: 175px;
+}
+
+
+.buscador input::placeholder {
+    color: #7C7285;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================
+   BOTÓN DE LA LUPA
+========================================= */
+
+.buscador button {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #E9F8FC;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 15px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.buscador button:hover {
+    background: #CFF3FB;
+
+    transform:
+        scale(1.10)
+        rotate(-6deg);
+}
+
+
+.buscador button:active {
+    transform:
+        scale(0.92);
+}
+
+
+/* =========================================
+   ADAPTACIÓN EN PANTALLAS PEQUEÑAS
+========================================= */
+
+@media (max-width: 850px) {
+
+    header {
+        padding:
+            12px 18px;
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .menu {
+        gap: 5px;
+    }
+
+
+    .menu a {
+        font-size: 13px;
+
+        padding:
+            7px 10px;
+    }
+
+
+    .buscador {
+        height: 38px;
+    }
+
+
+    .buscador input {
+        width: 145px;
+    }
+
+}
+/* =========================================
+   VERSIÓN MÓVIL - SUBE Y BAJA
+   HEADER + PORTADA
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================
+       HEADER
+    ====================================== */
+
+    .barra-superior {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    padding: 12px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 6px;
+    border-bottom-width: 4px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+
+    /* LOGO */
+
+    .barra-superior .logo {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+
+    /* MENÚ */
+
+    .barra-superior .menu {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+
+    .barra-superior .menu a {
+    font-size: 11px;
+    padding: 5px 7px;
+    border-radius: 14px;
+}
+
+
+    /* BUSCADOR */
+
+    .barra-superior .buscador {
+    width: 92%;
+    max-width: 300px;
+    height: 38px;
+    margin: 4px auto 0;
+}
+
+
+    .barra-superior .buscador input {
+        width: 100%;
+
+        min-width: 0;
+
+        font-size: 14px;
+    }
+
+
+    /* =====================================
+       PORTADA
+    ====================================== */
+
+    .inicio {
+        min-height: 690px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        padding:
+            55px 18px
+            30px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+    }
+
+
+    /* TÍTULO */
+
+    .inicio h1 {
+        position: relative;
+
+        z-index: 10;
+
+        font-size:
+            clamp(
+                42px,
+                13vw,
+                58px
+            );
+
+        line-height: 0.95;
+
+        text-align: center;
+
+        max-width: 350px;
+
+        margin:
+            25px auto 12px;
+    }
+
+
+    /* SUBTÍTULO */
+
+    .inicio p {
+        position: relative;
+
+        z-index: 10;
+
+        font-size: 17px;
+
+        line-height: 1.25;
+
+        text-align: center;
+
+        max-width: 310px;
+
+        padding:
+            9px 16px;
+
+        margin:
+            0 auto 18px;
+    }
+
+
+    /* BOTÓN */
+
+    .inicio .boton-aprender {
+        position: relative;
+
+        z-index: 10;
+
+        font-size: 15px;
+
+        padding:
+            11px 22px;
+    }
+
+
+    /* =====================================
+       NUBES
+    ====================================== */
+
+    .inicio .nube-1 {
+        width: 100px;
+
+        top: 4%;
+
+        left: -15px;
+    }
+
+
+    .inicio .nube-2 {
+        width: 110px;
+
+        top: 6%;
+
+        right: -20px;
+    }
+
+
+    .inicio .nube-3 {
+        width: 75px;
+
+        top: 18%;
+
+        left: 4%;
+    }
+
+
+    .inicio .nube-4 {
+        width: 80px;
+
+        top: 19%;
+
+        right: 3%;
+    }
+
+
+    /* =====================================
+       SUBE Y BAJA
+    ====================================== */
+
+    .subeybaja-escena {
+        width: 230px;
+
+        left: -20px;
+
+        bottom: 2%;
+    }
+
+
+    /* =====================================
+       PERRITO
+    ====================================== */
+
+    .perrito-interactivo {
+    width: 78px;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 8;
+}
+
+
+
+    /* =====================================
+       CABALLITO
+    ====================================== */
+
+    .inicio .caballito-animado {
+        width: 100px;
+
+        right: 3%;
+
+        bottom: 5%;
+    }
+
+
+    /* =====================================
+       PINO
+    ====================================== */
+
+    .inicio .pino-animado {
+        width: 65px;
+
+        right: 7%;
+
+        bottom: 28%;
+    }
+
+
+    /* =====================================
+       BOTÓN DE MÚSICA
+    ====================================== */
+
+    .boton-musica {
+        width: 46px;
+
+        height: 46px;
+
+        right: 14px;
+
+        bottom: 14px;
+
+        font-size: 19px;
+    }
+
+}
+/* =========================================
+   CORRECCIONES MÓVILES - PORTADA
+   SUBE Y BAJA
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* =====================================
+       EVITAR DESBORDES
+    ====================================== */
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    .inicio {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+
+    /* =====================================
+       PERRITO
+       FORZAR POSICIÓN CORRECTA
+    ====================================== */
+
+    .inicio .perrito-interactivo {
+        position: absolute;
+
+        width: 82px !important;
+
+        left: 50% !important;
+        right: auto !important;
+
+        bottom: 22px !important;
+
+        transform:
+            translateX(-50%) !important;
+
+        z-index: 8;
+    }
+
+
+    .inicio .perrito-interactivo
+    .perrito-img {
+
+        width: 100%;
+        height: auto;
+    }
+
+
+    /* Dormido */
+
+    .inicio .perrito-dormido-img {
+        opacity: 1;
+    }
+
+
+    /* Despierto */
+
+    .inicio .perrito-despierto-img {
+        opacity: 0;
+
+        transform:
+            scale(0.88);
+
+        transform-origin:
+            center bottom;
+    }
+
+
+    /* =====================================
+       EN CELULAR:
+       AL TOCAR EL PERRITO
+    ====================================== */
+
+    .inicio
+    .perrito-interactivo:active
+    .perrito-dormido-img {
+
+        opacity: 0;
+    }
+
+
+    .inicio
+    .perrito-interactivo:active
+    .perrito-despierto-img {
+
+        opacity: 1;
+
+        transform:
+            scale(0.92);
+    }
+
+
+    /* =====================================
+       SUBE Y BAJA
+       CONSERVAR MOVIMIENTO
+    ====================================== */
+
+    .inicio .subeybaja-movil {
+
+        transform-origin:
+            50% 67%;
+
+        animation:
+            balanceoSubeyBaja
+            2.6s
+            ease-in-out
+            infinite
+            alternate !important;
+    }
+
+
+    /* =====================================
+       CABALLITO
+       CONSERVAR BALANCEO
+    ====================================== */
+
+    .inicio .caballito-animado {
+
+        animation:
+            caballo-balanceo
+            1.8s
+            ease-in-out
+            infinite
+            alternate !important;
+
+        transform-origin:
+            center bottom;
+    }
+
+
+    /* =====================================
+       PINO
+       CONSERVAR MOVIMIENTO
+    ====================================== */
+
+    .inicio .pino-animado {
+
+        animation-duration:
+            3s;
+
+        animation-timing-function:
+            ease-in-out;
+
+        animation-iteration-count:
+            infinite;
+
+        animation-direction:
+            alternate;
+
+        transform-origin:
+            center bottom;
+    }
+
+
+    /* =====================================
+       NUBES
+       SIGUEN MOVIÉNDOSE
+    ====================================== */
+
+    .inicio .nube {
+        animation-play-state:
+            running !important;
+    }
+
+}
+/* =========================================
+   PERRITO - ARREGLO DEFINITIVO
+   ESCRITORIO + CELULAR
+========================================= */
+
+
+/* =========================================
+   BASE DEL PERRITO
+========================================= */
+
+.inicio .perrito-interactivo {
+
+    position: absolute;
+
+    left: 37%;
+    bottom: 4%;
+
+    width:
+        clamp(
+            95px,
+            11vw,
+            145px
+        );
+
+    height: auto;
+
+    z-index: 8;
+
+    cursor: pointer;
+
+    pointer-events: auto;
+
+    transform:
+        translateX(0);
+
+}
+
+
+/* Las dos imágenes ocupan
+   exactamente el mismo espacio */
+
+.inicio .perrito-interactivo
+.perrito-img {
+
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.28s ease,
+        transform 0.28s ease;
+}
+
+
+/* =========================================
+   PERRITO DORMIDO
+========================================= */
+
+.inicio .perrito-dormido-img {
+
+    position: relative;
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+
+    z-index: 1;
+
+}
+
+
+/* =========================================
+   PERRITO DESPIERTO
+========================================= */
+
+.inicio .perrito-despierto-img {
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+
+    opacity: 0;
+
+    transform:
+        scale(0.85)
+        translateY(5px);
+
+    transform-origin:
+        center bottom;
+
+    z-index: 2;
+
+}
+
+
+/* =========================================
+   COMPUTADORA:
+   PASAR EL CURSOR = DESPERTAR
+========================================= */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .inicio
+    .perrito-interactivo:hover
+    .perrito-dormido-img {
+
+        opacity: 0;
+
+        transform:
+            scale(0.96);
+
+    }
+
+
+    .inicio
+    .perrito-interactivo:hover
+    .perrito-despierto-img {
+
+        opacity: 1;
+
+        transform:
+            scale(0.88)
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================
+   CELULAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    .inicio .perrito-interactivo {
+
+        left: 50% !important;
+        right: auto !important;
+
+        bottom: 18px !important;
+
+        width: 76px !important;
+
+        transform:
+            translateX(-50%) !important;
+
+    }
+
+
+    /* Mantener presionado =
+       despertar */
+
+    .inicio
+    .perrito-interactivo:active
+    .perrito-dormido-img {
+
+        opacity: 0;
+
+    }
+
+
+    .inicio
+    .perrito-interactivo:active
+    .perrito-despierto-img {
+
+        opacity: 1;
+
+        transform:
+            scale(0.90)
+            translateY(0);
+
+    }
+
+}

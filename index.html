@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sube y Baja</title>
+    <link rel="icon" type="image/png" href="imagenes/icono.png">
+    
+<link rel="icon" id="favicon-animado" type="image/png" href="imagenes/icono.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<script>
+    const favicon = document.getElementById("favicon-animado");
+
+    const imagen = new Image();
+
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+
+    const ctx = canvas.getContext("2d");
+
+    let angulo = 0;
+
+    // Configurar la carga ANTES de asignar la imagen
+    imagen.onload = function () {
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+
+        setInterval(function () {
+
+            ctx.clearRect(0, 0, 64, 64);
+
+            ctx.save();
+            ctx.translate(32, 32);
+            ctx.rotate(angulo * Math.PI / 180);
+
+            ctx.drawImage(imagen, -28, -28, 56, 56);
+
+            ctx.restore();
+
+            favicon.href = canvas.toDataURL("image/png");
+
+            angulo = (angulo + 9) % 360;
+
+        }, 100);
+    };
+
+    imagen.src = "imagenes/icono.png";
+</script>
+<body>
+
+    <header class="barra-superior">
+
+        <div class="logo">
+            SUBE Y BAJA
+        </div>
+
+        <nav class="menu">
+    
+<a href="paginas/biblioteca.html">BIBLIOTECA</a>
+<a href="#contacto">SÍGUENOS</a>
+<a href="paginas/familias.html">REFLEXIONES</a>
+
+</nav>
+
+        
+<!-- BUSCADOR FUNCIONAL -->
+
+<form class="buscador" id="buscador-sitio">
+
+    <input
+        type="search"
+        id="campo-busqueda"
+        placeholder="¿Qué quieres encontrar?"
+        aria-label="Buscar contenido"
+        required>
+
+    <button type="submit" aria-label="Buscar">
+        🔍
+    </button>
+
+</form>
+
+    </header>
+
+    <main class="inicio">
+        
+<!-- CUATRO NUBES ANIMADAS -->
+
+<img src="imagenes/nube1.png"
+     class="nube nube-1"
+     alt=""
+     aria-hidden="true">
+
+<img src="imagenes/nube2.png"
+     class="nube nube-2"
+     alt=""
+     aria-hidden="true">
+
+<img src="imagenes/nube3.png"
+     class="nube nube-3"
+     alt=""
+     aria-hidden="true">
+
+<img src="imagenes/nube4.png"
+     class="nube nube-4"
+     alt=""
+     aria-hidden="true">
+     
+<!-- CABALLITO ANIMADO -->
+
+<img
+    src="imagenes/preview-caballito.png"
+    class="caballito-animado"
+    alt="Caballito de resorte infantil">
+    <!-- PINO DECORATIVO -->
+<img
+    src="imagenes/pino1.png"
+    class="pino-animado"
+    alt="Pino decorativo">
+    
+<!-- PERRITO DURMIENDO -->
+
+<div class="perrito-interactivo">
+
+    <img
+        src="imagenes/pepin2.png"
+        class="perrito-img perrito-dormido-img"
+        alt="Perrito salchicha durmiendo">
+
+    <img
+        src="imagenes/pepin-despierto.png"
+        class="perrito-img perrito-despierto-img"
+        alt="Perrito salchicha despierto">
+
+</div>
+        
+<!-- SUBE Y BAJA: PRUEBA DE POSICIÓN -->
+
+
+<!-- SUBE Y BAJA POR CAPAS -->
+
+<img
+    src="imagenes/preview-subeybaja.png"
+    class="subeybaja-preview"
+    alt="Un niño y una niña jugando en un sube y baja">
+
+        <section class="presentacion">
+
+            <h1>SUBE Y BAJA</h1>
+
+            <p>
+                Una plataforma para aprender jugando
+            </p>
+
+          <a href="#actividades" class="boton-aprender">
+    ¡APRENDAMOS!
+</a>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+
+<section class="seccion seccion-2">
+    
+<!-- CONTENIDO DE LA SECCIÓN: QUÉ ES SUBE Y BAJA -->
+
+<div class="presentacion-proyecto">
+
+    <!-- EQUIPO -->
+    <article class="bloque-proyecto bloque-equipo">
+        <span class="etiqueta-bloque">QUIÉNES SOMOS</span>
+        <h2>Equipo</h2>
+
+        <div class="integrantes">
+
+            <div class="integrante">
+                <img
+                    src="imagenes/arely.png"
+                    alt="Arely Méndez">
+
+                <div class="integrante-texto">
+                    <h3>Arely Méndez</h3>
+                    <p>Diseño visual e investigación</p>
+                </div>
+            </div>
+
+            <div class="integrante">
+                <img
+                    src="imagenes/jose.png"
+                    alt="José Gualberto">
+
+                <div class="integrante-texto">
+                    <h3>José Gualberto</h3>
+                    <p>Diseño web y desarrollo de código</p>
+                </div>
+            </div>
+
+            <div class="integrante">
+                <img
+                    src="imagenes/diana.png"
+                    alt="Diana Aldaz">
+
+                <div class="integrante-texto">
+                    <h3>Diana Aldaz</h3>
+                    <p>Investigación y manejo de redes</p>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- PROPÓSITO -->
+    <article class="bloque-proyecto bloque-proposito destacada">
+        <span class="etiqueta-bloque">NUESTRA MISIÓN</span>
+        <h2>Propósito</h2>
+
+        <h3>¿Qué es Sube y Baja?</h3>
+
+        <p class="texto-largo">
+            Desarrollar la página web multimedia <strong>Sube y Baja</strong>
+            para favorecer en niñas y niños de 6 a 8 años el reconocimiento
+            y cuestionamiento de estereotipos de género, la comprensión de
+            la igualdad de oportunidades, la expresión de emociones sin
+            distinción de género y la convivencia basada en el respeto y la
+            cooperación, mediante contenidos educativos interactivos, juegos,
+            cuentos, videos y actividades digitales, incorporando recursos de
+            orientación para madres, padres y cuidadores.
+        </p>
+    </article>
+
+    <!-- APORTE -->
+    <article class="bloque-proyecto bloque-aporte">
+        <span class="etiqueta-bloque">IMPACTO</span>
+        <h2>Aporte</h2>
+
+        <p class="texto-largo">
+            La integración de estos enfoques permitirá que la página no se
+            limite a transmitir información sobre igualdad de género, sino
+            que utilice experiencias lúdicas y multimedia para favorecer
+            aprendizajes aplicables a situaciones de la vida cotidiana y
+            contribuir, desde la infancia, a formas de convivencia más
+            respetuosas, inclusivas y equitativas.
+        </p>
+
+        <div class="frase-aporte">
+            Aprender jugando también transforma la convivencia. 
+        </div>
+    </article>
+
+</div>
+</section>
+
+
+
+<!-- SECCIÓN ACTIVIDADES -->
+
+<section class="seccion seccion-3" id="actividades">
+
+    <h2 class="actividades-titulo">Actividades</h2>
+
+    <div class="actividades-contenedor">
+
+        <!-- SOPA DE LETRAS -->
+
+        <div class="actividad-tarjeta">
+
+            <a href="paginas/sopaletras.html"
+               class="actividad-imagen-enlace">
+
+                <img src="imagenes/sopaletras.png"
+                     alt="Jugar sopa de letras">
+
+            </a>
+
+            <h3>Sopa de letras</h3>
+
+            <p>
+                Encuentra palabras escondidas
+                y diviértete aprendiendo.
+            </p>
+
+            <a href="paginas/sopaletras.html"
+               class="actividad-boton">
+                ¡JUGAR!
+            </a>
+
+        </div>
+
+
+        <!-- MEMORAMA -->
+
+        <div class="actividad-tarjeta">
+
+            <a href="paginas/memorama.html"
+               class="actividad-imagen-enlace">
+
+                <img src="imagenes/Memorama.png"
+                     alt="Jugar memorama">
+
+            </a>
+
+            <h3>Memorama</h3>
+
+            <p>
+                Pon a prueba tu memoria
+                y encuentra todas las parejas.
+            </p>
+
+            <a href="paginas/memorama.html"
+               class="actividad-boton">
+                ¡JUGAR!
+            </a>
+
+        </div>
+
+
+        <!-- ROMPECABEZAS -->
+
+        <div class="actividad-tarjeta">
+
+            <a href="paginas/rompecabezas.html"
+               class="actividad-imagen-enlace">
+
+                <img src="imagenes/rompecabezas.png"
+                     alt="Jugar rompecabezas">
+
+            </a>
+
+            <h3>Rompecabezas</h3>
+
+            <p>
+                Une las piezas y descubre
+                una imagen sorprendente.
+            </p>
+
+            <a href="paginas/rompecabezas.html"
+               class="actividad-boton">
+                ¡JUGAR!
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SECCIÓN RECURSOS -->
+
+<section class="seccion seccion-4" id="recursos">
+
+    <h2 class="recursos-titulo">Recursos</h2>
+
+    <div class="recursos-contenedor">
+
+        <!-- AUDIOLIBROS -->
+
+        <div class="recurso-tarjeta">
+
+            <a href="paginas/audiolibros.html" class="recurso-imagen-enlace">
+                <img src="imagenes/audiolibro1.png"
+                     alt="Audiolibros">
+            </a>
+
+            <h3>Audiolibros</h3>
+
+            <p>
+                Escucha historias y aprende
+                mientras te diviertes.
+            </p>
+
+            <a href="paginas/audiolibros.html" class="recurso-boton">
+                ¡ESCUCHAR!
+            </a>
+
+        </div>
+
+
+        <!-- VIDEOS -->
+
+        <div class="recurso-tarjeta">
+
+            <a href="paginas/videos.html" class="recurso-imagen-enlace">
+                <img src="imagenes/videos2.png"
+                     alt="Videos educativos">
+            </a>
+
+            <h3>Videos</h3>
+
+            <p>
+                Descubre videos educativos
+                llenos de aventuras.
+            </p>
+
+            <a href="paginas/videos.html" class="recurso-boton">
+                ¡VER VIDEOS!
+            </a>
+
+        </div>
+
+
+        <!-- CUENTOS -->
+
+        <div class="recurso-tarjeta">
+
+            <a href="paginas/cuentos.html" class="recurso-imagen-enlace">
+                <img src="imagenes/cuentos3.png"
+                     alt="Cuentos infantiles">
+            </a>
+
+            <h3>Cuentos</h3>
+
+            <p>
+                Explora historias que despiertan
+                tu imaginación.
+            </p>
+
+            <a href="paginas/cuentos.html" class="recurso-boton">
+                ¡LEER CUENTOS!
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SECCIÓN PARA PAPÁS -->
+
+
+<section class="seccion seccion-5" id="papas">
+
+    <h2 class="papas-titulo">Para papás</h2>
+
+    <div class="papas-contenedor">
+
+        <!-- BIENVENIDA -->
+        <div class="papas-tarjeta">
+
+            <a href="paginas/bienvenida.html" class="papas-imagen-enlace">
+                <img src="imagenes/bienvenida1.png"
+                     alt="Mensaje de bienvenida">
+            </a>
+
+            <h3>Mensaje de bienvenida</h3>
+
+            <p>
+                Conoce nuestra plataforma y descubre
+                cómo acompañar el aprendizaje.
+            </p>
+
+            <a href="paginas/bienvenida.html" class="papas-boton"> 
+                ¡DESCUBRE MÁS!
+            </a>
+
+        </div>
+
+        <!-- ARTÍCULOS -->
+        <div class="papas-tarjeta">
+
+            <a href="paginas/articulos.html" class="papas-imagen-enlace">
+                <img src="imagenes/biblioteca3.png"
+                     alt="Biblioteca de artículos">
+            </a>
+
+            <h3>Biblioteca de artículos</h3>
+
+            <p>
+                Información y recursos para apoyar
+                la educación de niñas y niños.
+            </p>
+
+            <a href="paginas/articulos.html" class="papas-boton">
+                ¡LEER ARTÍCULOS!
+            </a>
+
+        </div>
+
+        <!-- FAMILIAS -->
+        <div class="papas-tarjeta">
+
+            <a href="paginas/familias.html" class="papas-imagen-enlace">
+                <img src="imagenes/familias2.png"
+                     alt="Familias">
+            </a>
+
+            <h3>Testimonios</h3>
+
+            <p>
+                El espacio para enteder la importancia de la igualdad
+            </p>
+
+            <a href="paginas/familias.html" class="papas-boton">
+                ¡VAMOS A ESCUCHAR!
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+                
+
+<section class="seccion seccion-6">
+    <h2>
+<!-- ==================================
+     SECCIÓN CONTACTO
+================================== -->
+
+<section class="seccion seccion-6" id="contacto">
+
+    <!-- ==================================
+     CONTACTO
+================================== -->
+
+<section class="seccion seccion-6" id="contacto">
+
+    <div class="contacto-tarjeta">
+
+        <div class="contacto-texto">
+
+            <span class="contacto-etiqueta">
+                CONECTEMOS 
+            </span>
+
+            <h2>¡Sigamos en contacto!</h2>
+
+            <p>
+                Síguenos en nuestras redes sociales y descubre
+                nuevas actividades, recursos e ideas para
+                seguir aprendiendo jugando.
+            </p>
+
+        </div>
+
+        <div class="contacto-redes">
+
+            <!-- INSTAGRAM -->
+
+            <a
+                href="https://www.instagram.com/subeybaja.proyectoseducativos?stkn=MTRnNXMydmJoOWRicg=="
+                target="_blank"
+                rel="noopener noreferrer"
+                class="red-social">
+
+                <img
+                    src="imagenes/instagramboton.png"
+                    alt="Instagram">
+
+                <div>
+                    <span>Síguenos en</span>
+                    <strong>Instagram</strong>
+                </div>
+
+            </a>
+
+            <!-- TIKTOK -->
+
+            <a
+                href="https://www.tiktok.com/@subeybaja.proyectos?_r=1&_t=ZS-99p7Ypb1qQG"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="red-social">
+
+                <img
+                    src="imagenes/tiktokboton.png"
+                    alt="TikTok">
+
+                <div>
+                    <span>Síguenos en</span>
+                    <strong>TikTok</strong>
+                </div>
+
+            </a>
+
+        </div>
+
+        <p class="contacto-final">
+            ¡Forma parte de Sube y Baja! 
+        </p>
+
+    </div>
+
+</section>
+<audio
+    id="musica-fondo"
+    src="sonidos/melodia-fondo.mp3"
+    loop
+    preload="auto">
+</audio>
+
+<button
+    id="boton-musica"
+    class="boton-musica"
+    type="button"
+    aria-label="Activar o desactivar música">
+    🔊
+</button>
+<script src="script.js"></script>
+<script src="botones-sonido.js"></script>
+<script src="animaciones.js"></script>
+<script src="musica.js"></script>
+
+</body>
+</html>
