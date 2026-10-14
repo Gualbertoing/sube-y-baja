@@ -11,11 +11,20 @@
 let audioAnimaciones = null;
 let audioActivado = false;
 
+/*
+Si una animación aparece antes de que
+el navegador desbloquee el audio,
+guardamos su swoosh.
+*/
 
-/* ACTIVAR AUDIO DESPUÉS
-   DE LA PRIMERA INTERACCIÓN */
+let swooshPendiente = null;
 
-function activarAudioAnimaciones() {
+
+/* =========================================
+   ACTIVAR AUDIO
+========================================= */
+
+async function activarAudioAnimaciones() {
 
     if (!audioAnimaciones) {
 
@@ -23,43 +32,117 @@ function activarAudioAnimaciones() {
             window.AudioContext ||
             window.webkitAudioContext;
 
+
         audioAnimaciones =
             new AudioCtx();
 
     }
 
 
-    if (
-        audioAnimaciones.state ===
-        "suspended"
-    ) {
+    try {
 
-        audioAnimaciones.resume();
+        if (
+            audioAnimaciones.state ===
+            "suspended"
+        ) {
+
+            await audioAnimaciones.resume();
+
+        }
+
+
+        audioActivado =
+            audioAnimaciones.state ===
+            "running";
+
+
+        /*
+        Si una sección ya intentó hacer
+        swoosh antes de desbloquearse
+        el audio, lo reproducimos ahora.
+        */
+
+        if (
+            audioActivado &&
+            swooshPendiente !== null
+        ) {
+
+            const tonoPendiente =
+                swooshPendiente;
+
+
+            swooshPendiente = null;
+
+
+            setTimeout(
+                function () {
+
+                    sonidoSwoosh(
+                        tonoPendiente
+                    );
+
+                },
+                40
+            );
+
+        }
 
     }
 
+    catch (error) {
 
-    audioActivado = true;
+        audioActivado = false;
+
+    }
 
 }
 
 
-/* PRIMER CLIC O TECLA */
+/* =========================================
+   DESBLOQUEAR LO MÁS RÁPIDO POSIBLE
+========================================= */
+
+/*
+En celular touchstart ocurre apenas
+el dedo toca la pantalla, antes de
+que empiece realmente el scroll.
+*/
+
+document.addEventListener(
+    "touchstart",
+    activarAudioAnimaciones,
+    {
+        once: true,
+        passive: true,
+        capture: true
+    }
+);
+
+
+/*
+Mouse, lápiz o pantalla táctil.
+*/
 
 document.addEventListener(
     "pointerdown",
     activarAudioAnimaciones,
     {
-        once: true
+        once: true,
+        capture: true
     }
 );
 
+
+/*
+Teclado.
+*/
 
 document.addEventListener(
     "keydown",
     activarAudioAnimaciones,
     {
-        once: true
+        once: true,
+        capture: true
     }
 );
 
@@ -72,10 +155,19 @@ function sonidoSwoosh(
     tono = 900
 ) {
 
+    /*
+    Si todavía no está permitido sonar,
+    guardamos este primer swoosh.
+    */
+
     if (
         !audioActivado ||
-        !audioAnimaciones
+        !audioAnimaciones ||
+        audioAnimaciones.state !== "running"
     ) {
+
+        swooshPendiente =
+            tono;
 
         return;
 
@@ -159,9 +251,9 @@ function sonidoSwoosh(
 
 
     volumen.gain.exponentialRampToValueAtTime(
-    0.09,
-    ctx.currentTime + 0.06
-);
+        0.09,
+        ctx.currentTime + 0.06
+    );
 
 
     volumen.gain.exponentialRampToValueAtTime(
@@ -195,7 +287,6 @@ function sonidoSwoosh(
     );
 
 }
-
 
 /* =========================================
    INICIAR TODO
