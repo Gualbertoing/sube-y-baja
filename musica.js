@@ -8,11 +8,6 @@ document.addEventListener(
     function () {
 
         const musica =
-    document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const musica =
             document.getElementById(
                 "musica-fondo"
             );
@@ -24,21 +19,32 @@ document.addEventListener(
 
 
         if (!musica || !boton) {
+
+            console.log(
+                "No se encontró el audio o el botón."
+            );
+
             return;
         }
 
 
-        musica.volume = 0.035;
+        /* =================================
+           VOLUMEN DE FONDO
+           
+           0.04 = 4 %
+        ================================= */
+
+        musica.volume = 0.04;
 
 
         let musicaActivada = true;
 
 
         /* =================================
-           INICIAR SUAVEMENTE
+           REPRODUCIR
         ================================= */
 
-        async function iniciarMusica() {
+        async function reproducirMusica() {
 
             if (!musicaActivada) {
                 return;
@@ -49,19 +55,16 @@ document.addEventListener(
 
                 await musica.play();
 
-                boton.textContent =
-                    "🔊";
+                boton.textContent = "🔊";
 
             }
 
             catch (error) {
 
                 /*
-                   El navegador bloqueó
-                   el autoplay.
-
-                   Se iniciará con la
-                   primera interacción.
+                Algunos navegadores bloquean
+                la reproducción automática.
+                Se iniciará al primer toque.
                 */
 
             }
@@ -70,26 +73,26 @@ document.addEventListener(
 
 
         /* =================================
-           INTENTAR AL ABRIR LA PÁGINA
+           INTENTO AUTOMÁTICO
         ================================= */
 
-        iniciarMusica();
+        reproducirMusica();
 
 
         /* =================================
-           SI EL NAVEGADOR LA BLOQUEA,
-           INICIAR CON EL PRIMER CLIC
+           PRIMER TOQUE / CLIC
         ================================= */
 
         function primeraInteraccion() {
 
-            iniciarMusica();
+            reproducirMusica();
 
 
             document.removeEventListener(
                 "pointerdown",
                 primeraInteraccion
             );
+
 
             document.removeEventListener(
                 "keydown",
@@ -112,36 +115,28 @@ document.addEventListener(
 
 
         /* =================================
-           BOTÓN ACTIVAR / DESACTIVAR
+           BOTÓN DE MÚSICA
         ================================= */
 
         boton.addEventListener(
             "click",
             function () {
 
-                if (
-                    musica.paused
-                ) {
+                if (musica.paused) {
 
-                    musicaActivada =
-                        true;
+                    musicaActivada = true;
 
-                    musica.play();
-
-                    boton.textContent =
-                        "🔊";
+                    reproducirMusica();
 
                 }
 
                 else {
 
-                    musicaActivada =
-                        false;
+                    musicaActivada = false;
 
                     musica.pause();
 
-                    boton.textContent =
-                        "🔇";
+                    boton.textContent = "🔇";
 
                 }
 
