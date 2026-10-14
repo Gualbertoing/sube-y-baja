@@ -28,7 +28,7 @@ document.addEventListener(
            0.06 = 6 %
         ================================= */
 
-        musica.volume = 0.009;
+        musica.volume = 0.070;
 
 
         let musicaActivada = true;
