@@ -3948,3 +3948,66 @@ header .logo:hover {
     }
 
 }
+/* =========================================
+   MEJOR RESPUESTA TÁCTIL EN CELULAR
+========================================= */
+
+@media (max-width: 768px) {
+
+    .inicio .perrito-interactivo,
+    .inicio .subeybaja-preview {
+
+        touch-action: manipulation;
+
+        -webkit-tap-highlight-color:
+            transparent;
+
+        user-select: none;
+
+        -webkit-user-select: none;
+
+        cursor: pointer;
+    }
+
+
+    /* PERRITO */
+
+    .inicio
+    .perrito-interactivo.perrito-tocado
+    .perrito-dormido-img {
+
+        opacity: 0 !important;
+    }
+
+
+    .inicio
+    .perrito-interactivo.perrito-tocado
+    .perrito-despierto-img {
+
+        opacity: 1 !important;
+
+        transform:
+            scale(0.92)
+            translateY(0)
+            !important;
+    }
+
+
+    /* SUBE Y BAJA */
+
+    .inicio
+    .subeybaja-preview.subeybaja-tocado {
+
+        animation:
+            balanceo-sube
+            0.45s
+            ease-in-out
+            3
+            alternate
+            !important;
+
+        transform-origin:
+            50% 70%;
+    }
+
+}

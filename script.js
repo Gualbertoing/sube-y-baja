@@ -598,16 +598,12 @@ document.addEventListener(
         const esMovil =
             window.matchMedia(
                 "(max-width: 768px)"
-            );
+            ).matches;
 
-        if (!esMovil.matches) {
+        if (!esMovil) {
             return;
         }
 
-
-        /* =================================
-           PERRITO
-        ================================= */
 
         const perrito =
             document.querySelector(
@@ -615,37 +611,134 @@ document.addEventListener(
             );
 
 
-        let timerPerrito = null;
+        const subeYBaja =
+            document.querySelector(
+                ".subeybaja-preview"
+            );
 
+
+        let timerPerrito = null;
+        let timerSube = null;
+
+
+        /* =================================
+           DESPERTAR PERRITO
+        ================================= */
+
+        function despertarPerrito() {
+
+            if (!perrito) {
+                return;
+            }
+
+
+            perrito.classList.add(
+                "perrito-tocado"
+            );
+
+
+            clearTimeout(
+                timerPerrito
+            );
+
+
+            timerPerrito =
+                setTimeout(
+                    function () {
+
+                        perrito.classList.remove(
+                            "perrito-tocado"
+                        );
+
+                    },
+                    1400
+                );
+
+        }
+
+
+        /* =================================
+           MOVER SUBE Y BAJA
+        ================================= */
+
+        function moverSubeYBaja() {
+
+            if (!subeYBaja) {
+                return;
+            }
+
+
+            subeYBaja.classList.remove(
+                "subeybaja-tocado"
+            );
+
+
+            /* Reinicia la animación */
+
+            void subeYBaja.offsetWidth;
+
+
+            subeYBaja.classList.add(
+                "subeybaja-tocado"
+            );
+
+
+            clearTimeout(
+                timerSube
+            );
+
+
+            timerSube =
+                setTimeout(
+                    function () {
+
+                        subeYBaja.classList.remove(
+                            "subeybaja-tocado"
+                        );
+
+                    },
+                    1600
+                );
+
+        }
+
+
+        /* =================================
+           TOQUE INMEDIATO
+        ================================= */
 
         if (perrito) {
 
             perrito.addEventListener(
-                "click",
-                function () {
+                "pointerdown",
+                function (evento) {
 
-                    perrito.classList.add(
-                        "perrito-tocado"
-                    );
+                    evento.preventDefault();
+
+                    despertarPerrito();
+
+                },
+                {
+                    passive: false
+                }
+            );
+
+        }
 
 
-                    clearTimeout(
-                        timerPerrito
-                    );
+        if (subeYBaja) {
 
+            subeYBaja.addEventListener(
+                "pointerdown",
+                function (evento) {
 
-                    timerPerrito =
-                        setTimeout(
-                            function () {
+                    evento.preventDefault();
 
-                                perrito.classList.remove(
-                                    "perrito-tocado"
-                                );
+                    moverSubeYBaja();
 
-                            },
-                            1400
-                        );
-
+                },
+                {
+                    passive: false
                 }
             );
 
@@ -653,64 +746,97 @@ document.addEventListener(
 
 
         /* =================================
-           NIÑOS / SUBE Y BAJA
+           ÁREA DE TOQUE MÁS GRANDE
+           
+           Permite tocar ligeramente alrededor
+           del dibujo y aun así reaccionará.
         ================================= */
 
-        const subeYBaja =
-            document.querySelector(
-                ".subeybaja-preview"
-            );
+        document.addEventListener(
+            "pointerdown",
+            function (evento) {
+
+                const x =
+                    evento.clientX;
+
+                const y =
+                    evento.clientY;
 
 
-        let timerSube = null;
+                /* PERRITO */
+
+                if (perrito) {
+
+                    const rectPerrito =
+                        perrito.getBoundingClientRect();
 
 
-        if (subeYBaja) {
-
-            subeYBaja.addEventListener(
-                "click",
-                function () {
-
-                    subeYBaja.classList.remove(
-                        "subeybaja-tocado"
-                    );
+                    const margenPerrito =
+                        25;
 
 
-                    /*
-                    Reiniciamos la animación
-                    para que funcione cada vez
-                    que lo toquen.
-                    */
-
-                    void subeYBaja.offsetWidth;
-
-
-                    subeYBaja.classList.add(
-                        "subeybaja-tocado"
-                    );
-
-
-                    clearTimeout(
-                        timerSube
-                    );
+                    const dentroPerrito =
+                        x >=
+                            rectPerrito.left -
+                            margenPerrito &&
+                        x <=
+                            rectPerrito.right +
+                            margenPerrito &&
+                        y >=
+                            rectPerrito.top -
+                            margenPerrito &&
+                        y <=
+                            rectPerrito.bottom +
+                            margenPerrito;
 
 
-                    timerSube =
-                        setTimeout(
-                            function () {
+                    if (dentroPerrito) {
 
-                                subeYBaja.classList.remove(
-                                    "subeybaja-tocado"
-                                );
+                        despertarPerrito();
 
-                            },
-                            1700
-                        );
+                        return;
+                    }
 
                 }
-            );
 
-        }
+
+                /* NIÑOS / SUBE Y BAJA */
+
+                if (subeYBaja) {
+
+                    const rectSube =
+                        subeYBaja.getBoundingClientRect();
+
+
+                    const margenSube =
+                        35;
+
+
+                    const dentroSube =
+                        x >=
+                            rectSube.left -
+                            margenSube &&
+                        x <=
+                            rectSube.right +
+                            margenSube &&
+                        y >=
+                            rectSube.top -
+                            margenSube &&
+                        y <=
+                            rectSube.bottom +
+                            margenSube;
+
+
+                    if (dentroSube) {
+
+                        moverSubeYBaja();
+
+                    }
+
+                }
+
+            }
+        );
 
     }
 );

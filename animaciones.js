@@ -159,9 +159,9 @@ function sonidoSwoosh(
 
 
     volumen.gain.exponentialRampToValueAtTime(
-        0.045,
-        ctx.currentTime + 0.06
-    );
+    0.09,
+    ctx.currentTime + 0.06
+);
 
 
     volumen.gain.exponentialRampToValueAtTime(
