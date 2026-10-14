@@ -586,3 +586,131 @@ if (botonBuscar) {
     );
 
 }
+/* =========================================
+   INTERACCIONES TÁCTILES - CELULAR
+   SUBE Y BAJA
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const esMovil =
+            window.matchMedia(
+                "(max-width: 768px)"
+            );
+
+        if (!esMovil.matches) {
+            return;
+        }
+
+
+        /* =================================
+           PERRITO
+        ================================= */
+
+        const perrito =
+            document.querySelector(
+                ".perrito-interactivo"
+            );
+
+
+        let timerPerrito = null;
+
+
+        if (perrito) {
+
+            perrito.addEventListener(
+                "click",
+                function () {
+
+                    perrito.classList.add(
+                        "perrito-tocado"
+                    );
+
+
+                    clearTimeout(
+                        timerPerrito
+                    );
+
+
+                    timerPerrito =
+                        setTimeout(
+                            function () {
+
+                                perrito.classList.remove(
+                                    "perrito-tocado"
+                                );
+
+                            },
+                            1400
+                        );
+
+                }
+            );
+
+        }
+
+
+        /* =================================
+           NIÑOS / SUBE Y BAJA
+        ================================= */
+
+        const subeYBaja =
+            document.querySelector(
+                ".subeybaja-preview"
+            );
+
+
+        let timerSube = null;
+
+
+        if (subeYBaja) {
+
+            subeYBaja.addEventListener(
+                "click",
+                function () {
+
+                    subeYBaja.classList.remove(
+                        "subeybaja-tocado"
+                    );
+
+
+                    /*
+                    Reiniciamos la animación
+                    para que funcione cada vez
+                    que lo toquen.
+                    */
+
+                    void subeYBaja.offsetWidth;
+
+
+                    subeYBaja.classList.add(
+                        "subeybaja-tocado"
+                    );
+
+
+                    clearTimeout(
+                        timerSube
+                    );
+
+
+                    timerSube =
+                        setTimeout(
+                            function () {
+
+                                subeYBaja.classList.remove(
+                                    "subeybaja-tocado"
+                                );
+
+                            },
+                            1700
+                        );
+
+                }
+            );
+
+        }
+
+    }
+);

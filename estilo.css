@@ -3856,3 +3856,95 @@ header .logo:hover {
     }
 
 }
+/* =========================================
+   INTERACCIONES TÁCTILES
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* PERRITO DESPIERTA AL TOCARLO */
+
+    .inicio
+    .perrito-interactivo.perrito-tocado
+    .perrito-dormido-img {
+
+        opacity: 0;
+    }
+
+
+    .inicio
+    .perrito-interactivo.perrito-tocado
+    .perrito-despierto-img {
+
+        opacity: 1;
+
+        transform:
+            scale(0.90)
+            translateY(0);
+    }
+
+
+    /* NIÑOS / SUBE Y BAJA */
+
+    .inicio
+    .subeybaja-preview.subeybaja-tocado {
+
+        animation:
+            balanceo-sube
+            0.65s
+            ease-in-out
+            2
+            alternate !important;
+    }
+
+}
+/* =========================================
+   OPTIMIZACIÓN DE RENDIMIENTO MÓVIL
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* Elementos que se mueven constantemente */
+
+    .inicio .nube,
+    .inicio .caballito-animado,
+    .inicio .pino-animado,
+    .inicio .subeybaja-preview,
+    .inicio .perrito-interactivo {
+
+        will-change: transform;
+
+        backface-visibility: hidden;
+
+        -webkit-backface-visibility: hidden;
+    }
+
+
+    /* El blur en vivo puede ser pesado
+       para algunos celulares */
+
+    .inicio p {
+
+        backdrop-filter: none !important;
+
+        -webkit-backdrop-filter:
+            none !important;
+    }
+
+
+    /* El navegador no necesita dibujar
+       completamente secciones muy lejanas */
+
+    .seccion-2,
+    .seccion-3,
+    .seccion-4,
+    .seccion-5,
+    .seccion-6 {
+
+        content-visibility: auto;
+
+        contain-intrinsic-size:
+            700px;
+    }
+
+}
