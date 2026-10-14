@@ -9,7 +9,7 @@ document.addEventListener(
 
         const musica =
             document.getElementById(
-                "musica-fondo"
+                "melodia-fondo"
             );
 
         const boton =
@@ -28,7 +28,7 @@ document.addEventListener(
            0.06 = 6 %
         ================================= */
 
-        musica.volume = 0.070;
+        musica.volume = 0.050;
 
 
         let musicaActivada = true;
