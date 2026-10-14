@@ -19,29 +19,23 @@ document.addEventListener(
 
 
         if (!musica || !boton) {
-
-            console.log(
-                "No se encontró el audio o el botón."
-            );
-
             return;
         }
 
 
         /* =================================
-           VOLUMEN DE FONDO
-           
-           0.04 = 4 %
+           VOLUMEN
+           0.035 = 3.5 %
         ================================= */
 
-        musica.volume = 0.04;
+        musica.volume = 0.035;
 
 
         let musicaActivada = true;
 
 
         /* =================================
-           REPRODUCIR
+           REPRODUCIR MÚSICA
         ================================= */
 
         async function reproducirMusica() {
@@ -61,11 +55,7 @@ document.addEventListener(
 
             catch (error) {
 
-                /*
-                Algunos navegadores bloquean
-                la reproducción automática.
-                Se iniciará al primer toque.
-                */
+                /* Autoplay bloqueado */
 
             }
 
@@ -80,10 +70,25 @@ document.addEventListener(
 
 
         /* =================================
-           PRIMER TOQUE / CLIC
+           PRIMERA INTERACCIÓN
+           
+           IMPORTANTE:
+           NO SE ACTIVA SI TOCAS
+           DIRECTAMENTE EL BOTÓN DE MÚSICA.
         ================================= */
 
-        function primeraInteraccion() {
+        function primeraInteraccion(evento) {
+
+            if (
+                evento.target.closest(
+                    "#boton-musica"
+                )
+            ) {
+
+                return;
+
+            }
+
 
             reproducirMusica();
 
@@ -120,13 +125,28 @@ document.addEventListener(
 
         boton.addEventListener(
             "click",
-            function () {
+            async function () {
 
                 if (musica.paused) {
 
                     musicaActivada = true;
 
-                    reproducirMusica();
+                    try {
+
+                        await musica.play();
+
+                        boton.textContent =
+                            "🔊";
+
+                    }
+
+                    catch (error) {
+
+                        console.log(
+                            "No se pudo iniciar la música."
+                        );
+
+                    }
 
                 }
 
@@ -136,7 +156,8 @@ document.addEventListener(
 
                     musica.pause();
 
-                    boton.textContent = "🔇";
+                    boton.textContent =
+                        "🔇";
 
                 }
 
