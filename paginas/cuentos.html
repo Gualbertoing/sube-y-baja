@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<link rel="icon" type="image/png" href="../imagenes/icono.png">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cuentos | Sube y Baja</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            background-color: #ffe5a3;
+            font-family: Arial, sans-serif;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            padding: 30px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #633c75;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.5;
+            max-width: 600px;
+            color: #563c36;
+        }
+
+        .boton-volver {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 16px 30px;
+
+            background-color: #ff316c;
+            color: white;
+
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+
+            transition: transform 0.3s ease;
+        }
+
+        .boton-volver:hover {
+            transform: scale(1.07);
+            background-color: #e91e63;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 18px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .boton-volver {
+                transition: none;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>📖 Cuentos</h1>
+
+    <p>
+        ¡Bienvenidos a nuestro rincón de cuentos!
+        Aquí descubrirás historias llenas de imaginación,
+        aventuras y personajes sorprendentes.
+
+        Próximamente podrás explorar nuestros cuentos
+        y aprender mientras lees.
+    </p>
+
+    <a href="../index.html#recursos" class="boton-volver">
+        ← Volver a Recursos
+    </a>
+
+</body>
+
+</html>

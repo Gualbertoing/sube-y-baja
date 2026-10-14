@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Memorama | Sube y Baja</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+    <!-- TIPOGRAFÍAS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================
+           GENERAL
+        ====================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            background-color:
+                #9d9ee5;
+
+            background-image:
+                url("../imagenes/familiasmorado - copia.png");
+
+            background-position:
+                center;
+
+            background-size:
+                cover;
+
+            background-attachment:
+                fixed;
+
+            color:
+                #ffffff;
+
+            overflow-x:
+                hidden;
+        }
+
+
+        .pagina {
+
+            width:
+                min(1160px, 94%);
+
+            margin:
+                0 auto;
+
+            padding:
+                28px 0 60px;
+        }
+
+
+        /* =====================================
+           VOLVER
+        ====================================== */
+
+        .volver {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                10px 20px;
+
+            margin-bottom:
+                28px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(64, 40, 116, 0.18);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .volver:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                #e92f6b;
+
+            box-shadow:
+                0 11px 22px
+                rgba(64, 40, 116, 0.25);
+        }
+
+
+        .volver:active {
+
+            transform:
+                scale(0.96);
+        }
+
+
+        /* =====================================
+           ENCABEZADO
+        ====================================== */
+
+        .encabezado {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                28px;
+        }
+
+
+        h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    58px
+                );
+
+            font-weight:
+                700;
+
+            line-height:
+                1.05;
+
+            color:
+                #ffffff;
+
+            margin-bottom:
+                10px;
+
+            text-shadow:
+                0 3px 0
+                rgba(80, 50, 145, 0.22),
+
+                0 7px 16px
+                rgba(51, 31, 105, 0.24);
+        }
+
+
+        .instrucciones {
+
+            max-width:
+                720px;
+
+            margin:
+                0 auto;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                17px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.45;
+
+            color:
+                #ffffff;
+
+            text-shadow:
+                0 2px 6px
+                rgba(49, 32, 96, 0.34);
+        }
+
+
+        /* =====================================
+           ZONA DE JUEGO
+        ====================================== */
+
+        .zona-juego {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                270px;
+
+            gap:
+                22px;
+
+            align-items:
+                start;
+        }
+
+
+        /* =====================================
+           TABLERO
+        ====================================== */
+
+        .contenedor-tablero {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                27px;
+
+            padding:
+                20px;
+
+            box-shadow:
+                0 17px 38px
+                rgba(57, 39, 119, 0.18);
+        }
+
+
+        #juego {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap:
+                15px;
+        }
+
+
+        /* =====================================
+           CARTAS
+        ====================================== */
+
+        .carta {
+
+            position:
+                relative;
+
+            width:
+                100%;
+
+            aspect-ratio:
+                1 / 1.08;
+
+            padding:
+                7px;
+
+            border:
+                none;
+
+            border-radius:
+                18px;
+
+            background:
+                #eee9ff;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 7px 14px
+                rgba(85, 61, 146, 0.13);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .carta:hover:not(:disabled) {
+
+            transform:
+                translateY(-5px)
+                scale(1.03);
+
+            box-shadow:
+                0 12px 20px
+                rgba(85, 61, 146, 0.20);
+        }
+
+
+        .carta img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            object-fit:
+                contain;
+
+            border-radius:
+                13px;
+
+            pointer-events:
+                none;
+        }
+
+
+        .carta.descubierta {
+
+            background:
+                #ffffff;
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .carta.encontrada {
+
+            background:
+                #daf7dd;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(63, 181, 103, 0.20),
+
+                0 10px 20px
+                rgba(41, 140, 77, 0.13);
+        }
+
+
+        /* =====================================
+           PANEL DERECHO
+        ====================================== */
+
+        .panel {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                25px;
+
+            padding:
+                24px 22px;
+
+            text-align:
+                center;
+
+            color:
+                #51336f;
+
+            box-shadow:
+                0 17px 38px
+                rgba(57, 39, 119, 0.18);
+        }
+
+
+        .panel h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                27px;
+
+            font-weight:
+                700;
+
+            color:
+                #8c4db9;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        /* =====================================
+           MARCADORES
+        ====================================== */
+
+        .dato {
+
+            padding:
+                12px 13px;
+
+            margin-bottom:
+                12px;
+
+            border-radius:
+                14px;
+
+            background:
+                #f1e6fb;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                800;
+
+            color:
+                #55346c;
+        }
+
+
+        #movimientos,
+        #parejas {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-weight:
+                700;
+
+            color:
+                #743c98;
+        }
+
+
+        /* =====================================
+           MENSAJE
+        ====================================== */
+
+        #mensaje {
+
+            min-height:
+                64px;
+
+            margin:
+                17px 0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.4;
+
+            color:
+                #07834e;
+        }
+
+
+        /* =====================================
+           REINICIAR
+        ====================================== */
+
+        #reiniciar {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            border-radius:
+                999px;
+
+            padding:
+                13px 18px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 8px 18px
+                rgba(183, 36, 91, 0.20);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        #reiniciar:hover {
+
+            background:
+                #e92f6c;
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 11px 22px
+                rgba(183, 36, 91, 0.27);
+        }
+
+
+        #reiniciar:active {
+
+            transform:
+                scale(0.96);
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (max-width: 850px) {
+
+            .zona-juego {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .panel {
+
+                width:
+                    min(
+                        100%,
+                        450px
+                    );
+
+                margin:
+                    0 auto;
+            }
+
+        }
+
+
+        @media (max-width: 620px) {
+
+            .pagina {
+
+                width:
+                    96%;
+
+                padding-top:
+                    18px;
+            }
+
+
+            h1 {
+
+                font-size:
+                    36px;
+            }
+
+
+            .instrucciones {
+
+                font-size:
+                    15px;
+
+                padding:
+                    0 10px;
+            }
+
+
+            .contenedor-tablero {
+
+                padding:
+                    12px;
+
+                border-radius:
+                    20px;
+            }
+
+
+            #juego {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap:
+                    10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+
+        <a
+            href="../index.html#actividades"
+            class="volver"
+        >
+            ← Volver a actividades
+        </a>
+
+
+        <header class="encabezado">
+
+            <h1>
+                🧠 ¡Memorama para la igualdad!
+            </h1>
+
+            <p class="instrucciones">
+                Voltea las cartas y encuentra las cinco parejas.
+                ¡Pon a prueba tu memoria!
+            </p>
+
+        </header>
+
+
+        <section class="zona-juego">
+
+
+            <div class="contenedor-tablero">
+
+                <div id="juego"></div>
+
+            </div>
+
+
+            <aside class="panel">
+
+                <h2>
+                    Tu partida
+                </h2>
+
+
+                <div class="dato">
+                    Movimientos:
+                    <span id="movimientos">0</span>
+                </div>
+
+
+                <div class="dato">
+                    Parejas:
+                    <span id="parejas">0</span>
+                    / 5
+                </div>
+
+
+                <p id="mensaje">
+                    ¡Encuentra tu primera pareja!
+                </p>
+
+
+                <button
+                    id="reiniciar"
+                    type="button"
+                >
+                    🔄 Jugar de nuevo
+                </button>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           MEMORAMA - SUBE Y BAJA
+        ========================================= */
+
+
+        const simbolos = [
+
+            "../imagenes/ideas.png",
+            "../imagenes/derechos.png",
+            "../imagenes/oportunidades.png",
+            "../imagenes/obligaciones.png",
+            "../imagenes/profesiones.png"
+
+        ];
+
+
+        const REVERSO =
+            "../imagenes/reverso.png";
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const juegoHTML =
+            document.getElementById(
+                "juego"
+            );
+
+
+        const movimientosHTML =
+            document.getElementById(
+                "movimientos"
+            );
+
+
+        const parejasHTML =
+            document.getElementById(
+                "parejas"
+            );
+
+
+        const mensajeHTML =
+            document.getElementById(
+                "mensaje"
+            );
+
+
+        const reiniciarHTML =
+            document.getElementById(
+                "reiniciar"
+            );
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        let cartas = [];
+
+        let primeraCarta = null;
+
+        let segundaCarta = null;
+
+        let bloqueo = false;
+
+        let movimientos = 0;
+
+        let parejasEncontradas = 0;
+
+        let temporizador = null;
+
+
+        /* =========================================
+           AUDIO
+        ========================================= */
+
+        let audioContexto = null;
+
+
+        function obtenerAudio() {
+
+            if (!audioContexto) {
+
+                const AudioCtx =
+                    window.AudioContext ||
+                    window.webkitAudioContext;
+
+
+                audioContexto =
+                    new AudioCtx();
+
+            }
+
+
+            if (
+                audioContexto.state ===
+                "suspended"
+            ) {
+
+                audioContexto.resume();
+
+            }
+
+
+            return audioContexto;
+        }
+
+
+        /* VOLTEAR */
+
+        function sonidoVoltear() {
+
+            const ctx =
+                obtenerAudio();
+
+
+            const sonido =
+                ctx.createOscillator();
+
+
+            const volumen =
+                ctx.createGain();
+
+
+            sonido.connect(
+                volumen
+            );
+
+
+            volumen.connect(
+                ctx.destination
+            );
+
+
+            sonido.type =
+                "sine";
+
+
+            sonido.frequency
+                .setValueAtTime(
+                    450,
+                    ctx.currentTime
+                );
+
+
+            sonido.frequency
+                .exponentialRampToValueAtTime(
+                    650,
+                    ctx.currentTime +
+                        0.08
+                );
+
+
+            volumen.gain
+                .setValueAtTime(
+                    0.18,
+                    ctx.currentTime
+                );
+
+
+            volumen.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.12
+                );
+
+
+            sonido.start();
+
+
+            sonido.stop(
+                ctx.currentTime +
+                    0.12
+            );
+        }
+
+
+        /* ACIERTO */
+
+        function sonidoAcierto() {
+
+            const ctx =
+                obtenerAudio();
+
+
+            const notas = [
+                523,
+                659,
+                784
+            ];
+
+
+            notas.forEach(
+                (frecuencia, i) => {
+
+                    const sonido =
+                        ctx.createOscillator();
+
+
+                    const volumen =
+                        ctx.createGain();
+
+
+                    sonido.connect(
+                        volumen
+                    );
+
+
+                    volumen.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.09;
+
+
+                    sonido.type =
+                        "sine";
+
+
+                    sonido.frequency
+                        .setValueAtTime(
+                            frecuencia,
+                            inicio
+                        );
+
+
+                    volumen.gain
+                        .setValueAtTime(
+                            0.17,
+                            inicio
+                        );
+
+
+                    volumen.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.20
+                        );
+
+
+                    sonido.start(
+                        inicio
+                    );
+
+
+                    sonido.stop(
+                        inicio +
+                            0.20
+                    );
+
+                }
+            );
+        }
+
+
+        /* ERROR */
+
+        function sonidoError() {
+
+            const ctx =
+                obtenerAudio();
+
+
+            const sonido =
+                ctx.createOscillator();
+
+
+            const volumen =
+                ctx.createGain();
+
+
+            sonido.connect(
+                volumen
+            );
+
+
+            volumen.connect(
+                ctx.destination
+            );
+
+
+            sonido.type =
+                "triangle";
+
+
+            sonido.frequency
+                .setValueAtTime(
+                    310,
+                    ctx.currentTime
+                );
+
+
+            sonido.frequency
+                .exponentialRampToValueAtTime(
+                    170,
+                    ctx.currentTime +
+                        0.24
+                );
+
+
+            volumen.gain
+                .setValueAtTime(
+                    0.15,
+                    ctx.currentTime
+                );
+
+
+            volumen.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.27
+                );
+
+
+            sonido.start();
+
+
+            sonido.stop(
+                ctx.currentTime +
+                    0.27
+            );
+        }
+
+
+        /* VICTORIA */
+
+        function sonidoVictoria() {
+
+            const ctx =
+                obtenerAudio();
+
+
+            const notas = [
+
+                523,
+                659,
+                784,
+                1047,
+                1318
+
+            ];
+
+
+            notas.forEach(
+                (frecuencia, i) => {
+
+                    const sonido =
+                        ctx.createOscillator();
+
+
+                    const volumen =
+                        ctx.createGain();
+
+
+                    sonido.connect(
+                        volumen
+                    );
+
+
+                    volumen.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.13;
+
+
+                    sonido.type =
+                        "triangle";
+
+
+                    sonido.frequency
+                        .setValueAtTime(
+                            frecuencia,
+                            inicio
+                        );
+
+
+                    volumen.gain
+                        .setValueAtTime(
+                            0.18,
+                            inicio
+                        );
+
+
+                    volumen.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.30
+                        );
+
+
+                    sonido.start(
+                        inicio
+                    );
+
+
+                    sonido.stop(
+                        inicio +
+                            0.30
+                    );
+
+                }
+            );
+        }
+
+
+        /* REINICIAR */
+
+        function sonidoReiniciar() {
+
+            const ctx =
+                obtenerAudio();
+
+
+            const sonido =
+                ctx.createOscillator();
+
+
+            const volumen =
+                ctx.createGain();
+
+
+            sonido.connect(
+                volumen
+            );
+
+
+            volumen.connect(
+                ctx.destination
+            );
+
+
+            sonido.type =
+                "triangle";
+
+
+            sonido.frequency
+                .setValueAtTime(
+                    380,
+                    ctx.currentTime
+                );
+
+
+            sonido.frequency
+                .exponentialRampToValueAtTime(
+                    700,
+                    ctx.currentTime +
+                        0.14
+                );
+
+
+            volumen.gain
+                .setValueAtTime(
+                    0.14,
+                    ctx.currentTime
+                );
+
+
+            volumen.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.18
+                );
+
+
+            sonido.start();
+
+
+            sonido.stop(
+                ctx.currentTime +
+                    0.18
+            );
+        }
+
+
+        /* =========================================
+           MEZCLAR
+        ========================================= */
+
+        function mezclar(array) {
+
+            for (
+                let i =
+                    array.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const j =
+                    Math.floor(
+                        Math.random() *
+                        (i + 1)
+                    );
+
+
+                [
+                    array[i],
+                    array[j]
+
+                ] = [
+
+                    array[j],
+                    array[i]
+
+                ];
+
+            }
+        }
+
+
+        /* =========================================
+           CREAR JUEGO
+        ========================================= */
+
+        function crearJuego() {
+
+            juegoHTML.innerHTML =
+                "";
+
+
+            cartas = [
+
+                ...simbolos,
+                ...simbolos
+
+            ];
+
+
+            mezclar(
+                cartas
+            );
+
+
+            cartas.forEach(
+                (simbolo, indice) => {
+
+                    const carta =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    carta.type =
+                        "button";
+
+
+                    carta.classList.add(
+                        "carta"
+                    );
+
+
+                    carta.dataset.simbolo =
+                        simbolo;
+
+
+                    carta.dataset.indice =
+                        indice;
+
+
+                    carta.innerHTML =
+                        `<img src="${REVERSO}" alt="Carta boca abajo">`;
+
+
+                    carta.addEventListener(
+                        "click",
+                        voltearCarta
+                    );
+
+
+                    juegoHTML.appendChild(
+                        carta
+                    );
+
+                }
+            );
+        }
+
+
+        /* =========================================
+           VOLTEAR
+        ========================================= */
+
+        function voltearCarta() {
+
+            if (bloqueo) {
+                return;
+            }
+
+
+            if (
+                this.classList.contains(
+                    "descubierta"
+                )
+            ) {
+                return;
+            }
+
+
+            if (
+                this.classList.contains(
+                    "encontrada"
+                )
+            ) {
+                return;
+            }
+
+
+            sonidoVoltear();
+
+
+            this.innerHTML =
+                `<img src="${this.dataset.simbolo}" alt="Carta descubierta">`;
+
+
+            this.classList.add(
+                "descubierta"
+            );
+
+
+            if (!primeraCarta) {
+
+                primeraCarta =
+                    this;
+
+                return;
+            }
+
+
+            segundaCarta =
+                this;
+
+
+            movimientos++;
+
+
+            movimientosHTML.textContent =
+                movimientos;
+
+
+            comprobarPareja();
+        }
+
+
+        /* =========================================
+           COMPROBAR PAREJA
+        ========================================= */
+
+        function comprobarPareja() {
+
+            const coinciden =
+
+                primeraCarta.dataset.simbolo ===
+                segundaCarta.dataset.simbolo;
+
+
+            if (coinciden) {
+
+                primeraCarta.classList.add(
+                    "encontrada"
+                );
+
+
+                segundaCarta.classList.add(
+                    "encontrada"
+                );
+
+
+                primeraCarta.disabled =
+                    true;
+
+
+                segundaCarta.disabled =
+                    true;
+
+
+                parejasEncontradas++;
+
+
+                parejasHTML.textContent =
+                    parejasEncontradas;
+
+
+                primeraCarta =
+                    null;
+
+
+                segundaCarta =
+                    null;
+
+
+                if (
+                    parejasEncontradas ===
+                    simbolos.length
+                ) {
+
+                    sonidoVictoria();
+
+
+                    mensajeHTML.textContent =
+                        `🎉 ¡Felicidades! Encontraste las cinco parejas en ${movimientos} movimientos.`;
+
+                }
+
+                else {
+
+                    sonidoAcierto();
+
+
+                    mensajeHTML.textContent =
+                        "¡Muy bien! Encontraste una pareja. 💜";
+
+                }
+
+            }
+
+            else {
+
+                sonidoError();
+
+
+                bloqueo =
+                    true;
+
+
+                mensajeHTML.textContent =
+                    "¡Casi! Recuerda dónde estaban esas imágenes.";
+
+
+                temporizador =
+                    setTimeout(
+                        function () {
+
+                            primeraCarta.innerHTML =
+                                `<img src="${REVERSO}" alt="Carta boca abajo">`;
+
+
+                            segundaCarta.innerHTML =
+                                `<img src="${REVERSO}" alt="Carta boca abajo">`;
+
+
+                            primeraCarta.classList.remove(
+                                "descubierta"
+                            );
+
+
+                            segundaCarta.classList.remove(
+                                "descubierta"
+                            );
+
+
+                            primeraCarta =
+                                null;
+
+
+                            segundaCarta =
+                                null;
+
+
+                            bloqueo =
+                                false;
+
+
+                            temporizador =
+                                null;
+
+                        },
+
+                        950
+                    );
+
+            }
+        }
+
+
+        /* =========================================
+           REINICIAR
+        ========================================= */
+
+        function reiniciarJuego() {
+
+            if (
+                temporizador !==
+                null
+            ) {
+
+                clearTimeout(
+                    temporizador
+                );
+
+
+                temporizador =
+                    null;
+            }
+
+
+            primeraCarta =
+                null;
+
+
+            segundaCarta =
+                null;
+
+
+            bloqueo =
+                false;
+
+
+            movimientos =
+                0;
+
+
+            parejasEncontradas =
+                0;
+
+
+            movimientosHTML.textContent =
+                "0";
+
+
+            parejasHTML.textContent =
+                "0";
+
+
+            mensajeHTML.textContent =
+                "¡Encuentra tu primera pareja!";
+
+
+            crearJuego();
+        }
+
+
+        reiniciarHTML.addEventListener(
+            "click",
+
+            function () {
+
+                sonidoReiniciar();
+
+                reiniciarJuego();
+
+            }
+        );
+
+
+        reiniciarJuego();
+
+    </script>
+
+</body>
+
+</html>

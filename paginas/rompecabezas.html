@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Rompecabezas | Sube y Baja</title>
+<link rel="icon" type="image/png" href="../imagenes/icono.png">
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+
+    <!-- TIPOGRAFÍAS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================
+           GENERAL
+        ====================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height:
+                100vh;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            background-color:
+                #54b5ef;
+
+            background-image:
+                url("../imagenes/fondorompecabezas.png");
+
+            background-position:
+                center;
+
+            background-size:
+                cover;
+
+            background-attachment:
+                fixed;
+
+            color:
+                #ffffff;
+
+            overflow-x:
+                hidden;
+        }
+
+
+        .pagina {
+
+            width:
+                min(1180px, 96%);
+
+            margin:
+                0 auto;
+
+            padding:
+                28px 0 60px;
+        }
+
+
+        /* =====================================
+           VOLVER
+        ====================================== */
+
+        .volver {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                10px 20px;
+
+            margin-bottom:
+                28px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(0, 88, 157, 0.17);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .volver:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                #e92f6b;
+
+            box-shadow:
+                0 11px 22px
+                rgba(0, 88, 157, 0.23);
+        }
+
+
+        .volver:active {
+
+            transform:
+                scale(0.96);
+        }
+
+
+        /* =====================================
+           ENCABEZADO
+        ====================================== */
+
+        .encabezado {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                28px;
+        }
+
+
+        h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    58px
+                );
+
+            font-weight:
+                700;
+
+            line-height:
+                1.05;
+
+            color:
+                #075fae;
+
+            margin-bottom:
+                10px;
+
+            text-shadow:
+                0 3px 0
+                rgba(255, 255, 255, 0.35),
+
+                0 7px 16px
+                rgba(0, 74, 135, 0.13);
+        }
+
+
+        .instrucciones {
+
+            max-width:
+                720px;
+
+            margin:
+                0 auto;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                17px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.45;
+
+            color:
+                #214b6a;
+
+            text-shadow:
+                0 1px 0
+                rgba(255, 255, 255, 0.35);
+        }
+
+
+        /* =====================================
+           ZONA DE JUEGO
+        ====================================== */
+
+        .zona-juego {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                270px;
+
+            gap:
+                22px;
+
+            align-items:
+                start;
+        }
+
+
+        /* =====================================
+           TABLERO
+        ====================================== */
+
+        .contenedor-tablero {
+
+            width:
+                100%;
+
+            padding:
+                10px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                25px;
+
+            box-shadow:
+                0 17px 38px
+                rgba(0, 86, 151, 0.19);
+        }
+
+
+        #tablero {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                4 / 3;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            grid-template-rows:
+                repeat(3, 1fr);
+
+            overflow:
+                hidden;
+
+            border-radius:
+                17px;
+        }
+
+
+        /* =====================================
+           PIEZAS
+        ====================================== */
+
+        .pieza {
+
+            position:
+                relative;
+
+            border:
+                1px solid
+                rgba(0, 85, 154, 0.45);
+
+            background-image:
+                url("../imagenes/rompecabezas1.png");
+
+            background-repeat:
+                no-repeat;
+
+            background-size:
+                400% 300%;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform 0.20s ease,
+                filter 0.20s ease,
+                box-shadow 0.20s ease;
+
+            outline:
+                none;
+        }
+
+
+        .pieza:hover {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            transform:
+                scale(1.035);
+
+            filter:
+                brightness(1.05);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 255, 255, 0.65);
+        }
+
+
+        .pieza.seleccionada {
+
+            position:
+                relative;
+
+            z-index:
+                3;
+
+            transform:
+                scale(1.04);
+
+            filter:
+                brightness(1.08);
+
+            box-shadow:
+                inset 0 0 0 5px
+                #ffcf3f,
+
+                0 0 0 3px
+                rgba(255, 255, 255, 0.75);
+        }
+
+
+        /* =====================================
+           PANEL DERECHO
+        ====================================== */
+
+        .panel {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                25px;
+
+            padding:
+                22px;
+
+            text-align:
+                center;
+
+            color:
+                #143f67;
+
+            box-shadow:
+                0 17px 38px
+                rgba(0, 86, 151, 0.19);
+        }
+
+
+        .panel h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                27px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.1;
+
+            color:
+                #0874c9;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        /* =====================================
+           IMAGEN GUÍA
+        ====================================== */
+
+        .imagen-guia {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            border-radius:
+                16px;
+
+            margin-bottom:
+                16px;
+
+            box-shadow:
+                0 8px 17px
+                rgba(15, 92, 148, 0.15);
+        }
+
+
+        /* =====================================
+           MOVIMIENTOS
+        ====================================== */
+
+        .movimientos {
+
+            padding:
+                10px 12px;
+
+            margin-bottom:
+                12px;
+
+            border-radius:
+                13px;
+
+            background:
+                #e6f4fc;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                800;
+
+            color:
+                #214d70;
+        }
+
+
+        #contador {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-weight:
+                700;
+
+            color:
+                #075fae;
+        }
+
+
+        /* =====================================
+           MENSAJE
+        ====================================== */
+
+        #mensaje {
+
+            min-height:
+                60px;
+
+            margin:
+                17px 0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.4;
+
+            color:
+                #07834e;
+        }
+
+
+        /* =====================================
+           REINICIAR
+        ====================================== */
+
+        #reiniciar {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            border-radius:
+                999px;
+
+            padding:
+                13px 18px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 8px 18px
+                rgba(183, 36, 91, 0.20);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        #reiniciar:hover {
+
+            background:
+                #e92f6c;
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 11px 22px
+                rgba(183, 36, 91, 0.27);
+        }
+
+
+        #reiniciar:active {
+
+            transform:
+                scale(0.96);
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (max-width: 850px) {
+
+            .zona-juego {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .panel {
+
+                width:
+                    min(
+                        100%,
+                        450px
+                    );
+
+                margin:
+                    0 auto;
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .pagina {
+
+                width:
+                    97%;
+
+                padding-top:
+                    18px;
+            }
+
+
+            h1 {
+
+                font-size:
+                    36px;
+            }
+
+
+            .instrucciones {
+
+                font-size:
+                    15px;
+
+                padding:
+                    0 10px;
+            }
+
+
+            .contenedor-tablero {
+
+                padding:
+                    6px;
+
+                border-radius:
+                    18px;
+            }
+
+
+            #tablero {
+
+                border-radius:
+                    13px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+
+        <a
+            href="../index.html#actividades"
+            class="volver"
+        >
+            ← Volver a actividades
+        </a>
+
+
+        <header class="encabezado">
+
+            <h1>
+                ¡Arma el rompecabezas! 🧩
+            </h1>
+
+            <p class="instrucciones">
+                Selecciona dos piezas para intercambiarlas
+                y reconstruir la imagen.
+            </p>
+
+        </header>
+
+
+        <section class="zona-juego">
+
+
+            <div class="contenedor-tablero">
+
+                <div
+                    id="tablero"
+                    aria-label="Rompecabezas"
+                ></div>
+
+            </div>
+
+
+            <aside class="panel">
+
+                <h2>
+                    Imagen guía
+                </h2>
+
+
+                <img
+                    src="../imagenes/rompecabezas1.png"
+                    alt="Imagen guía del rompecabezas"
+                    class="imagen-guia"
+                >
+
+
+                <div class="movimientos">
+
+                    Movimientos:
+                    <span id="contador">0</span>
+
+                </div>
+
+
+                <button
+                    id="reiniciar"
+                    type="button"
+                >
+                    🔄 Mezclar de nuevo
+                </button>
+
+
+                <p id="mensaje">
+                    ¡Selecciona una pieza para comenzar!
+                </p>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           ROMPECABEZAS - SUBE Y BAJA
+        ========================================= */
+
+
+        const COLUMNAS =
+            4;
+
+
+        const FILAS =
+            3;
+
+
+        const TOTAL =
+            COLUMNAS *
+            FILAS;
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const tablero =
+            document.getElementById(
+                "tablero"
+            );
+
+
+        const contador =
+            document.getElementById(
+                "contador"
+            );
+
+
+        const mensaje =
+            document.getElementById(
+                "mensaje"
+            );
+
+
+        const botonReiniciar =
+            document.getElementById(
+                "reiniciar"
+            );
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        let piezas = [];
+
+        let primeraSeleccion =
+            null;
+
+        let movimientos =
+            0;
+
+        let completado =
+            false;
+
+
+        /* =========================================
+           AUDIO
+        ========================================= */
+
+        let audioPuzzle =
+            null;
+
+
+        function obtenerAudioPuzzle() {
+
+            if (!audioPuzzle) {
+
+                const AudioCtx =
+                    window.AudioContext ||
+                    window.webkitAudioContext;
+
+
+                audioPuzzle =
+                    new AudioCtx();
+
+            }
+
+
+            if (
+                audioPuzzle.state ===
+                "suspended"
+            ) {
+
+                audioPuzzle.resume();
+
+            }
+
+
+            return audioPuzzle;
+        }
+
+
+        /* =========================================
+           SONIDO SELECCIÓN
+        ========================================= */
+
+        function sonidoSeleccion() {
+
+            const ctx =
+                obtenerAudioPuzzle();
+
+
+            const osc =
+                ctx.createOscillator();
+
+
+            const gain =
+                ctx.createGain();
+
+
+            osc.connect(
+                gain
+            );
+
+
+            gain.connect(
+                ctx.destination
+            );
+
+
+            osc.type =
+                "sine";
+
+
+            osc.frequency
+                .setValueAtTime(
+                    470,
+                    ctx.currentTime
+                );
+
+
+            osc.frequency
+                .exponentialRampToValueAtTime(
+                    620,
+                    ctx.currentTime +
+                        0.08
+                );
+
+
+            gain.gain
+                .setValueAtTime(
+                    0.17,
+                    ctx.currentTime
+                );
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.11
+                );
+
+
+            osc.start();
+
+
+            osc.stop(
+                ctx.currentTime +
+                    0.11
+            );
+        }
+
+
+        /* =========================================
+           SONIDO INTERCAMBIO
+        ========================================= */
+
+        function sonidoIntercambio() {
+
+            const ctx =
+                obtenerAudioPuzzle();
+
+
+            const notas = [
+                430,
+                650
+            ];
+
+
+            notas.forEach(
+                (frecuencia, i) => {
+
+                    const osc =
+                        ctx.createOscillator();
+
+
+                    const gain =
+                        ctx.createGain();
+
+
+                    osc.connect(
+                        gain
+                    );
+
+
+                    gain.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.08;
+
+
+                    osc.type =
+                        "triangle";
+
+
+                    osc.frequency
+                        .setValueAtTime(
+                            frecuencia,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .setValueAtTime(
+                            0.16,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.17
+                        );
+
+
+                    osc.start(
+                        inicio
+                    );
+
+
+                    osc.stop(
+                        inicio +
+                            0.17
+                    );
+
+                }
+            );
+        }
+
+
+        /* =========================================
+           SONIDO VICTORIA
+        ========================================= */
+
+        function sonidoVictoriaPuzzle() {
+
+            const ctx =
+                obtenerAudioPuzzle();
+
+
+            const notas = [
+
+                523,
+                659,
+                784,
+                1047,
+                1318
+
+            ];
+
+
+            notas.forEach(
+                (frecuencia, i) => {
+
+                    const osc =
+                        ctx.createOscillator();
+
+
+                    const gain =
+                        ctx.createGain();
+
+
+                    osc.connect(
+                        gain
+                    );
+
+
+                    gain.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.13;
+
+
+                    osc.type =
+                        "triangle";
+
+
+                    osc.frequency
+                        .setValueAtTime(
+                            frecuencia,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .setValueAtTime(
+                            0.18,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.30
+                        );
+
+
+                    osc.start(
+                        inicio
+                    );
+
+
+                    osc.stop(
+                        inicio +
+                            0.30
+                    );
+
+                }
+            );
+        }
+
+
+        /* =========================================
+           SONIDO REINICIAR
+        ========================================= */
+
+        function sonidoReiniciarPuzzle() {
+
+            const ctx =
+                obtenerAudioPuzzle();
+
+
+            const osc =
+                ctx.createOscillator();
+
+
+            const gain =
+                ctx.createGain();
+
+
+            osc.connect(
+                gain
+            );
+
+
+            gain.connect(
+                ctx.destination
+            );
+
+
+            osc.type =
+                "triangle";
+
+
+            osc.frequency
+                .setValueAtTime(
+                    360,
+                    ctx.currentTime
+                );
+
+
+            osc.frequency
+                .exponentialRampToValueAtTime(
+                    720,
+                    ctx.currentTime +
+                        0.16
+                );
+
+
+            gain.gain
+                .setValueAtTime(
+                    0.15,
+                    ctx.currentTime
+                );
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.19
+                );
+
+
+            osc.start();
+
+
+            osc.stop(
+                ctx.currentTime +
+                    0.19
+            );
+        }
+
+
+        /* =========================================
+           ¿ESTÁ RESUELTO?
+        ========================================= */
+
+        function estaResuelto() {
+
+            return piezas.every(
+                (pieza, posicion) =>
+                    pieza ===
+                    posicion
+            );
+        }
+
+
+        /* =========================================
+           MEZCLAR
+        ========================================= */
+
+        function mezclarPiezas() {
+
+            piezas =
+                Array.from(
+
+                    {
+                        length:
+                            TOTAL
+                    },
+
+                    (_, indice) =>
+                        indice
+
+                );
+
+
+            for (
+                let i =
+                    piezas.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const j =
+                    Math.floor(
+                        Math.random() *
+                        (i + 1)
+                    );
+
+
+                [
+                    piezas[i],
+                    piezas[j]
+
+                ] = [
+
+                    piezas[j],
+                    piezas[i]
+
+                ];
+
+            }
+
+
+            if (
+                estaResuelto()
+            ) {
+
+                [
+                    piezas[0],
+                    piezas[1]
+
+                ] = [
+
+                    piezas[1],
+                    piezas[0]
+
+                ];
+
+            }
+        }
+
+
+        /* =========================================
+           DIBUJAR TABLERO
+        ========================================= */
+
+        function dibujarTablero() {
+
+            tablero.innerHTML =
+                "";
+
+
+            piezas.forEach(
+                (
+                    numeroPieza,
+                    posicion
+                ) => {
+
+                    const pieza =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    pieza.type =
+                        "button";
+
+
+                    pieza.className =
+                        "pieza";
+
+
+                    const columna =
+                        numeroPieza %
+                        COLUMNAS;
+
+
+                    const fila =
+                        Math.floor(
+                            numeroPieza /
+                            COLUMNAS
+                        );
+
+
+                    const x =
+                        columna *
+                        100 /
+                        (COLUMNAS - 1);
+
+
+                    const y =
+                        fila *
+                        100 /
+                        (FILAS - 1);
+
+
+                    pieza.style
+                        .backgroundPosition =
+                        `${x}% ${y}%`;
+
+
+                    pieza.setAttribute(
+
+                        "aria-label",
+
+                        `Pieza ${
+                            numeroPieza + 1
+                        }`
+
+                    );
+
+
+                    if (
+                        primeraSeleccion ===
+                        posicion
+                    ) {
+
+                        pieza.classList.add(
+                            "seleccionada"
+                        );
+
+                    }
+
+
+                    pieza.addEventListener(
+                        "click",
+
+                        function () {
+
+                            seleccionarPieza(
+                                posicion
+                            );
+
+                        }
+                    );
+
+
+                    tablero.appendChild(
+                        pieza
+                    );
+
+                }
+            );
+        }
+
+
+        /* =========================================
+           SELECCIONAR
+        ========================================= */
+
+        function seleccionarPieza(
+            posicion
+        ) {
+
+            if (
+                completado
+            ) {
+
+                return;
+
+            }
+
+
+            /* PRIMERA PIEZA */
+
+            if (
+                primeraSeleccion ===
+                null
+            ) {
+
+                sonidoSeleccion();
+
+
+                primeraSeleccion =
+                    posicion;
+
+
+                mensaje.textContent =
+                    "Ahora selecciona otra pieza.";
+
+
+                dibujarTablero();
+
+
+                return;
+            }
+
+
+            /* MISMA PIEZA */
+
+            if (
+                primeraSeleccion ===
+                posicion
+            ) {
+
+                sonidoSeleccion();
+
+
+                primeraSeleccion =
+                    null;
+
+
+                mensaje.textContent =
+                    "Selecciona una pieza.";
+
+
+                dibujarTablero();
+
+
+                return;
+            }
+
+
+            /* SEGUNDA PIEZA */
+
+            sonidoIntercambio();
+
+
+            [
+                piezas[
+                    primeraSeleccion
+                ],
+
+                piezas[
+                    posicion
+                ]
+
+            ] = [
+
+                piezas[
+                    posicion
+                ],
+
+                piezas[
+                    primeraSeleccion
+                ]
+
+            ];
+
+
+            primeraSeleccion =
+                null;
+
+
+            movimientos++;
+
+
+            contador.textContent =
+                movimientos;
+
+
+            dibujarTablero();
+
+
+            if (
+                estaResuelto()
+            ) {
+
+                completado =
+                    true;
+
+
+                sonidoVictoriaPuzzle();
+
+
+                mensaje.textContent =
+                    `🎉 ¡Felicidades! Completaste el rompecabezas en ${movimientos} movimientos.`;
+
+            }
+
+            else {
+
+                mensaje.textContent =
+                    "¡Muy bien! Sigue acomodando las piezas. 🧩";
+
+            }
+        }
+
+
+        /* =========================================
+           INICIAR
+        ========================================= */
+
+        function iniciarJuego() {
+
+            primeraSeleccion =
+                null;
+
+
+            movimientos =
+                0;
+
+
+            completado =
+                false;
+
+
+            contador.textContent =
+                "0";
+
+
+            mensaje.textContent =
+                "¡Selecciona una pieza para comenzar!";
+
+
+            mezclarPiezas();
+
+
+            dibujarTablero();
+        }
+
+
+        /* =========================================
+           REINICIAR
+        ========================================= */
+
+        botonReiniciar.addEventListener(
+            "click",
+
+            function () {
+
+                sonidoReiniciarPuzzle();
+
+                iniciarJuego();
+
+            }
+        );
+
+
+        iniciarJuego();
+
+    </script>
+
+</body>
+
+</html>

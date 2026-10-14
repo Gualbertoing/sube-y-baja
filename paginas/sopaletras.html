@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Sopa de letras | Sube y Baja</title>
+<link rel="icon" type="image/png" href="../imagenes/icono.png">
+    <!-- FAVICON -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+
+    <!-- =====================================
+         TIPOGRAFÍAS
+    ====================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =====================================
+           REINICIO GENERAL
+        ====================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            background:
+                url("../imagenes/fondodesopa.png")
+                center center /
+                cover
+                fixed;
+
+            color: #ffffff;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =====================================
+           CONTENEDOR GENERAL
+        ====================================== */
+
+        .pagina {
+
+            width:
+                min(1120px, 94%);
+
+            margin:
+                0 auto;
+
+            padding:
+                28px 0 60px;
+
+        }
+
+
+        /* =====================================
+           VOLVER
+        ====================================== */
+
+        .volver {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                10px 20px;
+
+            margin-bottom:
+                28px;
+
+            border-radius:
+                999px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    46,
+                    46,
+                    110,
+                    0.18
+                );
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .volver:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                #ec2f6b;
+
+            box-shadow:
+                0 11px 22px
+                rgba(
+                    46,
+                    46,
+                    110,
+                    0.24
+                );
+
+        }
+
+
+        .volver:active {
+
+            transform:
+                scale(0.96);
+
+        }
+
+
+        /* =====================================
+           ENCABEZADO DEL JUEGO
+        ====================================== */
+
+        .encabezado {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                28px;
+
+        }
+
+
+        h1 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    38px,
+                    5vw,
+                    58px
+                );
+
+            font-weight:
+                700;
+
+            color:
+                #ffffff;
+
+            line-height:
+                1.05;
+
+            letter-spacing:
+                0.3px;
+
+            margin-bottom:
+                10px;
+
+            text-shadow:
+                0 3px 0
+                rgba(
+                    29,
+                    76,
+                    166,
+                    0.22
+                ),
+
+                0 7px 16px
+                rgba(
+                    24,
+                    57,
+                    130,
+                    0.22
+                );
+        }
+
+
+        .instrucciones {
+
+            max-width:
+                720px;
+
+            margin:
+                0 auto;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                17px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.45;
+
+            color:
+                #ffffff;
+
+            text-shadow:
+                0 2px 6px
+                rgba(
+                    25,
+                    53,
+                    120,
+                    0.35
+                );
+        }
+
+
+        /* =====================================
+           ZONA DEL JUEGO
+        ====================================== */
+
+        .zona-juego {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                270px;
+
+            gap:
+                22px;
+
+            align-items:
+                start;
+
+        }
+
+
+        /* =====================================
+           TABLERO BLANCO
+        ====================================== */
+
+        .contenedor-tablero {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                25px;
+
+            padding:
+                14px;
+
+            box-shadow:
+                0 16px 35px
+                rgba(
+                    32,
+                    53,
+                    130,
+                    0.18
+                );
+
+        }
+
+
+        #tablero {
+
+            width:
+                100%;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    11,
+                    minmax(0, 1fr)
+                );
+
+            gap:
+                3px;
+
+        }
+
+
+        /* =====================================
+           LETRAS
+        ====================================== */
+
+        .letra {
+
+            aspect-ratio:
+                1 / 1;
+
+            border:
+                none;
+
+            border-radius:
+                7px;
+
+            background:
+                #e2f3fc;
+
+            color:
+                #175b96;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    15px,
+                    2vw,
+                    21px
+                );
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform 0.18s ease,
+                background 0.18s ease,
+                color 0.18s ease,
+                box-shadow 0.18s ease;
+        }
+
+
+        .letra:hover {
+
+            transform:
+                translateY(-2px)
+                scale(1.05);
+
+            background:
+                #c8eaff;
+
+            box-shadow:
+                0 5px 10px
+                rgba(
+                    42,
+                    101,
+                    160,
+                    0.15
+                );
+
+        }
+
+
+        .letra.seleccionada {
+
+            background:
+                #ffdc65;
+
+            color:
+                #654d00;
+
+            transform:
+                scale(1.08);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    255,
+                    196,
+                    48,
+                    0.30
+                );
+
+        }
+
+
+        .letra.encontrada {
+
+            background:
+                #92e4ad;
+
+            color:
+                #126b3c;
+
+            box-shadow:
+                inset 0 0 0 2px
+                rgba(
+                    27,
+                    132,
+                    77,
+                    0.18
+                );
+
+        }
+
+
+        /* =====================================
+           PANEL DERECHO
+        ====================================== */
+
+        .panel {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border-radius:
+                25px;
+
+            padding:
+                22px;
+
+            text-align:
+                center;
+
+            color:
+                #173f67;
+
+            box-shadow:
+                0 16px 35px
+                rgba(
+                    32,
+                    53,
+                    130,
+                    0.18
+                );
+
+        }
+
+
+        .panel h2 {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                25px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.1;
+
+            color:
+                #0870c9;
+
+            margin-bottom:
+                17px;
+
+        }
+
+
+        .panel-subtitulo {
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            color:
+                #345878;
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        /* =====================================
+           LISTA DE PALABRAS
+        ====================================== */
+
+        #lista-palabras {
+
+            list-style:
+                none;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                8px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        #lista-palabras li {
+
+            padding:
+                8px 10px;
+
+            border-radius:
+                11px;
+
+            background:
+                #e2f3fc;
+
+            color:
+                #1f5a8d;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                0.5px;
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease;
+        }
+
+
+        #lista-palabras li.completada {
+
+            background:
+                #96e7ae;
+
+            color:
+                #116b3b;
+
+            text-decoration:
+                line-through;
+
+            transform:
+                scale(0.97);
+
+        }
+
+
+        /* =====================================
+           CONTADOR
+        ====================================== */
+
+        .contador {
+
+            margin:
+                13px 0;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            color:
+                #244b70;
+
+        }
+
+
+        #contador {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-weight:
+                700;
+
+            color:
+                #075fae;
+
+        }
+
+
+        /* =====================================
+           MENSAJE
+        ====================================== */
+
+        #mensaje {
+
+            min-height:
+                50px;
+
+            margin:
+                16px 0;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.4;
+
+            color:
+                #07834e;
+
+        }
+
+
+        /* =====================================
+           REINICIAR
+        ====================================== */
+
+        #reiniciar {
+
+            width:
+                100%;
+
+            border:
+                none;
+
+            border-radius:
+                999px;
+
+            padding:
+                12px 18px;
+
+            background:
+                #ff3f78;
+
+            color:
+                #ffffff;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    183,
+                    36,
+                    91,
+                    0.20
+                );
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        #reiniciar:hover {
+
+            background:
+                #e92f6c;
+
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 11px 22px
+                rgba(
+                    183,
+                    36,
+                    91,
+                    0.27
+                );
+
+        }
+
+
+        #reiniciar:active {
+
+            transform:
+                scale(0.96);
+
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ====================================== */
+
+        @media (
+            max-width: 800px
+        ) {
+
+            .zona-juego {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .panel {
+
+                width:
+                    min(
+                        100%,
+                        450px
+                    );
+
+                margin:
+                    0 auto;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 550px
+        ) {
+
+            .pagina {
+
+                width:
+                    96%;
+
+                padding-top:
+                    18px;
+
+            }
+
+
+            .volver {
+
+                margin-left:
+                    6px;
+
+            }
+
+
+            h1 {
+
+                font-size:
+                    36px;
+
+            }
+
+
+            .instrucciones {
+
+                font-size:
+                    15px;
+
+                padding:
+                    0 10px;
+
+            }
+
+
+            .contenedor-tablero {
+
+                padding:
+                    7px;
+
+                border-radius:
+                    18px;
+
+            }
+
+
+            #tablero {
+
+                gap:
+                    2px;
+
+            }
+
+
+            .letra {
+
+                border-radius:
+                    5px;
+
+                font-size:
+                    14px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <main class="pagina">
+
+
+        <!-- =================================
+             VOLVER
+        ================================== -->
+
+        <a
+            href="../index.html#actividades"
+            class="volver"
+        >
+            ← Volver a actividades
+        </a>
+
+
+        <!-- =================================
+             TÍTULO
+        ================================== -->
+
+        <header class="encabezado">
+
+            <h1>
+                ¡Encuentra las palabras! 🔎
+            </h1>
+
+            <p class="instrucciones">
+                Busca las palabras escondidas.
+                Toca la primera letra y después
+                la última. ¡También pueden estar
+                en diagonal!
+            </p>
+
+        </header>
+
+
+        <!-- =================================
+             JUEGO
+        ================================== -->
+
+        <section class="zona-juego">
+
+
+            <!-- TABLERO -->
+
+            <div class="contenedor-tablero">
+
+                <div
+                    id="tablero"
+                    aria-label="Sopa de letras"
+                ></div>
+
+            </div>
+
+
+            <!-- PANEL -->
+
+            <aside class="panel">
+
+                <h2>
+                    Palabras por encontrar
+                </h2>
+
+                <p class="panel-subtitulo">
+                    ¡Encuéntralas todas!
+                </p>
+
+
+                <ul id="lista-palabras"></ul>
+
+
+                <p class="contador">
+                    Encontradas:
+                    <span id="contador">0</span>
+                    / 6
+                </p>
+
+
+                <p id="mensaje">
+                    ¡Elige la primera letra!
+                </p>
+
+
+                <button
+                    id="reiniciar"
+                    type="button"
+                >
+                    🔄 Jugar de nuevo
+                </button>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           SOPA DE LETRAS - SUBE Y BAJA
+        ========================================= */
+
+
+        const TAMANO = 11;
+
+
+        const PALABRAS = [
+
+            "IGUALDAD",
+            "RESPETO",
+            "EMPATIA",
+            "DERECHOS",
+            "AMISTAD",
+            "APOYO"
+
+        ];
+
+
+        const ABECEDARIO =
+            "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+
+
+        /* =========================================
+           ELEMENTOS
+        ========================================= */
+
+        const tableroHTML =
+            document.getElementById(
+                "tablero"
+            );
+
+
+        const listaHTML =
+            document.getElementById(
+                "lista-palabras"
+            );
+
+
+        const contadorHTML =
+            document.getElementById(
+                "contador"
+            );
+
+
+        const mensajeHTML =
+            document.getElementById(
+                "mensaje"
+            );
+
+
+        const reiniciarHTML =
+            document.getElementById(
+                "reiniciar"
+            );
+
+
+        /* =========================================
+           VARIABLES
+        ========================================= */
+
+        let cuadricula = [];
+
+        let posicionesPalabras = {};
+
+        let encontradas =
+            new Set();
+
+        let primeraLetra =
+            null;
+
+
+        /* =========================================
+           AUDIO
+        ========================================= */
+
+        let audioSopa = null;
+
+
+        function obtenerAudioSopa() {
+
+            if (!audioSopa) {
+
+                const AudioCtx =
+                    window.AudioContext ||
+                    window.webkitAudioContext;
+
+
+                audioSopa =
+                    new AudioCtx();
+
+            }
+
+
+            if (
+                audioSopa.state ===
+                "suspended"
+            ) {
+
+                audioSopa.resume();
+
+            }
+
+
+            return audioSopa;
+
+        }
+
+
+        /* =========================================
+           SONIDO LETRA
+        ========================================= */
+
+        function sonidoLetra() {
+
+            const ctx =
+                obtenerAudioSopa();
+
+
+            const osc =
+                ctx.createOscillator();
+
+
+            const gain =
+                ctx.createGain();
+
+
+            osc.connect(gain);
+
+            gain.connect(
+                ctx.destination
+            );
+
+
+            osc.type =
+                "sine";
+
+
+            osc.frequency.setValueAtTime(
+                500,
+                ctx.currentTime
+            );
+
+
+            osc.frequency
+                .exponentialRampToValueAtTime(
+                    650,
+                    ctx.currentTime +
+                        0.07
+                );
+
+
+            gain.gain.setValueAtTime(
+                0.17,
+                ctx.currentTime
+            );
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.10
+                );
+
+
+            osc.start();
+
+
+            osc.stop(
+                ctx.currentTime +
+                    0.10
+            );
+
+        }
+
+
+        /* =========================================
+           SONIDO PALABRA ENCONTRADA
+        ========================================= */
+
+        function sonidoPalabra() {
+
+            const ctx =
+                obtenerAudioSopa();
+
+
+            const notas = [
+                523,
+                659,
+                784
+            ];
+
+
+            notas.forEach(
+                (nota, i) => {
+
+                    const osc =
+                        ctx.createOscillator();
+
+
+                    const gain =
+                        ctx.createGain();
+
+
+                    osc.connect(
+                        gain
+                    );
+
+
+                    gain.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.08;
+
+
+                    osc.type =
+                        "sine";
+
+
+                    osc.frequency
+                        .setValueAtTime(
+                            nota,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .setValueAtTime(
+                            0.18,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.18
+                        );
+
+
+                    osc.start(
+                        inicio
+                    );
+
+
+                    osc.stop(
+                        inicio +
+                            0.18
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           SONIDO ERROR
+        ========================================= */
+
+        function sonidoErrorSopa() {
+
+            const ctx =
+                obtenerAudioSopa();
+
+
+            const osc =
+                ctx.createOscillator();
+
+
+            const gain =
+                ctx.createGain();
+
+
+            osc.connect(gain);
+
+            gain.connect(
+                ctx.destination
+            );
+
+
+            osc.type =
+                "triangle";
+
+
+            osc.frequency.setValueAtTime(
+                310,
+                ctx.currentTime
+            );
+
+
+            osc.frequency
+                .exponentialRampToValueAtTime(
+                    175,
+                    ctx.currentTime +
+                        0.23
+                );
+
+
+            gain.gain.setValueAtTime(
+                0.15,
+                ctx.currentTime
+            );
+
+
+            gain.gain
+                .exponentialRampToValueAtTime(
+                    0.001,
+                    ctx.currentTime +
+                        0.26
+                );
+
+
+            osc.start();
+
+
+            osc.stop(
+                ctx.currentTime +
+                    0.26
+            );
+
+        }
+
+
+        /* =========================================
+           SONIDO VICTORIA
+        ========================================= */
+
+        function sonidoVictoriaSopa() {
+
+            const ctx =
+                obtenerAudioSopa();
+
+
+            const notas = [
+
+                523,
+                659,
+                784,
+                1047,
+                1318
+
+            ];
+
+
+            notas.forEach(
+                (nota, i) => {
+
+                    const osc =
+                        ctx.createOscillator();
+
+
+                    const gain =
+                        ctx.createGain();
+
+
+                    osc.connect(
+                        gain
+                    );
+
+
+                    gain.connect(
+                        ctx.destination
+                    );
+
+
+                    const inicio =
+                        ctx.currentTime +
+                        i * 0.12;
+
+
+                    osc.type =
+                        "triangle";
+
+
+                    osc.frequency
+                        .setValueAtTime(
+                            nota,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .setValueAtTime(
+                            0.18,
+                            inicio
+                        );
+
+
+                    gain.gain
+                        .exponentialRampToValueAtTime(
+                            0.001,
+                            inicio +
+                                0.28
+                        );
+
+
+                    osc.start(
+                        inicio
+                    );
+
+
+                    osc.stop(
+                        inicio +
+                            0.28
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           DIRECCIONES
+        ========================================= */
+
+        const DIRECCIONES = [
+
+            [0, 1],
+            [1, 0],
+            [1, 1],
+            [1, -1]
+
+        ];
+
+
+        /* =========================================
+           CREAR CUADRÍCULA
+        ========================================= */
+
+        function crearCuadricula() {
+
+            return Array.from(
+
+                {
+                    length: TAMANO
+                },
+
+                () =>
+                    Array(
+                        TAMANO
+                    ).fill("")
+
+            );
+
+        }
+
+
+        /* =========================================
+           COLOCAR PALABRA
+        ========================================= */
+
+        function colocarPalabra(
+            palabra
+        ) {
+
+            for (
+                let intento = 0;
+                intento < 300;
+                intento++
+            ) {
+
+                const fila =
+                    Math.floor(
+                        Math.random() *
+                        TAMANO
+                    );
+
+
+                const columna =
+                    Math.floor(
+                        Math.random() *
+                        TAMANO
+                    );
+
+
+                const direccion =
+                    DIRECCIONES[
+                        Math.floor(
+                            Math.random() *
+                            DIRECCIONES.length
+                        )
+                    ];
+
+
+                const pasoFila =
+                    direccion[0];
+
+
+                const pasoColumna =
+                    direccion[1];
+
+
+                const posiciones = [];
+
+
+                let cabe = true;
+
+
+                for (
+                    let i = 0;
+                    i < palabra.length;
+                    i++
+                ) {
+
+                    const f =
+                        fila +
+                        pasoFila * i;
+
+
+                    const c =
+                        columna +
+                        pasoColumna * i;
+
+
+                    if (
+                        f < 0 ||
+                        f >= TAMANO ||
+                        c < 0 ||
+                        c >= TAMANO
+                    ) {
+
+                        cabe = false;
+
+                        break;
+
+                    }
+
+
+                    const letraActual =
+                        cuadricula[f][c];
+
+
+                    if (
+                        letraActual !== "" &&
+                        letraActual !==
+                            palabra[i]
+                    ) {
+
+                        cabe = false;
+
+                        break;
+
+                    }
+
+
+                    posiciones.push(
+                        f *
+                        TAMANO +
+                        c
+                    );
+
+                }
+
+
+                if (!cabe) {
+
+                    continue;
+
+                }
+
+
+                posiciones.forEach(
+                    (posicion, i) => {
+
+                        const f =
+                            Math.floor(
+                                posicion /
+                                TAMANO
+                            );
+
+
+                        const c =
+                            posicion %
+                            TAMANO;
+
+
+                        cuadricula[f][c] =
+                            palabra[i];
+
+                    }
+                );
+
+
+                posicionesPalabras[
+                    palabra
+                ] =
+                    posiciones;
+
+
+                return true;
+
+            }
+
+
+            return false;
+
+        }
+
+
+        /* =========================================
+           GENERAR SOPA
+        ========================================= */
+
+        function generarSopa() {
+
+            let exito = false;
+
+
+            for (
+                let intento = 0;
+                intento < 30;
+                intento++
+            ) {
+
+                cuadricula =
+                    crearCuadricula();
+
+
+                posicionesPalabras = {};
+
+
+                exito =
+                    PALABRAS.every(
+                        palabra =>
+                            colocarPalabra(
+                                palabra
+                            )
+                    );
+
+
+                if (exito) {
+
+                    break;
+
+                }
+
+            }
+
+
+            if (!exito) {
+
+                return false;
+
+            }
+
+
+            for (
+                let f = 0;
+                f < TAMANO;
+                f++
+            ) {
+
+                for (
+                    let c = 0;
+                    c < TAMANO;
+                    c++
+                ) {
+
+                    if (
+                        cuadricula[f][c] ===
+                        ""
+                    ) {
+
+                        const indice =
+                            Math.floor(
+                                Math.random() *
+                                ABECEDARIO.length
+                            );
+
+
+                        cuadricula[f][c] =
+                            ABECEDARIO[
+                                indice
+                            ];
+
+                    }
+
+                }
+
+            }
+
+
+            return true;
+
+        }
+
+
+        /* =========================================
+           CASILLA ENCONTRADA
+        ========================================= */
+
+        function casillaEncontrada(
+            indice
+        ) {
+
+            for (
+                const palabra
+                of encontradas
+            ) {
+
+                if (
+                    posicionesPalabras[
+                        palabra
+                    ].includes(
+                        indice
+                    )
+                ) {
+
+                    return true;
+
+                }
+
+            }
+
+
+            return false;
+
+        }
+
+
+        /* =========================================
+           DIBUJAR TABLERO
+        ========================================= */
+
+        function dibujarTablero() {
+
+            tableroHTML.innerHTML =
+                "";
+
+
+            for (
+                let f = 0;
+                f < TAMANO;
+                f++
+            ) {
+
+                for (
+                    let c = 0;
+                    c < TAMANO;
+                    c++
+                ) {
+
+                    const indice =
+                        f *
+                        TAMANO +
+                        c;
+
+
+                    const boton =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    boton.type =
+                        "button";
+
+
+                    boton.className =
+                        "letra";
+
+
+                    boton.textContent =
+                        cuadricula[f][c];
+
+
+                    if (
+                        primeraLetra ===
+                        indice
+                    ) {
+
+                        boton.classList.add(
+                            "seleccionada"
+                        );
+
+                    }
+
+
+                    if (
+                        casillaEncontrada(
+                            indice
+                        )
+                    ) {
+
+                        boton.classList.add(
+                            "encontrada"
+                        );
+
+                    }
+
+
+                    boton.addEventListener(
+                        "click",
+
+                        function () {
+
+                            seleccionarLetra(
+                                indice
+                            );
+
+                        }
+                    );
+
+
+                    tableroHTML
+                        .appendChild(
+                            boton
+                        );
+
+                }
+
+            }
+
+        }
+
+
+        /* =========================================
+           DIBUJAR LISTA
+        ========================================= */
+
+        function dibujarPalabras() {
+
+            listaHTML.innerHTML =
+                "";
+
+
+            PALABRAS.forEach(
+                palabra => {
+
+                    const elemento =
+                        document
+                            .createElement(
+                                "li"
+                            );
+
+
+                    elemento.textContent =
+                        palabra;
+
+
+                    if (
+                        encontradas.has(
+                            palabra
+                        )
+                    ) {
+
+                        elemento
+                            .classList
+                            .add(
+                                "completada"
+                            );
+
+                    }
+
+
+                    listaHTML
+                        .appendChild(
+                            elemento
+                        );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           OBTENER TRAZO
+        ========================================= */
+
+        function obtenerTrazo(
+            inicio,
+            final
+        ) {
+
+            const filaInicio =
+                Math.floor(
+                    inicio /
+                    TAMANO
+                );
+
+
+            const columnaInicio =
+                inicio %
+                TAMANO;
+
+
+            const filaFinal =
+                Math.floor(
+                    final /
+                    TAMANO
+                );
+
+
+            const columnaFinal =
+                final %
+                TAMANO;
+
+
+            const diferenciaFilas =
+                filaFinal -
+                filaInicio;
+
+
+            const diferenciaColumnas =
+                columnaFinal -
+                columnaInicio;
+
+
+            const horizontal =
+                diferenciaFilas ===
+                0;
+
+
+            const vertical =
+                diferenciaColumnas ===
+                0;
+
+
+            const diagonal =
+                Math.abs(
+                    diferenciaFilas
+                ) ===
+                Math.abs(
+                    diferenciaColumnas
+                );
+
+
+            if (
+                !horizontal &&
+                !vertical &&
+                !diagonal
+            ) {
+
+                return [];
+
+            }
+
+
+            const pasoFila =
+                Math.sign(
+                    diferenciaFilas
+                );
+
+
+            const pasoColumna =
+                Math.sign(
+                    diferenciaColumnas
+                );
+
+
+            const longitud =
+                Math.max(
+
+                    Math.abs(
+                        diferenciaFilas
+                    ),
+
+                    Math.abs(
+                        diferenciaColumnas
+                    )
+
+                ) + 1;
+
+
+            const trazo = [];
+
+
+            for (
+                let i = 0;
+                i < longitud;
+                i++
+            ) {
+
+                const f =
+                    filaInicio +
+                    pasoFila * i;
+
+
+                const c =
+                    columnaInicio +
+                    pasoColumna * i;
+
+
+                trazo.push(
+                    f *
+                    TAMANO +
+                    c
+                );
+
+            }
+
+
+            return trazo;
+
+        }
+
+
+        /* =========================================
+           COMPARAR TRAZOS
+        ========================================= */
+
+        function mismoTrazo(
+            a,
+            b
+        ) {
+
+            return (
+
+                a.length ===
+                    b.length &&
+
+                a.every(
+                    (
+                        valor,
+                        i
+                    ) =>
+                        valor ===
+                        b[i]
+                )
+
+            );
+
+        }
+
+
+        /* =========================================
+           SELECCIONAR LETRA
+        ========================================= */
+
+        function seleccionarLetra(
+            indice
+        ) {
+
+            sonidoLetra();
+
+
+            /* PRIMERA LETRA */
+
+            if (
+                primeraLetra ===
+                null
+            ) {
+
+                primeraLetra =
+                    indice;
+
+
+                mensajeHTML
+                    .textContent =
+                    "¡Bien! Ahora selecciona la última letra.";
+
+
+                dibujarTablero();
+
+
+                return;
+
+            }
+
+
+            /* MISMA LETRA */
+
+            if (
+                primeraLetra ===
+                indice
+            ) {
+
+                primeraLetra =
+                    null;
+
+
+                mensajeHTML
+                    .textContent =
+                    "Elige la primera letra de una palabra.";
+
+
+                dibujarTablero();
+
+
+                return;
+
+            }
+
+
+            const trazo =
+                obtenerTrazo(
+
+                    primeraLetra,
+
+                    indice
+
+                );
+
+
+            let palabraCorrecta =
+                null;
+
+
+            for (
+                const palabra
+                of PALABRAS
+            ) {
+
+                if (
+                    encontradas.has(
+                        palabra
+                    )
+                ) {
+
+                    continue;
+
+                }
+
+
+                const posiciones =
+                    posicionesPalabras[
+                        palabra
+                    ];
+
+
+                const invertidas =
+                    [
+                        ...posiciones
+                    ].reverse();
+
+
+                if (
+
+                    mismoTrazo(
+                        trazo,
+                        posiciones
+                    ) ||
+
+                    mismoTrazo(
+                        trazo,
+                        invertidas
+                    )
+
+                ) {
+
+                    palabraCorrecta =
+                        palabra;
+
+
+                    break;
+
+                }
+
+            }
+
+
+            primeraLetra =
+                null;
+
+
+            /* =================================
+               CORRECTA
+            ================================= */
+
+            if (
+                palabraCorrecta
+            ) {
+
+                encontradas.add(
+                    palabraCorrecta
+                );
+
+
+                if (
+                    encontradas.size ===
+                    PALABRAS.length
+                ) {
+
+                    sonidoVictoriaSopa();
+
+                }
+
+                else {
+
+                    sonidoPalabra();
+
+                }
+
+
+                mensajeHTML
+                    .textContent =
+                    `¡Excelente! Encontraste ${palabraCorrecta}. 🎉`;
+
+            }
+
+
+            /* =================================
+               INCORRECTA
+            ================================= */
+
+            else {
+
+                sonidoErrorSopa();
+
+
+                mensajeHTML
+                    .textContent =
+                    "Esa no es una palabra de la lista. ¡Inténtalo otra vez!";
+
+            }
+
+
+            contadorHTML.textContent =
+                encontradas.size;
+
+
+            dibujarTablero();
+
+            dibujarPalabras();
+
+
+            /* =================================
+               VICTORIA
+            ================================= */
+
+            if (
+                encontradas.size ===
+                PALABRAS.length
+            ) {
+
+                mensajeHTML
+                    .textContent =
+                    "🎉 ¡Felicidades! Encontraste todas las palabras.";
+
+            }
+
+        }
+
+
+        /* =========================================
+           INICIAR / REINICIAR
+        ========================================= */
+
+        function iniciarJuego() {
+
+            encontradas =
+                new Set();
+
+
+            primeraLetra =
+                null;
+
+
+            contadorHTML.textContent =
+                "0";
+
+
+            mensajeHTML.textContent =
+                "¡Elige la primera letra!";
+
+
+            if (
+                generarSopa()
+            ) {
+
+                dibujarTablero();
+
+                dibujarPalabras();
+
+            }
+
+            else {
+
+                mensajeHTML.textContent =
+                    "No se pudo generar la sopa. Intenta nuevamente.";
+
+            }
+
+        }
+
+
+        /* =========================================
+           JUGAR DE NUEVO
+        ========================================= */
+
+        reiniciarHTML.addEventListener(
+            "click",
+
+            function () {
+
+                sonidoLetra();
+
+                iniciarJuego();
+
+            }
+        );
+
+
+        /* =========================================
+           INICIAR
+        ========================================= */
+
+        iniciarJuego();
+
+    </script>
+
+</body>
+
+</html>
