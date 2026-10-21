@@ -1,107 +1,1083 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cuentos | Sube y Baja</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Cuentos | Sube y Baja
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+    <!-- TIPOGRAFÍAS -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
+
+        /* =========================================
+           GENERAL
+        ========================================= */
 
         * {
             box-sizing: border-box;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
             margin: 0;
+
             min-height: 100vh;
 
-            background-color: #ffe5a3;
-            font-family: Arial, sans-serif;
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            background-color:
+                #ffd96b;
+
+            background-image:
+                url("../imagenes/fondocuentos.png");
+
+            background-size:
+                cover;
+
+            background-position:
+                center;
+
+            background-attachment:
+                fixed;
+
+            color:
+                white;
+
+        }
+
+
+
+        /* =========================================
+           PÁGINA
+        ========================================= */
+
+        .pagina-cuentos {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                55px 30px
+                45px;
 
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
 
-            text-align: center;
-            padding: 30px;
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
         }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            color: #633c75;
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .titulo-cuentos {
+
+            margin:
+                0 0 12px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    45px,
+                    7vw,
+                    78px
+                );
+
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+            color:
+                #ffffff;
+
+            letter-spacing:
+                1px;
+
+            text-shadow:
+                0 4px 0
+                rgba(
+                    126,
+                    70,
+                    0,
+                    0.16
+                ),
+                0 8px 20px
+                rgba(
+                    117,
+                    68,
+                    0,
+                    0.18
+                );
+
         }
 
-        p {
-            font-size: 20px;
-            line-height: 1.5;
-            max-width: 600px;
-            color: #563c36;
+
+
+        /* =========================================
+           SUBTÍTULO
+        ========================================= */
+
+        .subtitulo {
+
+            margin:
+                0 auto
+                42px;
+
+            max-width:
+                650px;
+
+            padding:
+                10px 22px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.88
+                );
+
+            border-radius:
+                22px;
+
+            color:
+                #71496f;
+
+            font-size:
+                18px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.4;
+
+            text-align:
+                center;
+
+            box-shadow:
+                0 7px 18px
+                rgba(
+                    112,
+                    74,
+                    20,
+                    0.10
+                );
+
         }
+
+
+
+        /* =========================================
+           CONTENEDOR
+        ========================================= */
+
+        .contenedor-cuentos {
+
+            width:
+                100%;
+
+            max-width:
+                1050px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                35px;
+
+            align-items:
+                stretch;
+
+        }
+
+
+
+        /* =========================================
+           TARJETA
+        ========================================= */
+
+        .cuento-tarjeta {
+
+            min-width:
+                0;
+
+            padding:
+                25px 20px
+                28px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            text-align:
+                center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            border:
+                5px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.80
+                );
+
+            border-radius:
+                30px;
+
+            box-shadow:
+                0 14px 28px
+                rgba(
+                    120,
+                    76,
+                    20,
+                    0.16
+                );
+
+            opacity:
+                0;
+
+            transform:
+                translateY(
+                    45px
+                );
+
+            animation:
+                entradaCuento
+                0.75s
+                ease
+                forwards;
+
+            transition:
+                transform
+                0.3s ease,
+                box-shadow
+                0.3s ease;
+
+        }
+
+
+
+        .cuento-tarjeta:nth-child(1) {
+
+            animation-delay:
+                0.10s;
+
+        }
+
+
+        .cuento-tarjeta:nth-child(2) {
+
+            animation-delay:
+                0.25s;
+
+        }
+
+
+        .cuento-tarjeta:nth-child(3) {
+
+            animation-delay:
+                0.40s;
+
+        }
+
+
+
+        @keyframes entradaCuento {
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           PORTADA SIMBÓLICA
+        ========================================= */
+
+        .portada-cuento {
+
+            width:
+                100%;
+
+            max-width:
+                240px;
+
+            aspect-ratio:
+                4 / 5;
+
+            margin-bottom:
+                18px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            padding:
+                22px;
+
+            border-radius:
+                24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #fff6c9,
+                    #ffe47a
+                );
+
+            border:
+                4px solid
+                #ffffff;
+
+            box-shadow:
+                inset 0 0 0
+                2px
+                rgba(
+                    236,
+                    174,
+                    36,
+                    0.10
+                );
+
+        }
+
+
+
+        .portada-cuento
+        .libro {
+
+            font-size:
+                76px;
+
+            line-height:
+                1;
+
+            margin-bottom:
+                16px;
+
+        }
+
+
+
+        .portada-cuento
+        span {
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
+            color:
+                #71496f;
+
+        }
+
+
+
+        /* =========================================
+           NOMBRE
+        ========================================= */
+
+        .cuento-tarjeta h2 {
+
+            margin:
+                0 0 6px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                25px;
+
+            color:
+                #71496f;
+
+        }
+
+
+
+        .cuento-tarjeta p {
+
+            margin:
+                0 0 18px;
+
+            max-width:
+                230px;
+
+            color:
+                #765f73;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.4;
+
+        }
+
+
+
+        /* =========================================
+           BOTÓN PDF CON TU IMAGEN
+        ========================================= */
+
+        .boton-descarga {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                7px;
+
+            text-decoration:
+                none;
+
+            color:
+                #e64055;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
+            transition:
+                transform
+                0.25s ease;
+
+        }
+
+
+
+        .boton-descarga img {
+
+            display:
+                block;
+
+            width:
+                95px;
+
+            height:
+                auto;
+
+            pointer-events:
+                none;
+
+            filter:
+                drop-shadow(
+                    0 7px 8px
+                    rgba(
+                        126,
+                        45,
+                        45,
+                        0.13
+                    )
+                );
+
+        }
+
+
+
+        /* =========================================
+           PC
+        ========================================= */
+
+        @media
+        (hover: hover)
+        and
+        (pointer: fine) {
+
+            .cuento-tarjeta:hover {
+
+                transform:
+                    translateY(
+                        -8px
+                    );
+
+                box-shadow:
+                    0 20px 34px
+                    rgba(
+                        120,
+                        76,
+                        20,
+                        0.23
+                    );
+
+            }
+
+
+            .boton-descarga:hover {
+
+                transform:
+                    scale(
+                        1.10
+                    );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           AL TOCAR
+        ========================================= */
+
+        .boton-descarga:active {
+
+            transform:
+                scale(
+                    0.91
+                );
+
+        }
+
+
+
+        /* =========================================
+           BOTÓN VOLVER
+        ========================================= */
 
         .boton-volver {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 30px;
 
-            background-color: #ff316c;
-            color: white;
+            display:
+                inline-block;
 
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top:
+                52px;
 
-            transition: transform 0.3s ease;
+            padding:
+                13px 26px;
+
+            background:
+                #ff3f78;
+
+            color:
+                white;
+
+            border-radius:
+                26px;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.28
+                );
+
+            transition:
+                transform
+                0.25s ease,
+                background
+                0.25s ease;
+
         }
+
+
 
         .boton-volver:hover {
-            transform: scale(1.07);
-            background-color: #e91e63;
+
+            background:
+                #e91e63;
+
+            transform:
+                translateY(
+                    -3px
+                );
+
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 32px;
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media
+        (max-width: 850px) {
+
+            .contenedor-cuentos {
+
+                gap:
+                    20px;
+
             }
 
-            p {
-                font-size: 18px;
+
+            .cuento-tarjeta {
+
+                padding:
+                    20px 15px
+                    24px;
+
             }
+
+
+            .portada-cuento
+            .libro {
+
+                font-size:
+                    60px;
+
+            }
+
         }
 
-        @media (prefers-reduced-motion: reduce) {
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media
+        (max-width: 650px) {
+
+            body {
+
+                background-attachment:
+                    scroll;
+
+            }
+
+
+            .pagina-cuentos {
+
+                padding:
+                    35px 18px
+                    40px;
+
+            }
+
+
+            .titulo-cuentos {
+
+                font-size:
+                    48px;
+
+            }
+
+
+            .subtitulo {
+
+                margin-bottom:
+                    30px;
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .contenedor-cuentos {
+
+                width:
+                    min(
+                        100%,
+                        330px
+                    );
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    35px;
+
+            }
+
+
+            .cuento-tarjeta {
+
+                padding:
+                    22px 18px
+                    26px;
+
+            }
+
+
+            .portada-cuento {
+
+                max-width:
+                    215px;
+
+            }
+
+
+            .boton-descarga img {
+
+                width:
+                    90px;
+
+            }
+
+
             .boton-volver {
-                transition: none;
+
+                margin-top:
+                    42px;
+
             }
+
+        }
+
+
+
+        /* =========================================
+           MOVIMIENTO REDUCIDO
+        ========================================= */
+
+        @media
+        (prefers-reduced-motion: reduce) {
+
+            .cuento-tarjeta {
+
+                opacity:
+                    1;
+
+                transform:
+                    none;
+
+                animation:
+                    none;
+
+            }
+
+
+            .cuento-tarjeta,
+            .boton-descarga,
+            .boton-volver {
+
+                transition:
+                    none;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
+
 <body>
 
-    <h1>📖 Cuentos</h1>
 
-    <p>
-        ¡Bienvenidos a nuestro rincón de cuentos!
-        Aquí descubrirás historias llenas de imaginación,
-        aventuras y personajes sorprendentes.
+    <main class="pagina-cuentos">
 
-        Próximamente podrás explorar nuestros cuentos
-        y aprender mientras lees.
-    </p>
 
-    <a href="../index.html#recursos" class="boton-volver">
-        ← Volver a Recursos
-    </a>
+        <h1 class="titulo-cuentos">
+            Cuentos
+        </h1>
+
+
+        <p class="subtitulo">
+            Descubre historias para imaginar,
+            aprender y compartir.
+            Elige tu favorita y descárgala.
+        </p>
+
+
+
+        <section class="contenedor-cuentos">
+
+
+            <!-- =================================
+                 CUENTO 1
+            ================================== -->
+
+            <article class="cuento-tarjeta">
+
+
+                <div class="portada-cuento">
+
+                    <div class="libro">
+                        📖
+                    </div>
+
+                    <span>
+                        Cuento 1
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Cuento 1
+                </h2>
+
+
+                <p>
+                    Una historia para leer,
+                    imaginar y disfrutar.
+                </p>
+
+
+                <a
+                    href="../pdfs/cuento1.pdf"
+                    download="cuento1.pdf"
+                    class="boton-descarga"
+                    aria-label="Descargar cuento 1 en PDF"
+                >
+
+                    <img
+                        src="../imagenes/cuentosdescarga.png"
+                        alt="Descargar cuento 1"
+                    >
+
+                    <span>
+                        Descargar PDF
+                    </span>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================
+                 CUENTO 2
+            ================================== -->
+
+            <article class="cuento-tarjeta">
+
+
+                <div class="portada-cuento">
+
+                    <div class="libro">
+                        📚
+                    </div>
+
+                    <span>
+                        Cuento 2
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Cuento 2
+                </h2>
+
+
+                <p>
+                    Una nueva aventura para
+                    aprender mientras lees.
+                </p>
+
+
+                <a
+                    href="../pdfs/cuento2.pdf"
+                    download="cuento2.pdf"
+                    class="boton-descarga"
+                    aria-label="Descargar cuento 2 en PDF"
+                >
+
+                    <img
+                        src="../imagenes/cuentosdescarga.png"
+                        alt="Descargar cuento 2"
+                    >
+
+                    <span>
+                        Descargar PDF
+                    </span>
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================
+                 CUENTO 3
+            ================================== -->
+
+            <article class="cuento-tarjeta">
+
+
+                <div class="portada-cuento">
+
+                    <div class="libro">
+                        ✨📖
+                    </div>
+
+                    <span>
+                        Cuento 3
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Cuento 3
+                </h2>
+
+
+                <p>
+                    Una historia diferente
+                    para descubrir y compartir.
+                </p>
+
+
+                <a
+                    href="../pdfs/cuento3.pdf"
+                    download="cuento3.pdf"
+                    class="boton-descarga"
+                    aria-label="Descargar cuento 3 en PDF"
+                >
+
+                    <img
+                        src="../imagenes/cuentosdescarga.png"
+                        alt="Descargar cuento 3"
+                    >
+
+                    <span>
+                        Descargar PDF
+                    </span>
+
+                </a>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <a
+            href="../index.html#recursos"
+            class="boton-volver"
+        >
+            ← Volver a Recursos
+        </a>
+
+
+    </main>
+
 
 </body>
 
