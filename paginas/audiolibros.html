@@ -1,69 +1,920 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
-
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audiolibros | Sube y Baja</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Audiolibros | Sube y Baja
+    </title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+    <!-- TIPOGRAFÍAS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background-color: #a9d6ff;
-            font-family: Arial, sans-serif;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* =========================================
+           GENERAL
+        ========================================= */
 
-            text-align: center;
-            padding: 25px;
+        * {
             box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 42px;
+
+        html {
+            scroll-behavior: smooth;
         }
 
-        p {
-            font-size: 20px;
-            max-width: 600px;
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                "Nunito",
+                sans-serif;
+
+            background-color:
+                #55b7ed;
+
+            background-image:
+                url("../imagenes/fondoazul1.png");
+
+            background-size:
+                cover;
+
+            background-position:
+                center;
+
+            background-attachment:
+                fixed;
+
+            color:
+                white;
         }
+
+
+
+        /* =========================================
+           CONTENEDOR PRINCIPAL
+        ========================================= */
+
+        .pagina-audiolibros {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                55px 30px
+                45px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+        }
+
+
+
+        /* =========================================
+           TÍTULO
+        ========================================= */
+
+        .titulo-audiolibros {
+
+            margin:
+                0 0 12px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    42px,
+                    7vw,
+                    76px
+                );
+
+            font-weight:
+                700;
+
+            text-align:
+                center;
+
+            color:
+                #ffffff;
+
+            letter-spacing:
+                1px;
+
+            text-shadow:
+                0 4px 0
+                rgba(
+                    0,
+                    90,
+                    170,
+                    0.18
+                ),
+                0 8px 20px
+                rgba(
+                    0,
+                    75,
+                    140,
+                    0.20
+                );
+
+        }
+
+
+
+        .subtitulo {
+
+            margin:
+                0 auto
+                42px;
+
+            max-width:
+                650px;
+
+            padding:
+                10px 20px;
+
+            border-radius:
+                20px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.80
+                );
+
+            color:
+                #3d5b80;
+
+            text-align:
+                center;
+
+            font-size:
+                18px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.4;
+
+        }
+
+
+
+        /* =========================================
+           LOS TRES AUDIOLIBROS
+        ========================================= */
+
+        .contenedor-audios {
+
+            width: 100%;
+
+            max-width:
+                1050px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                35px;
+
+            align-items:
+                start;
+
+        }
+
+
+
+        /* =========================================
+           TARJETA
+        ========================================= */
+
+        .audio-tarjeta {
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            text-align:
+                center;
+
+        }
+
+
+
+        /* =========================================
+           VIDEO / RECUADRO
+        ========================================= */
+
+        .audio-marco {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                4 / 5;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.95
+                );
+
+            border:
+                6px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.95
+                );
+
+            border-radius:
+                28px;
+
+            overflow:
+                hidden;
+
+            box-shadow:
+                0 14px 28px
+                rgba(
+                    23,
+                    89,
+                    146,
+                    0.20
+                );
+
+            transition:
+                transform
+                0.3s ease,
+                box-shadow
+                0.3s ease;
+
+        }
+
+
+
+        .audio-marco video {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+            background:
+                white;
+
+        }
+
+
+
+        /* =========================================
+           NOMBRE
+        ========================================= */
+
+        .audio-tarjeta h2 {
+
+            margin:
+                18px 0
+                12px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                23px;
+
+            color:
+                #ffffff;
+
+            text-shadow:
+                0 3px 8px
+                rgba(
+                    0,
+                    78,
+                    145,
+                    0.22
+                );
+
+        }
+
+
+
+        /* =========================================
+           BOTÓN DE IMAGEN
+        ========================================= */
+
+        .boton-audio {
+
+            display:
+                inline-flex;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            width:
+                145px;
+
+            max-width:
+                75%;
+
+            text-decoration:
+                none;
+
+            transition:
+                transform
+                0.25s ease;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
+        }
+
+
+
+        .boton-audio img {
+
+            display:
+                block;
+
+            width:
+                100%;
+
+            height:
+                auto;
+
+            pointer-events:
+                none;
+
+        }
+
+
+
+        /* =========================================
+           HOVER SOLO COMPUTADORA
+        ========================================= */
+
+        @media
+        (hover: hover)
+        and
+        (pointer: fine) {
+
+            .audio-tarjeta:hover
+            .audio-marco {
+
+                transform:
+                    translateY(
+                        -8px
+                    )
+                    rotate(
+                        -1deg
+                    );
+
+                box-shadow:
+                    0 20px 34px
+                    rgba(
+                        23,
+                        89,
+                        146,
+                        0.28
+                    );
+
+            }
+
+
+            .boton-audio:hover {
+
+                transform:
+                    scale(
+                        1.10
+                    );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           TOQUE
+        ========================================= */
+
+        .boton-audio:active {
+
+            transform:
+                scale(
+                    0.92
+                );
+
+        }
+
+
+
+        /* =========================================
+           VOLVER
+        ========================================= */
 
         .boton-volver {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 30px;
 
-            background-color: #ff316c;
-            color: white;
+            display:
+                inline-block;
 
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
+            margin-top:
+                55px;
+
+            padding:
+                13px 25px;
+
+            border-radius:
+                25px;
+
+            background:
+                #ff3f78;
+
+            color:
+                white;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            text-decoration:
+                none;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.28
+                );
+
+            transition:
+                transform
+                0.25s ease,
+                background
+                0.25s ease;
+
         }
+
+
+
+        .boton-volver:hover {
+
+            background:
+                #e91e63;
+
+            transform:
+                translateY(
+                    -3px
+                );
+
+        }
+
+
+
+        /* =========================================
+           ANIMACIÓN DE ENTRADA
+        ========================================= */
+
+        .audio-tarjeta {
+
+            opacity:
+                0;
+
+            transform:
+                translateY(
+                    45px
+                );
+
+            animation:
+                aparecerTarjeta
+                0.75s
+                ease
+                forwards;
+
+        }
+
+
+
+        .audio-tarjeta:nth-child(1) {
+
+            animation-delay:
+                0.10s;
+
+        }
+
+
+        .audio-tarjeta:nth-child(2) {
+
+            animation-delay:
+                0.25s;
+
+        }
+
+
+        .audio-tarjeta:nth-child(3) {
+
+            animation-delay:
+                0.40s;
+
+        }
+
+
+
+        @keyframes aparecerTarjeta {
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media
+        (max-width: 850px) {
+
+            .contenedor-audios {
+
+                gap:
+                    20px;
+
+            }
+
+
+            .audio-marco {
+
+                border-radius:
+                    22px;
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media
+        (max-width: 650px) {
+
+            body {
+
+                background-attachment:
+                    scroll;
+
+            }
+
+
+            .pagina-audiolibros {
+
+                padding:
+                    35px 18px
+                    40px;
+
+            }
+
+
+            .titulo-audiolibros {
+
+                font-size:
+                    46px;
+
+            }
+
+
+            .subtitulo {
+
+                font-size:
+                    15px;
+
+                margin-bottom:
+                    30px;
+
+            }
+
+
+            .contenedor-audios {
+
+                grid-template-columns:
+                    1fr;
+
+                width:
+                    min(
+                        100%,
+                        330px
+                    );
+
+                gap:
+                    45px;
+
+            }
+
+
+            .audio-marco {
+
+                aspect-ratio:
+                    4 / 5;
+
+            }
+
+
+            .audio-tarjeta h2 {
+
+                margin-top:
+                    14px;
+
+            }
+
+
+            .boton-audio {
+
+                width:
+                    135px;
+
+            }
+
+
+            .boton-volver {
+
+                margin-top:
+                    45px;
+
+            }
+
+        }
+
     </style>
 
 </head>
 
+
+
 <body>
 
-    <h1>🎧 Audiolibros</h1>
 
-    <p>
-        ¡Bienvenido a nuestros audiolibros!
-        Próximamente podrás escuchar historias
-        divertidas y educativas.
-    </p>
+    <main class="pagina-audiolibros">
 
-    <a href="../index.html#recursos" class="boton-volver">
-        ← Volver a Recursos
-    </a>
+
+        <h1 class="titulo-audiolibros">
+            Audiolibros
+        </h1>
+
+
+        <p class="subtitulo">
+            Escucha y disfruta estas historias.
+            Dale play al cuento que más te guste.
+        </p>
+
+
+
+        <section class="contenedor-audios">
+
+
+            <!-- =================================
+                 CUENTO 1
+            ================================== -->
+
+            <article class="audio-tarjeta">
+
+
+                <div class="audio-marco">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+
+                        <source
+                            src="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_1.mp4"
+                            type="video/mp4"
+                        >
+
+                        Tu navegador no puede reproducir este video.
+
+                    </video>
+
+                </div>
+
+
+                <h2>
+                    Cuento 1
+                </h2>
+
+
+                <a
+                    class="boton-audio"
+                    href="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_1.mp4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ver cuento 1"
+                >
+
+                    <img
+                        src="../imagenes/botonaudiolibro.png"
+                        alt="Ver cuento 1"
+                    >
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================
+                 CUENTO 2
+            ================================== -->
+
+            <article class="audio-tarjeta">
+
+
+                <div class="audio-marco">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+
+                        <source
+                            src="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_3.mp4"
+                            type="video/mp4"
+                        >
+
+                        Tu navegador no puede reproducir este video.
+
+                    </video>
+
+                </div>
+
+
+                <h2>
+                    Cuento 2
+                </h2>
+
+
+                <a
+                    class="boton-audio"
+                    href="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_3.mp4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ver cuento 2"
+                >
+
+                    <img
+                        src="../imagenes/botonaudiolibro.png"
+                        alt="Ver cuento 2"
+                    >
+
+                </a>
+
+
+            </article>
+
+
+
+            <!-- =================================
+                 CUENTO 3
+            ================================== -->
+
+            <article class="audio-tarjeta">
+
+
+                <div class="audio-marco">
+
+                    <video
+                        controls
+                        preload="metadata"
+                        playsinline
+                    >
+
+                        <source
+                            src="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_2.mp4"
+                            type="video/mp4"
+                        >
+
+                        Tu navegador no puede reproducir este video.
+
+                    </video>
+
+                </div>
+
+
+                <h2>
+                    Cuento 3
+                </h2>
+
+
+                <a
+                    class="boton-audio"
+                    href="https://www.juntadeandalucia.es/sites/default/files/2025-01/Videocuento_de_IAM_CUENTO_2.mp4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Ver cuento 3"
+                >
+
+                    <img
+                        src="../imagenes/botonaudiolibro.png"
+                        alt="Ver cuento 3"
+                    >
+
+                </a>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <a
+            href="../index.html#recursos"
+            class="boton-volver"
+        >
+            ← Volver a Recursos
+        </a>
+
+
+    </main>
+
 
 </body>
 
