@@ -14,7 +14,6 @@
 
 
     <!-- FAVICON -->
-
     <link
         rel="icon"
         type="image/png"
@@ -23,7 +22,6 @@
 
 
     <!-- TIPOGRAFÍAS -->
-
     <link
         href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
@@ -31,10 +29,6 @@
 
 
     <style>
-
-        /* =========================================
-           GENERAL
-        ========================================= */
 
         * {
             box-sizing: border-box;
@@ -49,7 +43,6 @@
         body {
 
             margin: 0;
-
             min-height: 100vh;
 
             font-family:
@@ -79,13 +72,12 @@
 
 
         /* =========================================
-           PÁGINA PRINCIPAL
+           PÁGINA
         ========================================= */
 
         .pagina-cuentos {
 
             width: 100%;
-
             min-height: 100vh;
 
             padding:
@@ -93,12 +85,8 @@
                 45px;
 
             display: flex;
-
-            flex-direction:
-                column;
-
-            align-items:
-                center;
+            flex-direction: column;
+            align-items: center;
 
         }
 
@@ -177,7 +165,7 @@
                     255,
                     255,
                     255,
-                    0.88
+                    0.90
                 );
 
             border-radius:
@@ -212,7 +200,7 @@
 
 
         /* =========================================
-           CONTENEDOR DE CUENTOS
+           CONTENEDOR
         ========================================= */
 
         .contenedor-cuentos {
@@ -250,7 +238,7 @@
                 0;
 
             padding:
-                24px 20px
+                25px 20px
                 28px;
 
             display:
@@ -262,9 +250,6 @@
             align-items:
                 center;
 
-            justify-content:
-                flex-start;
-
             text-align:
                 center;
 
@@ -273,7 +258,7 @@
                     255,
                     255,
                     255,
-                    0.94
+                    0.95
                 );
 
             border:
@@ -282,7 +267,7 @@
                     255,
                     255,
                     255,
-                    0.80
+                    0.82
                 );
 
             border-radius:
@@ -320,38 +305,26 @@
         }
 
 
-
         .cuento-tarjeta:nth-child(1) {
-
-            animation-delay:
-                0.10s;
-
+            animation-delay: 0.10s;
         }
 
 
         .cuento-tarjeta:nth-child(2) {
-
-            animation-delay:
-                0.25s;
-
+            animation-delay: 0.25s;
         }
 
 
         .cuento-tarjeta:nth-child(3) {
-
-            animation-delay:
-                0.40s;
-
+            animation-delay: 0.40s;
         }
-
 
 
         @keyframes entradaCuento {
 
             from {
 
-                opacity:
-                    0;
+                opacity: 0;
 
                 transform:
                     translateY(
@@ -360,11 +333,9 @@
 
             }
 
-
             to {
 
-                opacity:
-                    1;
+                opacity: 1;
 
                 transform:
                     translateY(
@@ -378,13 +349,12 @@
 
 
         /* =========================================
-           ZONA AMARILLA SUPERIOR
+           ZONA AMARILLA
         ========================================= */
 
         .portada-cuento {
 
-            width:
-                100%;
+            width: 100%;
 
             max-width:
                 240px;
@@ -408,7 +378,7 @@
                 center;
 
             padding:
-                20px;
+                22px;
 
             background:
                 linear-gradient(
@@ -429,23 +399,12 @@
             border-radius:
                 24px;
 
-            box-shadow:
-                inset 0 0 0
-                2px
-                rgba(
-                    230,
-                    178,
-                    53,
-                    0.10
-                );
-
         }
 
 
 
         /* =========================================
-           BOTÓN PDF ANIMADO
-           REEMPLAZA LOS EMOJIS
+           BOTÓN PDF
         ========================================= */
 
         .boton-pdf {
@@ -456,10 +415,10 @@
             flex-direction:
                 column;
 
-            justify-content:
+            align-items:
                 center;
 
-            align-items:
+            justify-content:
                 center;
 
             text-decoration:
@@ -491,7 +450,7 @@
                 block;
 
             width:
-                130px;
+                135px;
 
             max-width:
                 100%;
@@ -526,8 +485,30 @@
 
 
 
+        .texto-descarga {
+
+            margin-top:
+                12px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            color:
+                #ff3f5f;
+
+        }
+
+
+
         /* =========================================
-           ANIMACIÓN BOTÓN PDF
+           ANIMACIÓN PDF
         ========================================= */
 
         @keyframes flotarPDF {
@@ -574,35 +555,58 @@
 
 
 
-        /* =========================================
-           TEXTO DE LA PORTADA
-        ========================================= */
+        @keyframes sacudirPDF {
 
-        .portada-cuento
-        .texto-descarga {
+            0% {
 
-            margin-top:
-                12px;
+                transform:
+                    scale(1)
+                    rotate(0deg);
 
-            font-family:
-                "Fredoka",
-                sans-serif;
+            }
 
-            font-size:
-                16px;
 
-            font-weight:
-                700;
+            25% {
 
-            color:
-                #ff3f5f;
+                transform:
+                    scale(1.10)
+                    rotate(-6deg);
+
+            }
+
+
+            50% {
+
+                transform:
+                    scale(1.13)
+                    rotate(6deg);
+
+            }
+
+
+            75% {
+
+                transform:
+                    scale(1.08)
+                    rotate(-3deg);
+
+            }
+
+
+            100% {
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+            }
 
         }
 
 
 
         /* =========================================
-           NOMBRE DEL CUENTO
+           TEXTOS
         ========================================= */
 
         .cuento-tarjeta h2 {
@@ -617,19 +621,12 @@
             font-size:
                 26px;
 
-            font-weight:
-                700;
-
             color:
                 #71496f;
 
         }
 
 
-
-        /* =========================================
-           DESCRIPCIÓN
-        ========================================= */
 
         .cuento-tarjeta p {
 
@@ -656,7 +653,7 @@
 
 
         /* =========================================
-           HOVER COMPUTADORA
+           PC
         ========================================= */
 
         @media
@@ -697,81 +694,7 @@
 
 
         /* =========================================
-           SACUDIDA
-        ========================================= */
-
-        @keyframes sacudirPDF {
-
-            0% {
-
-                transform:
-                    scale(
-                        1
-                    )
-                    rotate(
-                        0deg
-                    );
-
-            }
-
-
-            25% {
-
-                transform:
-                    scale(
-                        1.10
-                    )
-                    rotate(
-                        -6deg
-                    );
-
-            }
-
-
-            50% {
-
-                transform:
-                    scale(
-                        1.13
-                    )
-                    rotate(
-                        6deg
-                    );
-
-            }
-
-
-            75% {
-
-                transform:
-                    scale(
-                        1.08
-                    )
-                    rotate(
-                        -3deg
-                    );
-
-            }
-
-
-            100% {
-
-                transform:
-                    scale(
-                        1
-                    )
-                    rotate(
-                        0deg
-                    );
-
-            }
-
-        }
-
-
-
-        /* =========================================
-           TOQUE EN CELULAR
+           TOQUE
         ========================================= */
 
         .boton-pdf:active img {
@@ -786,7 +709,7 @@
 
 
         /* =========================================
-           BOTÓN VOLVER
+           VOLVER
         ========================================= */
 
         .boton-volver {
@@ -856,41 +779,6 @@
 
 
         /* =========================================
-           TABLET
-        ========================================= */
-
-        @media
-        (max-width: 850px) {
-
-            .contenedor-cuentos {
-
-                gap:
-                    20px;
-
-            }
-
-
-            .cuento-tarjeta {
-
-                padding:
-                    20px 15px
-                    24px;
-
-            }
-
-
-            .boton-pdf img {
-
-                width:
-                    110px;
-
-            }
-
-        }
-
-
-
-        /* =========================================
            CELULAR
         ========================================= */
 
@@ -950,15 +838,6 @@
             }
 
 
-            .cuento-tarjeta {
-
-                padding:
-                    22px 18px
-                    26px;
-
-            }
-
-
             .portada-cuento {
 
                 max-width:
@@ -970,7 +849,7 @@
             .boton-pdf img {
 
                 width:
-                    120px;
+                    125px;
 
             }
 
@@ -1028,10 +907,6 @@
     <main class="pagina-cuentos">
 
 
-        <!-- =====================================
-             TÍTULO
-        ====================================== -->
-
         <h1 class="titulo-cuentos">
             Cuentos
         </h1>
@@ -1040,22 +915,16 @@
         <p class="subtitulo">
             Descubre historias para imaginar,
             aprender y compartir.
-            Toca el botón y descarga tu cuento.
+            Toca el botón para descargar el cuento.
         </p>
 
 
-
-        <!-- =====================================
-             CONTENEDOR
-        ====================================== -->
 
         <section class="contenedor-cuentos">
 
 
 
-            <!-- =================================
-                 CUENTO 1
-            ================================== -->
+            <!-- CUENTO 1 -->
 
             <article class="cuento-tarjeta">
 
@@ -1064,11 +933,9 @@
 
 
                     <a
-                        <a
-    href="../pdf/cuento1.pdf"
-    download="cuento1.pdf"
-    class="boton-pdf"
->
+                        href="../pdf/cuento1.pdf"
+                        download="cuento1.pdf"
+                        class="boton-pdf"
                     >
 
                         <img
@@ -1102,9 +969,7 @@
 
 
 
-            <!-- =================================
-                 CUENTO 2
-            ================================== -->
+            <!-- CUENTO 2 -->
 
             <article class="cuento-tarjeta">
 
@@ -1113,11 +978,9 @@
 
 
                     <a
-                        <a
-    href="../pdf/cuento2.pdf"
-    download="cuento2.pdf"
-    class="boton-pdf"
->
+                        href="../pdf/cuento2.pdf"
+                        download="cuento2.pdf"
+                        class="boton-pdf"
                     >
 
                         <img
@@ -1151,9 +1014,7 @@
 
 
 
-            <!-- =================================
-                 CUENTO 3
-            ================================== -->
+            <!-- CUENTO 3 -->
 
             <article class="cuento-tarjeta">
 
@@ -1162,11 +1023,9 @@
 
 
                     <a
-                        <a
-    href="../pdf/cuento3.pdf"
-    download="cuento3.pdf"
-    class="boton-pdf"
->
+                        href="../pdf/cuento3.pdf"
+                        download="cuento3.pdf"
+                        class="boton-pdf"
                     >
 
                         <img
@@ -1202,10 +1061,6 @@
         </section>
 
 
-
-        <!-- =====================================
-             VOLVER
-        ====================================== -->
 
         <a
             href="../index.html#recursos"
