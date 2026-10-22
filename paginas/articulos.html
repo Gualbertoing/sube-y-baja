@@ -1,14 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
-
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Biblioteca de artículos | Sube y Baja</title>
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
@@ -16,78 +30,1275 @@
             box-sizing: border-box;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
             margin: 0;
             min-height: 100vh;
 
-            font-family: Arial, sans-serif;
+            font-family:
+                "Nunito",
+                sans-serif;
 
-            background-color: #ff6868;
-            background-image: url("../imagenes/fondorojobb.png");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            background-color:
+                #ff7979;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-image:
+                url("../imagenes/fondorojobb.png");
 
-            text-align: center;
-            padding: 30px;
+            background-size:
+                cover;
+
+            background-position:
+                center;
+
+            background-attachment:
+                fixed;
+
+            color:
+                #694d68;
+
         }
 
-        h1 {
-            font-size: 48px;
-            color: white;
-            margin-bottom: 15px;
+
+
+        /* =====================================
+           PÁGINA
+        ===================================== */
+
+        .pagina-articulos {
+
+            width: 100%;
+            min-height: 100vh;
+
+            padding:
+                55px 25px
+                50px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
         }
 
-        p {
-            font-size: 22px;
-            color: white;
-            line-height: 1.5;
-            max-width: 650px;
+
+
+        /* =====================================
+           ETIQUETA
+        ===================================== */
+
+        .etiqueta {
+
+            padding:
+                8px 18px;
+
+            margin-bottom:
+                10px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.93
+                );
+
+            border-radius:
+                30px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            color:
+                #ff426e;
+
+            letter-spacing:
+                1px;
+
+            box-shadow:
+                0 6px 16px
+                rgba(
+                    120,
+                    50,
+                    70,
+                    0.10
+                );
+
+            animation:
+                aparecer
+                0.6s ease;
+
         }
+
+
+
+        /* =====================================
+           TÍTULO
+        ===================================== */
+
+        .titulo {
+
+            margin:
+                0 0 10px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    45px,
+                    7vw,
+                    76px
+                );
+
+            font-weight:
+                700;
+
+            color:
+                white;
+
+            text-align:
+                center;
+
+            line-height:
+                1.05;
+
+            text-shadow:
+                0 5px 0
+                rgba(
+                    120,
+                    50,
+                    70,
+                    0.15
+                ),
+                0 9px 22px
+                rgba(
+                    100,
+                    40,
+                    60,
+                    0.18
+                );
+
+            animation:
+                aparecer
+                0.7s ease;
+
+        }
+
+
+
+        /* =====================================
+           SUBTÍTULO
+        ===================================== */
+
+        .subtitulo {
+
+            max-width:
+                680px;
+
+            margin:
+                0 auto
+                42px;
+
+            padding:
+                11px 23px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.93
+                );
+
+            border-radius:
+                22px;
+
+            font-size:
+                17px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.45;
+
+            text-align:
+                center;
+
+            color:
+                #75556f;
+
+            box-shadow:
+                0 7px 18px
+                rgba(
+                    100,
+                    50,
+                    70,
+                    0.10
+                );
+
+            animation:
+                aparecer
+                0.8s ease;
+
+        }
+
+
+
+        /* =====================================
+           ARTÍCULOS
+        ===================================== */
+
+        .contenedor-articulos {
+
+            width: 100%;
+
+            max-width:
+                1100px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                30px;
+
+            align-items:
+                stretch;
+
+        }
+
+
+
+        /* =====================================
+           TARJETAS
+        ===================================== */
+
+        .articulo {
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+
+            padding:
+                29px 22px
+                27px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            text-align:
+                center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border:
+                5px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.78
+                );
+
+            border-radius:
+                30px;
+
+            box-shadow:
+                0 15px 30px
+                rgba(
+                    110,
+                    50,
+                    70,
+                    0.16
+                );
+
+            opacity:
+                0;
+
+            transform:
+                translateY(
+                    40px
+                );
+
+            animation:
+                entradaTarjeta
+                0.75s
+                ease
+                forwards;
+
+            transition:
+                transform
+                0.3s ease,
+                box-shadow
+                0.3s ease;
+
+        }
+
+
+
+        .articulo:nth-child(1) {
+            animation-delay: 0.10s;
+        }
+
+        .articulo:nth-child(2) {
+            animation-delay: 0.20s;
+        }
+
+        .articulo:nth-child(3) {
+            animation-delay: 0.30s;
+        }
+
+        .articulo:nth-child(4) {
+            animation-delay: 0.40s;
+        }
+
+        .articulo:nth-child(5) {
+            animation-delay: 0.50s;
+        }
+
+
+
+        /* =====================================
+           CÍRCULO DE NÚMERO
+        ===================================== */
+
+        .numero {
+
+            width:
+                54px;
+
+            height:
+                54px;
+
+            margin-bottom:
+                14px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                #ffe487;
+
+            color:
+                #75556f;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                24px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                inset 0 0 0
+                4px
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.60
+                );
+
+        }
+
+
+
+        /* =====================================
+           TEXTOS
+        ===================================== */
+
+        .articulo h2 {
+
+            margin:
+                0 0 9px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                25px;
+
+            font-weight:
+                700;
+
+            color:
+                #714c6f;
+
+        }
+
+
+        .articulo p {
+
+            margin:
+                0 0 20px;
+
+            max-width:
+                260px;
+
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+            line-height:
+                1.5;
+
+            color:
+                #796575;
+
+        }
+
+
+
+        /* =====================================
+           BOTÓN PDF
+        ===================================== */
+
+        .boton-pdf {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            color:
+                #ff3e63;
+
+            font-weight:
+                700;
+
+            touch-action:
+                manipulation;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
+        }
+
+
+
+        .boton-pdf img {
+
+            display:
+                block;
+
+            width:
+                105px;
+
+            height:
+                auto;
+
+            margin-bottom:
+                8px;
+
+            pointer-events:
+                none;
+
+            transform-origin:
+                center;
+
+            animation:
+                flotarPDF
+                2.3s
+                ease-in-out
+                infinite;
+
+            filter:
+                drop-shadow(
+                    0 7px 7px
+                    rgba(
+                        180,
+                        45,
+                        65,
+                        0.16
+                    )
+                );
+
+        }
+
+
+
+        .boton-pdf span {
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+        }
+
+
+
+        /* =====================================
+           ANIMACIONES
+        ===================================== */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(
+                        -15px
+                    );
+
+            }
+
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        @keyframes entradaTarjeta {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(
+                        40px
+                    );
+
+            }
+
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        @keyframes flotarPDF {
+
+            0% {
+
+                transform:
+                    translateY(
+                        0
+                    )
+                    rotate(
+                        0deg
+                    );
+
+            }
+
+
+            50% {
+
+                transform:
+                    translateY(
+                        -7px
+                    )
+                    rotate(
+                        -2deg
+                    );
+
+            }
+
+
+            100% {
+
+                transform:
+                    translateY(
+                        0
+                    )
+                    rotate(
+                        0deg
+                    );
+
+            }
+
+        }
+
+
+
+        @keyframes sacudirPDF {
+
+            0% {
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+            }
+
+
+            25% {
+
+                transform:
+                    scale(1.1)
+                    rotate(-6deg);
+
+            }
+
+
+            50% {
+
+                transform:
+                    scale(1.12)
+                    rotate(6deg);
+
+            }
+
+
+            75% {
+
+                transform:
+                    scale(1.08)
+                    rotate(-3deg);
+
+            }
+
+
+            100% {
+
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           HOVER PC
+        ===================================== */
+
+        @media
+        (hover: hover)
+        and
+        (pointer: fine) {
+
+            .articulo:hover {
+
+                transform:
+                    translateY(
+                        -8px
+                    );
+
+                box-shadow:
+                    0 21px 36px
+                    rgba(
+                        110,
+                        50,
+                        70,
+                        0.23
+                    );
+
+            }
+
+
+            .boton-pdf:hover img {
+
+                animation:
+                    sacudirPDF
+                    0.55s
+                    ease-in-out;
+
+            }
+
+        }
+
+
+
+        .boton-pdf:active img {
+
+            transform:
+                scale(
+                    0.90
+                );
+
+        }
+
+
+
+        /* =====================================
+           BOTÓN VOLVER
+        ===================================== */
 
         .boton-volver {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 16px 30px;
 
-            background-color: #ff316c;
-            color: white;
+            display:
+                inline-block;
 
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
+            margin-top:
+                43px;
 
-            border-radius: 30px;
-            transition: transform 0.3s ease;
+            padding:
+                13px 27px;
+
+            background:
+                #ff3f78;
+
+            color:
+                white;
+
+            border-radius:
+                28px;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.28
+                );
+
+            transition:
+                transform
+                0.25s ease,
+                background
+                0.25s ease;
+
         }
 
+
+
         .boton-volver:hover {
-            transform: scale(1.07);
+
+            background:
+                #e72e68;
+
+            transform:
+                translateY(
+                    -4px
+                );
+
+        }
+
+
+
+        /* =====================================
+           TABLET
+        ===================================== */
+
+        @media
+        (max-width: 900px) {
+
+            .contenedor-articulos {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CELULAR
+        ===================================== */
+
+        @media
+        (max-width: 620px) {
+
+            body {
+
+                background-attachment:
+                    scroll;
+
+            }
+
+
+            .pagina-articulos {
+
+                padding:
+                    35px 17px
+                    40px;
+
+            }
+
+
+            .titulo {
+
+                font-size:
+                    43px;
+
+            }
+
+
+            .subtitulo {
+
+                margin-bottom:
+                    30px;
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .contenedor-articulos {
+
+                width:
+                    min(
+                        100%,
+                        340px
+                    );
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    27px;
+
+            }
+
+
+            .articulo {
+
+                padding:
+                    26px 20px;
+
+            }
+
+
+            .boton-pdf img {
+
+                width:
+                    110px;
+
+            }
+
+        }
+
+
+
+        @media
+        (prefers-reduced-motion: reduce) {
+
+            .etiqueta,
+            .titulo,
+            .subtitulo,
+            .articulo {
+
+                opacity:
+                    1;
+
+                transform:
+                    none;
+
+                animation:
+                    none;
+
+            }
+
+
+            .boton-pdf img {
+
+                animation:
+                    none;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
+
 <body>
 
-    <h1>Biblioteca de artículos</h1>
 
-    <p>
-        ¡Bienvenidos a nuestra biblioteca!
-        Próximamente encontrarás artículos, consejos y
-        recursos educativos para acompañar el aprendizaje
-        de niñas y niños.
+<main class="pagina-articulos">
+
+
+    <div class="etiqueta">
+        PARA MADRES, PADRES Y FAMILIAS
+    </div>
+
+
+    <h1 class="titulo">
+        Biblioteca de artículos
+    </h1>
+
+
+    <p class="subtitulo">
+        Encuentra información y recursos para comprender
+        mejor la igualdad de género y acompañar a niñas
+        y niños de una manera respetuosa y adecuada para
+        su edad.
     </p>
 
-    <a href="../index.html#papas" class="boton-volver">
+
+
+    <section class="contenedor-articulos">
+
+
+
+        <!-- ARTÍCULO 1 -->
+
+        <article class="articulo">
+
+
+            <div>
+
+                <div class="numero">
+                    1
+                </div>
+
+
+                <h2>
+                    Artículo 1
+                </h2>
+
+
+                <p>
+                    Un recurso para aprender,
+                    reflexionar y acompañar a
+                    las infancias.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../articulospdf/articulo1.pdf"
+                download="articulo1.pdf"
+                class="boton-pdf"
+            >
+
+                <img
+                    src="../imagenes/cuentosdescarga.png"
+                    alt="Descargar artículo 1"
+                >
+
+                <span>
+                    Descargar PDF
+                </span>
+
+            </a>
+
+
+        </article>
+
+
+
+        <!-- ARTÍCULO 2 -->
+
+        <article class="articulo">
+
+
+            <div>
+
+                <div class="numero">
+                    2
+                </div>
+
+
+                <h2>
+                    Artículo 2
+                </h2>
+
+
+                <p>
+                    Información para conversar
+                    sobre estos temas de forma
+                    sencilla y cercana.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../articulospdf/articulo2.pdf"
+                download="articulo2.pdf"
+                class="boton-pdf"
+            >
+
+                <img
+                    src="../imagenes/cuentosdescarga.png"
+                    alt="Descargar artículo 2"
+                >
+
+                <span>
+                    Descargar PDF
+                </span>
+
+            </a>
+
+
+        </article>
+
+
+
+        <!-- ARTÍCULO 3 -->
+
+        <article class="articulo">
+
+
+            <div>
+
+                <div class="numero">
+                    3
+                </div>
+
+
+                <h2>
+                    Artículo 3
+                </h2>
+
+
+                <p>
+                    Ideas y herramientas para
+                    acompañar el aprendizaje
+                    desde casa.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../articulospdf/articulo3.pdf"
+                download="articulo3.pdf"
+                class="boton-pdf"
+            >
+
+                <img
+                    src="../imagenes/cuentosdescarga.png"
+                    alt="Descargar artículo 3"
+                >
+
+                <span>
+                    Descargar PDF
+                </span>
+
+            </a>
+
+
+        </article>
+
+
+
+        <!-- ARTÍCULO 4 -->
+
+        <article class="articulo">
+
+
+            <div>
+
+                <div class="numero">
+                    4
+                </div>
+
+
+                <h2>
+                    Artículo 4
+                </h2>
+
+
+                <p>
+                    Una lectura para fortalecer
+                    el respeto, la confianza
+                    y la igualdad.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../articulospdf/articulo4.pdf"
+                download="articulo4.pdf"
+                class="boton-pdf"
+            >
+
+                <img
+                    src="../imagenes/cuentosdescarga.png"
+                    alt="Descargar artículo 4"
+                >
+
+                <span>
+                    Descargar PDF
+                </span>
+
+            </a>
+
+
+        </article>
+
+
+
+        <!-- ARTÍCULO 5 -->
+
+        <article class="articulo">
+
+
+            <div>
+
+                <div class="numero">
+                    5
+                </div>
+
+
+                <h2>
+                    Artículo 5
+                </h2>
+
+
+                <p>
+                    Más herramientas para seguir
+                    construyendo una educación
+                    con las mismas oportunidades.
+                </p>
+
+            </div>
+
+
+            <a
+                href="../articulospdf/articulo5.pdf"
+                download="articulo5.pdf"
+                class="boton-pdf"
+            >
+
+                <img
+                    src="../imagenes/cuentosdescarga.png"
+                    alt="Descargar artículo 5"
+                >
+
+                <span>
+                    Descargar PDF
+                </span>
+
+            </a>
+
+
+        </article>
+
+
+    </section>
+
+
+
+    <a
+        href="../index.html#papas"
+        class="boton-volver"
+    >
         ← Volver a Para papás
     </a>
+
+
+</main>
+
 
 </body>
 
