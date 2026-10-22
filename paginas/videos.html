@@ -1,86 +1,1085 @@
-
 <!DOCTYPE html>
 <html lang="es">
 
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
-
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Videos | Sube y Baja</title>
-<link rel="icon" type="image/png" href="../imagenes/icono.png">
+
+
+    <!-- FAVICON -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="../imagenes/icono.png"
+    >
+
+
+    <!-- TIPOGRAFÍAS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
     <style>
 
         * {
             box-sizing: border-box;
         }
 
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
             margin: 0;
+
             min-height: 100vh;
 
-            background-color: #a9d6ff;
-            font-family: Arial, sans-serif;
+            font-family:
+                "Nunito",
+                sans-serif;
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-color:
+                #7fb6ff;
 
-            text-align: center;
-            padding: 30px;
+            background-image:
+                url("../imagenes/fondoazul1.png");
+
+            background-size:
+                cover;
+
+            background-position:
+                center;
+
+            background-attachment:
+                fixed;
+
+            color:
+                #674e6c;
+
         }
 
-        h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+
+
+        /* =====================================
+           PÁGINA
+        ===================================== */
+
+        .pagina-videos {
+
+            width:
+                100%;
+
+            min-height:
+                100vh;
+
+            padding:
+                55px 25px
+                50px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
         }
 
-        p {
-            font-size: 20px;
-            line-height: 1.5;
-            max-width: 600px;
+
+
+        /* =====================================
+           ETIQUETA
+        ===================================== */
+
+        .etiqueta {
+
+            display:
+                inline-block;
+
+            margin-bottom:
+                10px;
+
+            padding:
+                8px 18px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.94
+                );
+
+            border-radius:
+                30px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                14px;
+
+            font-weight:
+                700;
+
+            color:
+                #3f77cc;
+
+            letter-spacing:
+                1px;
+
+            box-shadow:
+                0 6px 16px
+                rgba(
+                    40,
+                    75,
+                    130,
+                    0.12
+                );
+
+            animation:
+                aparecer
+                0.6s ease;
+
         }
+
+
+
+        /* =====================================
+           TÍTULO
+        ===================================== */
+
+        .titulo {
+
+            margin:
+                0 0 10px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                clamp(
+                    47px,
+                    7vw,
+                    76px
+                );
+
+            font-weight:
+                700;
+
+            color:
+                white;
+
+            text-align:
+                center;
+
+            line-height:
+                1;
+
+            text-shadow:
+                0 5px 0
+                rgba(
+                    45,
+                    85,
+                    150,
+                    0.18
+                ),
+                0 10px 24px
+                rgba(
+                    40,
+                    75,
+                    130,
+                    0.18
+                );
+
+            animation:
+                aparecer
+                0.7s ease;
+
+        }
+
+
+
+        /* =====================================
+           SUBTÍTULO
+        ===================================== */
+
+        .subtitulo {
+
+            max-width:
+                700px;
+
+            margin:
+                0 auto
+                42px;
+
+            padding:
+                12px 24px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.93
+                );
+
+            border-radius:
+                23px;
+
+            font-size:
+                17px;
+
+            font-weight:
+                700;
+
+            line-height:
+                1.5;
+
+            text-align:
+                center;
+
+            color:
+                #6e5c75;
+
+            box-shadow:
+                0 7px 18px
+                rgba(
+                    50,
+                    80,
+                    130,
+                    0.10
+                );
+
+            animation:
+                aparecer
+                0.8s ease;
+
+        }
+
+
+
+        /* =====================================
+           CONTENEDOR
+        ===================================== */
+
+        .contenedor-videos {
+
+            width:
+                100%;
+
+            max-width:
+                1150px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                30px;
+
+            align-items:
+                stretch;
+
+        }
+
+
+
+        /* =====================================
+           TARJETAS
+        ===================================== */
+
+        .video-tarjeta {
+
+            padding:
+                22px 20px
+                27px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            text-align:
+                center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.96
+                );
+
+            border:
+                5px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.78
+                );
+
+            border-radius:
+                30px;
+
+            box-shadow:
+                0 15px 30px
+                rgba(
+                    45,
+                    70,
+                    125,
+                    0.17
+                );
+
+            opacity:
+                0;
+
+            transform:
+                translateY(
+                    40px
+                );
+
+            animation:
+                entradaTarjeta
+                0.75s
+                ease
+                forwards;
+
+            transition:
+                transform
+                0.3s ease,
+                box-shadow
+                0.3s ease;
+
+        }
+
+
+        .video-tarjeta:nth-child(1) {
+            animation-delay:
+                0.10s;
+        }
+
+
+        .video-tarjeta:nth-child(2) {
+            animation-delay:
+                0.25s;
+        }
+
+
+        .video-tarjeta:nth-child(3) {
+            animation-delay:
+                0.40s;
+        }
+
+
+
+        /* =====================================
+           MARCO DE VIDEO
+        ===================================== */
+
+        .video-marco {
+
+            width:
+                100%;
+
+            aspect-ratio:
+                16 / 9;
+
+            overflow:
+                hidden;
+
+            border-radius:
+                21px;
+
+            background:
+                #dcecff;
+
+            box-shadow:
+                0 9px 20px
+                rgba(
+                    50,
+                    75,
+                    130,
+                    0.15
+                );
+
+        }
+
+
+        .video-marco iframe {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            display:
+                block;
+
+            border:
+                0;
+
+        }
+
+
+
+        /* =====================================
+           TÍTULOS
+        ===================================== */
+
+        .video-tarjeta h2 {
+
+            margin:
+                20px 0 8px;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                25px;
+
+            font-weight:
+                700;
+
+            color:
+                #705376;
+
+        }
+
+
+
+        .video-tarjeta p {
+
+            min-height:
+                45px;
+
+            margin:
+                0 0 20px;
+
+            font-size:
+                15px;
+
+            font-weight:
+                600;
+
+            line-height:
+                1.5;
+
+            color:
+                #786579;
+
+        }
+
+
+
+        /* =====================================
+           BOTÓN VER
+        ===================================== */
+
+        .boton-video {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            margin-top:
+                auto;
+
+            padding:
+                12px 25px;
+
+            border-radius:
+                25px;
+
+            background:
+                #ff3f78;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.25
+                );
+
+            transition:
+                transform
+                0.25s ease,
+                background
+                0.25s ease,
+                box-shadow
+                0.25s ease;
+
+            -webkit-tap-highlight-color:
+                transparent;
+
+        }
+
+
+
+        .boton-video:hover {
+
+            background:
+                #e82f68;
+
+            transform:
+                translateY(
+                    -4px
+                );
+
+            box-shadow:
+                0 12px 22px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.32
+                );
+
+        }
+
+
+
+        .boton-video:active {
+
+            transform:
+                scale(
+                    0.95
+                );
+
+        }
+
+
+
+        /* =====================================
+           ANIMACIONES
+        ===================================== */
+
+        @keyframes aparecer {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(
+                        -15px
+                    );
+
+            }
+
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        @keyframes entradaTarjeta {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(
+                        40px
+                    );
+
+            }
+
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(
+                        0
+                    );
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           HOVER TARJETA
+        ===================================== */
+
+        @media
+        (hover: hover)
+        and
+        (pointer: fine) {
+
+            .video-tarjeta:hover {
+
+                transform:
+                    translateY(
+                        -8px
+                    );
+
+                box-shadow:
+                    0 22px 37px
+                    rgba(
+                        45,
+                        70,
+                        125,
+                        0.24
+                    );
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           VOLVER
+        ===================================== */
 
         .boton-volver {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 30px;
 
-            background-color: #ff316c;
-            color: white;
+            display:
+                inline-block;
 
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
+            margin-top:
+                43px;
 
-            transition: transform 0.3s ease;
+            padding:
+                13px 27px;
+
+            background:
+                #ff3f78;
+
+            color:
+                white;
+
+            border-radius:
+                28px;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "Fredoka",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                700;
+
+            box-shadow:
+                0 8px 18px
+                rgba(
+                    255,
+                    63,
+                    120,
+                    0.27
+                );
+
+            transition:
+                transform
+                0.25s ease,
+                background
+                0.25s ease;
+
         }
 
+
+
         .boton-volver:hover {
-            transform: scale(1.07);
+
+            background:
+                #e72e68;
+
+            transform:
+                translateY(
+                    -4px
+                );
+
+        }
+
+
+
+        /* =====================================
+           TABLET
+        ===================================== */
+
+        @media
+        (max-width: 900px) {
+
+            .contenedor-videos {
+
+                grid-template-columns:
+                    1fr;
+
+                width:
+                    min(
+                        100%,
+                        650px
+                    );
+
+            }
+
+
+            .video-tarjeta p {
+
+                min-height:
+                    auto;
+
+            }
+
+        }
+
+
+
+        /* =====================================
+           CELULAR
+        ===================================== */
+
+        @media
+        (max-width: 620px) {
+
+            body {
+
+                background-attachment:
+                    scroll;
+
+            }
+
+
+            .pagina-videos {
+
+                padding:
+                    35px 16px
+                    40px;
+
+            }
+
+
+            .titulo {
+
+                font-size:
+                    48px;
+
+            }
+
+
+            .subtitulo {
+
+                margin-bottom:
+                    30px;
+
+                font-size:
+                    15px;
+
+            }
+
+
+            .contenedor-videos {
+
+                width:
+                    100%;
+
+                gap:
+                    28px;
+
+            }
+
+
+            .video-tarjeta {
+
+                padding:
+                    18px 16px
+                    24px;
+
+            }
+
+
+            .video-tarjeta h2 {
+
+                font-size:
+                    23px;
+
+            }
+
+        }
+
+
+
+        @media
+        (prefers-reduced-motion: reduce) {
+
+            .etiqueta,
+            .titulo,
+            .subtitulo,
+            .video-tarjeta {
+
+                opacity:
+                    1;
+
+                transform:
+                    none;
+
+                animation:
+                    none;
+
+            }
+
         }
 
     </style>
 
 </head>
 
+
+
 <body>
 
-    <h1>🎬 Videos</h1>
 
-    <p>
-        ¡Bienvenido a nuestra sección de videos!
+<main class="pagina-videos">
 
-        Próximamente encontrarás videos educativos,
-        actividades y aventuras para aprender jugando.
+
+    <div class="etiqueta">
+        APRENDE MIRANDO
+    </div>
+
+
+    <h1 class="titulo">
+        Videos
+    </h1>
+
+
+    <p class="subtitulo">
+        Descubre videos educativos para aprender
+        sobre igualdad, respeto y oportunidades
+        mientras te diviertes.
     </p>
 
-    <a href="../index.html#recursos" class="boton-volver">
+
+
+    <section class="contenedor-videos">
+
+
+
+        <!-- =====================================
+             VIDEO 1
+        ====================================== -->
+
+        <article class="video-tarjeta">
+
+
+            <div class="video-marco">
+
+                <iframe
+                    src="https://www.youtube.com/embed/2d7K7nP-2Ro"
+                    title="Video educativo 1"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <h2>
+                Video 1
+            </h2>
+
+
+            <p>
+                Aprende sobre igualdad de género
+                de una forma sencilla, visual
+                y divertida.
+            </p>
+
+
+            <a
+                href="https://www.youtube.com/watch?v=2d7K7nP-2Ro"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton-video"
+            >
+                ▶ VER EN YOUTUBE
+            </a>
+
+
+        </article>
+
+
+
+        <!-- =====================================
+             VIDEO 2
+        ====================================== -->
+
+        <article class="video-tarjeta">
+
+
+            <div class="video-marco">
+
+                <iframe
+                    src="https://www.youtube.com/embed/jjkjaoeYx58"
+                    title="Video educativo 2"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <h2>
+                Video 2
+            </h2>
+
+
+            <p>
+                Un recurso para reflexionar sobre
+                el respeto y las mismas oportunidades
+                para niñas y niños.
+            </p>
+
+
+            <a
+                href="https://www.youtube.com/watch?v=jjkjaoeYx58"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton-video"
+            >
+                ▶ VER EN YOUTUBE
+            </a>
+
+
+        </article>
+
+
+
+        <!-- =====================================
+             VIDEO 3
+        ====================================== -->
+
+        <article class="video-tarjeta">
+
+
+            <div class="video-marco">
+
+                <iframe
+                    src="https://www.youtube.com/embed/MPjjxELtLig"
+                    title="Video educativo 3"
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+
+            <h2>
+                Video 3
+            </h2>
+
+
+            <p>
+                Sigue aprendiendo cómo podemos
+                construir espacios más igualitarios
+                desde la infancia.
+            </p>
+
+
+            <a
+                href="https://www.youtube.com/watch?v=MPjjxELtLig"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="boton-video"
+            >
+                ▶ VER EN YOUTUBE
+            </a>
+
+
+        </article>
+
+
+    </section>
+
+
+
+    <a
+        href="../index.html#recursos"
+        class="boton-volver"
+    >
         ← Volver a Recursos
     </a>
+
+
+</main>
+
 
 </body>
 
