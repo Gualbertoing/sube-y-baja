@@ -23,18 +23,15 @@
         rel="stylesheet"
     >
 
-
     <style>
 
         * {
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
-
 
         body {
 
@@ -66,7 +63,6 @@
         }
 
 
-
         /* =====================================
            PÁGINA
         ===================================== */
@@ -90,7 +86,6 @@
                 center;
 
         }
-
 
 
         /* =====================================
@@ -148,7 +143,6 @@
         }
 
 
-
         /* =====================================
            TÍTULO
         ===================================== */
@@ -202,7 +196,6 @@
                 0.7s ease;
 
         }
-
 
 
         /* =====================================
@@ -263,9 +256,8 @@
         }
 
 
-
         /* =====================================
-           ARTÍCULOS
+           CONTENEDOR
         ===================================== */
 
         .contenedor-articulos {
@@ -291,7 +283,6 @@
                 stretch;
 
         }
-
 
 
         /* =====================================
@@ -377,7 +368,6 @@
         }
 
 
-
         .articulo:nth-child(1) {
             animation-delay: 0.10s;
         }
@@ -399,9 +389,8 @@
         }
 
 
-
         /* =====================================
-           CÍRCULO DE NÚMERO
+           NÚMERO
         ===================================== */
 
         .numero {
@@ -412,7 +401,8 @@
             height:
                 54px;
 
-            margin-bottom:
+            margin:
+                0 auto
                 14px;
 
             display:
@@ -454,7 +444,6 @@
                 );
 
         }
-
 
 
         /* =====================================
@@ -505,7 +494,6 @@
         }
 
 
-
         /* =====================================
            BOTÓN PDF
         ===================================== */
@@ -544,7 +532,6 @@
                 transparent;
 
         }
-
 
 
         .boton-pdf img {
@@ -587,7 +574,6 @@
         }
 
 
-
         .boton-pdf span {
 
             font-size:
@@ -597,7 +583,6 @@
                 700;
 
         }
-
 
 
         /* =====================================
@@ -618,7 +603,6 @@
 
             }
 
-
             to {
 
                 opacity:
@@ -632,7 +616,6 @@
             }
 
         }
-
 
 
         @keyframes entradaTarjeta {
@@ -649,7 +632,6 @@
 
             }
 
-
             to {
 
                 opacity:
@@ -663,7 +645,6 @@
             }
 
         }
-
 
 
         @keyframes flotarPDF {
@@ -680,7 +661,6 @@
 
             }
 
-
             50% {
 
                 transform:
@@ -692,7 +672,6 @@
                     );
 
             }
-
 
             100% {
 
@@ -709,59 +688,33 @@
         }
 
 
-
         @keyframes sacudirPDF {
 
             0% {
-
-                transform:
-                    scale(1)
-                    rotate(0deg);
-
+                transform: scale(1) rotate(0deg);
             }
-
 
             25% {
-
-                transform:
-                    scale(1.1)
-                    rotate(-6deg);
-
+                transform: scale(1.1) rotate(-6deg);
             }
-
 
             50% {
-
-                transform:
-                    scale(1.12)
-                    rotate(6deg);
-
+                transform: scale(1.12) rotate(6deg);
             }
-
 
             75% {
-
-                transform:
-                    scale(1.08)
-                    rotate(-3deg);
-
+                transform: scale(1.08) rotate(-3deg);
             }
 
-
             100% {
-
-                transform:
-                    scale(1)
-                    rotate(0deg);
-
+                transform: scale(1) rotate(0deg);
             }
 
         }
 
 
-
         /* =====================================
-           HOVER PC
+           HOVER
         ===================================== */
 
         @media
@@ -800,7 +753,6 @@
         }
 
 
-
         .boton-pdf:active img {
 
             transform:
@@ -811,9 +763,8 @@
         }
 
 
-
         /* =====================================
-           BOTÓN VOLVER
+           VOLVER
         ===================================== */
 
         .boton-volver {
@@ -867,7 +818,6 @@
         }
 
 
-
         .boton-volver:hover {
 
             background:
@@ -879,7 +829,6 @@
                 );
 
         }
-
 
 
         /* =====================================
@@ -900,7 +849,6 @@
             }
 
         }
-
 
 
         /* =====================================
@@ -981,7 +929,6 @@
         }
 
 
-
         @media
         (prefers-reduced-motion: reduce) {
 
@@ -1016,7 +963,6 @@
 </head>
 
 
-
 <body>
 
 
@@ -1036,20 +982,17 @@
     <p class="subtitulo">
         Encuentra información y recursos para comprender
         mejor la igualdad de género y acompañar a niñas
-        y niños de una manera respetuosa y adecuada para
-        su edad.
+        y niños de una manera respetuosa y adecuada
+        para su edad.
     </p>
-
 
 
     <section class="contenedor-articulos">
 
 
-
         <!-- ARTÍCULO 1 -->
 
         <article class="articulo">
-
 
             <div>
 
@@ -1057,23 +1000,21 @@
                     1
                 </div>
 
-
                 <h2>
                     Artículo 1
                 </h2>
 
-
                 <p>
                     Un recurso para aprender,
-                    reflexionar y acompañar a
-                    las infancias.
+                    reflexionar y acompañar
+                    a las infancias.
                 </p>
 
             </div>
 
 
             <a
-                href="../articulospdf/articulo1.pdf"
+                href="../articulos/articulo1.pdf"
                 download="articulo1.pdf"
                 class="boton-pdf"
             >
@@ -1089,15 +1030,12 @@
 
             </a>
 
-
         </article>
-
 
 
         <!-- ARTÍCULO 2 -->
 
         <article class="articulo">
-
 
             <div>
 
@@ -1105,11 +1043,9 @@
                     2
                 </div>
 
-
                 <h2>
                     Artículo 2
                 </h2>
-
 
                 <p>
                     Información para conversar
@@ -1121,7 +1057,7 @@
 
 
             <a
-                href="../articulospdf/articulo2.pdf"
+                href="../articulos/articulo2.pdf"
                 download="articulo2.pdf"
                 class="boton-pdf"
             >
@@ -1137,15 +1073,12 @@
 
             </a>
 
-
         </article>
-
 
 
         <!-- ARTÍCULO 3 -->
 
         <article class="articulo">
-
 
             <div>
 
@@ -1153,15 +1086,13 @@
                     3
                 </div>
 
-
                 <h2>
                     Artículo 3
                 </h2>
 
-
                 <p>
-                    Ideas y herramientas para
-                    acompañar el aprendizaje
+                    Ideas y herramientas
+                    para acompañar el aprendizaje
                     desde casa.
                 </p>
 
@@ -1169,7 +1100,7 @@
 
 
             <a
-                href="../articulospdf/articulo3.pdf"
+                href="../articulos/articulo3.pdf"
                 download="articulo3.pdf"
                 class="boton-pdf"
             >
@@ -1185,15 +1116,12 @@
 
             </a>
 
-
         </article>
-
 
 
         <!-- ARTÍCULO 4 -->
 
         <article class="articulo">
-
 
             <div>
 
@@ -1201,11 +1129,9 @@
                     4
                 </div>
 
-
                 <h2>
                     Artículo 4
                 </h2>
-
 
                 <p>
                     Una lectura para fortalecer
@@ -1217,7 +1143,7 @@
 
 
             <a
-                href="../articulospdf/articulo4.pdf"
+                href="../articulos/articulo4.pdf"
                 download="articulo4.pdf"
                 class="boton-pdf"
             >
@@ -1233,15 +1159,12 @@
 
             </a>
 
-
         </article>
-
 
 
         <!-- ARTÍCULO 5 -->
 
         <article class="articulo">
-
 
             <div>
 
@@ -1249,11 +1172,9 @@
                     5
                 </div>
 
-
                 <h2>
                     Artículo 5
                 </h2>
-
 
                 <p>
                     Más herramientas para seguir
@@ -1265,7 +1186,7 @@
 
 
             <a
-                href="../articulospdf/articulo5.pdf"
+                href="../articulos/articulo5.pdf"
                 download="articulo5.pdf"
                 class="boton-pdf"
             >
@@ -1281,12 +1202,10 @@
 
             </a>
 
-
         </article>
 
 
     </section>
-
 
 
     <a
